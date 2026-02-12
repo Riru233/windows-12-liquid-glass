@@ -1,0 +1,16 @@
+{
+  "controlStyles[0].target": "Grid#RootGrid > Taskbar.TaskbarBackground > Grid",
+  "controlStyles[0].styles[0]": "CornerRadius=0",
+  "controlStyles[0].styles[1]": "BorderThickness=1",
+  "controlStyles[0].styles[2]": "Margin=0,0,0,0",
+  "controlStyles[0].styles[3]": "BorderBrush=#40FFFFFF",
+  "controlStyles[0].styles[4]": "Padding=-1",
+  "controlStyles[1].target": "Rectangle#BackgroundStroke",
+  "controlStyles[1].styles[0]": "Fill=#55CCCCCC",
+  "controlStyles[2].target": "Taskbar.TaskbarFrame > Grid#RootGrid > Taskbar.TaskbarBackground > Grid > Rectangle#BackgroundFill",
+  "controlStyles[2].styles[0]": "Fill:=<WindhawkBlur BlurAmount=\"5\" TintColor=\"#55FFFFFF\"/>",
+  "controlStyles[3].target": "Taskbar.TaskListLabeledButtonPanel@RunningIndicatorStates > Border#BackgroundElement",
+  "controlStyles[3].styles[0]": "Margin=0,0,0,0",
+  "controlStyles[3].styles[1]": "Padding=0,0,0,0",
+  "controlStyles[3].styles[2]": "BorderThickness=2,1,0.5,2"
+}
