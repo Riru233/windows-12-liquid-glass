@@ -1,8 +1,5 @@
 <template>
-  <!-- 分体式任务栏（根据泄露图） -->
-  <!-- 任务栏——顶部 -->
   <div class="taskbar-top">
-    <!-- 渐变模糊 -->
     <div
       style="
         width: 100%;
@@ -15,104 +12,138 @@
       <div class="mask-d-from-50-to-75"></div>
       <div class="mask-d-from-70-to-100"></div>
     </div>
-    <!-- 左侧 -->
     <div class="unit">
       <Widgets direction="row" />
     </div>
     <div style="flex-grow: 1"></div>
-    <!-- 右侧 -->
     <div class="unit" style="height: 30px; margin: 0">
       <Status direction="row" />
     </div>
   </div>
-  <!-- 任务栏——底部 -->
-  <div class="glass-component taskbar-bottom">
-    <div class="glass-v2"></div>
-    <div class="glass-content">
-      <div style="flex-grow: 1"></div>
-      <!-- 居中 -->
-      <div
-        class="unit"
-        style="
-          gap: 6px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-direction: row;
-          margin: 0 20px;
-        "
-      >
-        <Dock />
+
+  <div class="taskbar-bottom-container">
+    <div ref="taskbarRef" class="glass-component taskbar-bottom">
+      <div class="glass-v2"></div>
+      
+      <div class="glass-content">
+        <div class="unit-inner">
+          <Dock />
+        </div>
       </div>
-      <div style="flex-grow: 1"></div>
+
+      <liquidFilter
+        v-if="autoWidth > 0"
+        :width="autoWidth + 10" 
+        :height="48"
+        :image_base64="WindowSize"
+        id="glass-v2-taskbar"
+        :displacementScale="40"
+        :precise="1"
+        :config_layer2="{
+          radius: 24,
+          gamma: 6,
+          deadzone: 0.16,
+          edge: 18,
+          isInward: true,
+        }"
+      />
     </div>
-    <liquidFilter
-      :width="800"
-      :height="50"
-      :image_base64="WindowSize"
-      id="glass-v2-taskbar"
-      :displacementScale="40"
-      :precise="1"
-      :config_layer2="{
-        radius: 24,
-        gamma: 6,
-        deadzone: 0.16,
-        edge: 18,
-        isInward: true,
-      }"
-    />
   </div>
-  <!-- Windows保密水印 -->
-  <!-- <div style="position: fixed;color: #fff;font-size: 12px;bottom: 100px;right:0;width: 30em;z-index: 0;">
-        <b style="text-align: center;width:100%;">Windows Confidential</b>
-        <p>Unauthorized use or disclosure in any manner may result in disciplinary action up to and including termination of employment (in the case of employees), termination of an assignment or contract (int the case of contigent staff), and potential civil and criminal liability.</p>
-       </div> -->
-  <!-- 右下角水印 -->
-  <div
-    style="
-      position: fixed;
-      color: #fff;
-      font-size: 12px;
-      bottom: 60px;
-      right: 0;
-      text-align: right;
-    "
-  >
-    <!-- <p>Do not take screen shots of this build.</p> -->
+
+  <div class="watermark-fixed">
     <p>Windows 12 Insider Preview</p>
     <p>Evaluation only. Build 26512.3531.fs_dev11_fit.260118-0936</p>
     <p>If you meet any issues, press Windows+F and feedback it.</p>
   </div>
 </template>
+
 <script setup>
+import { ref, onMounted, onUnmounted } from "vue";
 import LiquidFilter from "/src/components/liquid_v2.vue";
 import Widgets from "./components/widgets.vue";
 import Dock from "./components/dock.vue";
 import Status from "./components/status.vue";
+
+const taskbarRef = ref(null);
+const autoWidth = ref(0);
+let observer = null;
+
+onMounted(() => {
+  if (taskbarRef.value) {
+    // 使用 ResizeObserver 实时监听内容撑开的宽度
+    observer = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        // 更新宽度值，liquidFilter 将响应式重绘
+        autoWidth.value = entry.contentRect.width;
+      }
+    });
+    observer.observe(taskbarRef.value);
+  }
+});
+
+onUnmounted(() => {
+  if (observer) observer.disconnect();
+});
 </script>
+
 <style scoped>
 @import "/src/assets/liquidglass.css";
 @import "/src/assets/gradientblur.css";
 
+/* 修复容器定位：确保它不限制宽度 */
+.taskbar-bottom-container {
+  position: fixed;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
 .taskbar-bottom {
-  width: 800px !important;
-  left: calc(50% - 400px);
-  border-radius: 24px;
+  position: relative;
+  width: auto !important; /* 强制自适应内容 */
+  padding: 0 5px;
+  background: #0000001c;
+  min-width: 60px;
   height: 48px;
-  --border-radius: 0px;
+  border-radius: 24px;
   color: #fff;
   border-top: solid #fff6 1px;
   border-bottom: solid #fff8 1px;
-  position: fixed;
-  width: 100%;
-  padding: 0 0;
-  z-index: 999;
-  bottom: 5px;
-  transition: all 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  display: inline-flex; /* 关键：由内容撑开 */
+  align-items: center;
+  pointer-events: auto;
 }
 
 .taskbar-bottom:hover {
-  transform: scale(1.23) translateY(-5px);
+  transform: scale(1.2) translateY(-5px);
+  background: #ffffff4f;
+
+}
+
+.glass-v2 {
+  backdrop-filter: url(#glass-v2-taskbar);
+  position: absolute; /* 绝对定位同步父级宽度 */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 24px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+
+.unit-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
 }
 
 .taskbar-top {
@@ -123,23 +154,8 @@ import Status from "./components/status.vue";
   position: fixed;
   display: flex;
   flex-direction: row;
-  padding: 0 0;
   z-index: 999;
   top: 0;
-}
-
-.glass-content {
-  border-radius: 24px;
-  background: #0002;
-  box-shadow: none;
-}
-
-.glass-v2 {
-  backdrop-filter: url(#glass-v2-taskbar);
-  width: 800px;
-  height: 50px;
-  position: fixed;
-  border-radius: 24px;
 }
 
 .taskbar-top .unit {
@@ -147,24 +163,126 @@ import Status from "./components/status.vue";
   flex-direction: row;
   z-index: 2;
   height: 25px;
-  margin: 3px 0;
+  margin: 3px 15px;
   justify-content: center;
   align-items: center;
-  margin-left: 10px;
 }
 
-.taskbar-bottom .unit {
+.watermark-fixed {
+  position: fixed;
+  color: #fff;
+  font-size: 12px;
+  bottom: 60px;
+  right: 15px;
+  text-align: right;
+  pointer-events: none;
+}
+
+p { margin: 0; }
+</style>
+<style scoped>
+@import "/src/assets/liquidglass.css";
+@import "/src/assets/gradientblur.css";
+
+/* 1. 外层容器负责居中定位，不限制宽度 */
+.taskbar-bottom-container {
+  position: fixed;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  pointer-events: none; /* 防止容器遮挡点击 */
+}
+
+/* 2. 核心自适应任务栏 */
+.taskbar-bottom {
+  position: relative;
+  width: auto !important; /* 强制覆盖所有 width: 100% */
+  min-width: 100px;
+  height: 48px;
+  border-radius: 24px;
+  color: #fff;
+  border-top: solid #fff6 1px;
+  border-bottom: solid #fff8 1px;
+  transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  display: inline-flex; /* 关键：根据内容自动收缩 */
+  align-items: center;
+  pointer-events: auto; /* 恢复点击 */
+  overflow: visible;
+}
+
+/* Hover 放大效果 */
+.taskbar-bottom:hover {
+  transform: scale(1.05) translateY(-4px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* 3. 背景毛玻璃：跟随父级宽度 */
+.glass-v2 {
+  backdrop-filter: url(#glass-v2-taskbar);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 24px;
+  z-index: -1;
+}
+
+/* 4. 内容层：消除之前的 flex-grow */
+.glass-content {
+  display: flex;
+  align-items: center;
+  padding: 0 16px; /* 侧边留白 */
+  height: 100%;
+  border-radius: 24px;
+  box-shadow: none;
+  white-space: nowrap;
+}
+
+.unit-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+}
+
+.taskbar-top {
+  width: 100% !important;
+  left: 0;
+  height: 30px;
+  color: #fff;
+  position: fixed;
   display: flex;
   flex-direction: row;
-  z-index: 2;
-  height: 44px;
-  margin: 3px 0;
-  justify-content: center;
-  align-items: center;
-  margin-left: 10px;
+  z-index: 999;
+  top: 0;
 }
 
-p {
-  margin: 0;
+
+.taskbar-top .unit {
+  display: flex;
+  align-items: center;
+  margin: 0 12px;
+  z-index: 2;
 }
+
+.watermark-fixed {
+  position: fixed;
+  font-size: 11px;
+  bottom: 60px;
+  right: 10px;
+  text-align: right;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+* {
+  
+  color: #fff;
+}
+
+p { margin: 0; }
 </style>

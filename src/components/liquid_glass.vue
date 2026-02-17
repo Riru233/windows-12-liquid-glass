@@ -7,13 +7,12 @@
       height: `${height}px`,
       borderRadius: `${props.radius}px`,
       top: `${initialTop}px`,
-      left: `${initialLeft}px`,
+      left: `${initialLeft}px`
     }"
   >
     <div class="filter-layer" :style="{ borderRadius: `${props.radius}px`, backdropFilter: `url(#${filterId})` }"></div>
-    <div class="active-layer" :style="props.layerStyle"></div>
 
-    <div class="glass-content-inner" @mousedown="startDrag">
+    <div class="glass-content-inner" @mousedown="startDrag" :style="props.layerStyle" :class="props.layerClass">
 
       <slot :startDrag="startDrag"></slot>
     </div>
@@ -41,8 +40,9 @@ const props = defineProps({
   radius: Number,
   active: Boolean,
   displacementScale: Number,
-  drag: Boolean,
+  layerClass: String,
   layerStyle: String,
+  drag: { type: Boolean, default: false },
   zoom: { type: Number, default: 1 },
   initialTop: { type: Number, default: 100 },
   initialLeft: { type: Number, default: 100 },
@@ -111,11 +111,10 @@ const stopDrag = () => {
   overflow: hidden;
   user-select: none;
   box-shadow: rgba(58, 58, 58, 0.333) 0px 0px 20px 1px;
-  border: solid 1px #ffffffaa;
-  outline: solid #6663 1px;
   z-index: 10;
   display: flex;
 }
+
 .glass-content-inner {
   position: relative;
   z-index: 10;
@@ -123,7 +122,7 @@ const stopDrag = () => {
   display: flex;
   flex-direction: column;
 }
-.filter-layer, .active-layer {
+.filter-layer {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   pointer-events: none;

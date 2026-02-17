@@ -9,9 +9,10 @@
                 gap: 10px;
                 height: 28px;
               " v-for="i in dockData">
-        <div v-html="i.icon" v-if="i.icon" style="-webkit-box-reflect: below -2px linear-gradient(transparent, rgba(0, 0, 0, .5));"></div>
-        <div :style="i.active ? { 'box-shadow': '#fffa 0 36px 6px 6px' } : {}">
+        <div v-html="i.icon" v-if="i.icon" style="-webkit-box-reflect: below -4px linear-gradient(transparent calc(100% - 15px), rgba(0, 0, 0, .5));"></div>
+        <div style="display:flex;flex-direction: column;align-items: center;justify-content: center;">
             <img :src="i.url" alt="" v-if="i.url" style="width: 22px!important; height: 22px;">
+            <div :style="i.active ? { 'background-color': '#fffa',position:'relative',height:'3px',width:'12px',top: '5px',borderRadius: '2px' } : {}"></div>
         </div>
         <!-- <div style="text-shadow: #fff 0px 0px 8px;font-size: 14px;align-self: center;" v-if="i.name != ''">{{ i.name }}
         </div> -->

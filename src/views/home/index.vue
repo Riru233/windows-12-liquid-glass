@@ -6,7 +6,7 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      background-image: url(&quot;/public/frutiger-aero-1.webp&quot;);
+      background-image: url(&quot;/public/img0.jpg&quot;);
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
@@ -23,7 +23,7 @@
   <!-- explorer -->
   <Explorer class="window2" ref="explorerRef" @close="close" />
   <!-- liquidglass -->
-  <LiquidGlass
+  <!-- <LiquidGlass
     :width="250"
     :height="250"
     :initialTop="322"
@@ -33,7 +33,7 @@
     :radius="150"
     layerStyle="background: #fff2"
     :blur="0"
-    drag="true"
+    :drag="true"
     :zoom="2"
     :config_layer2="{
       gamma: 0.2,
@@ -56,7 +56,7 @@
     >
       Drag me
     </div>
-  </LiquidGlass>
+  </LiquidGlass> -->
   <!-- taskbar -->
   <Taskbar />
 </template>

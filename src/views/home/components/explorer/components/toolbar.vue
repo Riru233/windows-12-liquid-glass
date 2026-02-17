@@ -3,109 +3,217 @@
     <div class="addressSearch">
       <div class="navbtns">
         <!-- 上一步 -->
-        <svg t="1760621368275" class="icon glass-fog" viewBox="0 0 1024 1024" version="1.1"
-          xmlns="http://www.w3.org/2000/svg" p-id="3590" width="20" height="20" style="padding: 0 10px">
+        <svg
+          t="1760621368275"
+          class="icon glass-fog"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="3590"
+          width="20"
+          height="20"
+          style="padding: 0 10px"
+        >
           <path
             d="M908.5 482H188.2l250.5-250.5c11.7-11.7 11.7-30.7 0-42.4s-30.7-11.7-42.4 0L94.6 490.8c-11.7 11.7-11.7 30.7 0 42.4L396.3 835c5.9 5.9 13.5 8.8 21.2 8.8 7.7 0 15.4-2.9 21.2-8.8 11.7-11.7 11.7-30.7 0-42.4L188.2 542h720.3c16.6 0 30-13.4 30-30s-13.4-30-30-30z"
-            fill="#333" p-id="3591"></path>
+            fill="#333"
+            p-id="3591"
+          ></path>
         </svg>
         <!-- 下一步 -->
-        <svg t="1760621391615" class="icon glass-fog" viewBox="0 0 1024 1024" version="1.1"
-          xmlns="http://www.w3.org/2000/svg" p-id="3737" width="20" height="20" style="padding: 0 10px">
+        <svg
+          t="1760621391615"
+          class="icon glass-fog"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="3737"
+          width="20"
+          height="20"
+          style="padding: 0 10px"
+        >
           <path
             d="M929.8 490.8L628 189c-11.7-11.7-30.7-11.7-42.4 0s-11.7 30.7 0 42.4L836.1 482H115.8c-16.6 0-30 13.4-30 30s13.4 30 30 30h720.3L585.6 792.5c-11.7 11.7-11.7 30.7 0 42.4 5.9 5.9 13.5 8.8 21.2 8.8s15.4-2.9 21.2-8.8l301.7-301.8c11.8-11.6 11.8-30.6 0.1-42.3z"
-            fill="#333" p-id="3738"></path>
+            fill="#333"
+            p-id="3738"
+          ></path>
         </svg>
         <!-- 上一层 -->
-        <svg t="1760621412120" class="icon glass-fog" viewBox="0 0 1024 1024" version="1.1"
-          xmlns="http://www.w3.org/2000/svg" p-id="3884" width="20" height="20" style="padding: 0 10px">
+        <svg
+          t="1760621412120"
+          class="icon glass-fog"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="3884"
+          width="20"
+          height="20"
+          style="padding: 0 10px"
+        >
           <path
             d="M835 396.1L533.2 94.4c-11.7-11.7-30.7-11.7-42.4 0L189 396.2c-11.7 11.7-11.7 30.7 0 42.4s30.7 11.7 42.4 0L482 188v720.3c0 16.6 13.4 30 30 30s30-13.4 30-30V188l250.5 250.5c5.9 5.9 13.5 8.8 21.2 8.8s15.4-2.9 21.2-8.8c11.8-11.6 11.8-30.6 0.1-42.4z"
-            fill="#999" p-id="3885"></path>
+            fill="#999"
+            p-id="3885"
+          ></path>
         </svg>
         <!-- 刷新 -->
-        <svg t="1760621454168" class="icon glass-fog" viewBox="0 0 1024 1024" version="1.1"
-          xmlns="http://www.w3.org/2000/svg" p-id="4031" width="20" height="20" style="rotate: 180deg; padding: 0 10px">
+        <svg
+          t="1760621454168"
+          class="icon glass-fog"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="4031"
+          width="20"
+          height="20"
+          style="rotate: 180deg; padding: 0 10px"
+        >
           <path
             d="M192 631.3c-6.9 0-13.8-2.9-18.8-8.5l-67.7-76.7c-9.1-10.4-8.1-26.2 2.2-35.3 10.4-9.1 26.2-8.1 35.3 2.2l67.7 76.7c9.1 10.4 8.1 26.2-2.2 35.3-4.7 4.3-10.6 6.3-16.5 6.3z m7.3 5.3c-7 0-14-2.9-18.9-8.7-9-10.5-7.9-26.2 2.6-35.3l81.7-70.5c10.5-9 26.2-7.9 35.3 2.6s7.9 26.2-2.6 35.3l-81.7 70.5c-4.8 4.1-10.6 6.1-16.4 6.1z m333.1 273.2c-16.6 0-30-13.4-30-30s13.4-30 30-30c164.9 0 299.1-134.2 299.1-299.1S697.3 251.6 532.4 251.6c-164.9 0-299.1 134.2-299.1 299.1 0 16.6-13.4 30-30 30s-30-13.4-30-30c0-48.5 9.5-95.5 28.2-139.8 18.1-42.8 44-81.2 76.9-114.1 33-33 71.4-58.9 114.1-76.9 44.3-18.7 91.3-28.2 139.8-28.2s95.5 9.5 139.8 28.2c42.8 18.1 81.2 44 114.1 76.9 33 33 58.9 71.4 76.9 114.1 18.7 44.3 28.2 91.3 28.2 139.8 0 48.5-9.5 95.5-28.2 139.8-18.1 42.8-44 81.2-76.9 114.1-33 33-71.4 58.9-114.1 76.9-44.2 18.8-91.2 28.3-139.7 28.3z"
-            fill="#333" p-id="4032"></path>
+            fill="#333"
+            p-id="4032"
+          ></path>
         </svg>
       </div>
       <!-- 地址栏 -->
-      <div class="address" style="backdrop-filter: url(#liquid-address);">
-        <img src="/public/desktop.png" alt="" style="width: 16px; height: 12px" />
-        <div>Desktop</div>
-        <LiquidFilter id="liquid-address" :width="453" :height="29" displacementScale="78" :precise="1" :config_layer2="{
-          radius: 12,
+      <LiquidGlass
+        class="fix-glass"
+        :width="453"
+        :height="26"
+        :radius="15"
+        :displacementScale="78"
+        :precise="1"
+        :drag="false"
+        :config_layer2="{
+          radius: 15,
           gamma: 1,
           deadzone: 0.05,
           edge: 12,
           isInward: true,
-        }" />
-      </div>
+        }"
+      >
+        <div class="address-content">
+          <img
+            src="/public/desktop.png"
+            alt=""
+            style="width: 16px; height: 12px"
+          />
+          <div>Desktop</div>
+        </div>
+      </LiquidGlass>
       <!-- 搜索栏 -->
-      <div class="search" style="backdrop-filter: url(#liquid-search);">
+      <div class="search" style="backdrop-filter: url(#liquid-search)">
         <div>
           <!-- copilot -->
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
-            style="height: 16px; width: 16px; margin-top: 3px">
+          <svg
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style="height: 16px; width: 16px; margin-top: 3px"
+          >
             <path
               d="M22.9253 4.97196C22.5214 3.79244 21.4126 3 20.1658 3L18.774 3C17.3622 3 16.1532 4.01106 15.9033 5.40051L14.4509 13.4782L15.0163 11.5829C15.3849 10.347 16.5215 9.5 17.8112 9.5L23.0593 9.5L25.3054 10.809L27.4705 9.5H26.5598C25.313 9.5 24.2042 8.70756 23.8003 7.52804L22.9253 4.97196Z"
-              fill="url(#zqv70o08-paint0_radial_262034_2117)"></path>
+              fill="url(#zqv70o08-paint0_radial_262034_2117)"
+            ></path>
             <path
               d="M9.39637 27.0147C9.79613 28.2011 10.9084 29 12.1604 29H14.5727C16.1772 29 17.4805 27.704 17.4893 26.0995L17.5315 18.4862L16.9699 20.4033C16.6058 21.6461 15.4659 22.5 14.1708 22.5H8.88959L6.96437 21.0214L4.88007 22.5H5.78013C7.03206 22.5 8.14435 23.299 8.54411 24.4853L9.39637 27.0147Z"
-              fill="url(#zqv70o08-paint1_radial_262034_2117)"></path>
+              fill="url(#zqv70o08-paint1_radial_262034_2117)"
+            ></path>
             <path
               d="M19.7501 3H8.81266C5.68767 3 3.81268 7.08916 2.56269 11.1783C1.08177 16.0229 -0.856044 22.5021 4.75017 22.5021H9.66051C10.9615 22.5021 12.105 21.6415 12.4657 20.3915C13.2784 17.5759 14.7501 12.4993 15.9014 8.65192C16.4758 6.73249 16.9543 5.08404 17.6886 4.05749C18.1003 3.48196 18.7864 3 19.7501 3Z"
-              fill="url(#zqv70o08-paint2_radial_262034_2117)"></path>
+              fill="url(#zqv70o08-paint2_radial_262034_2117)"
+            ></path>
             <path
               d="M19.7501 3H8.81266C5.68767 3 3.81268 7.08916 2.56269 11.1783C1.08177 16.0229 -0.856044 22.5021 4.75017 22.5021H9.66051C10.9615 22.5021 12.105 21.6415 12.4657 20.3915C13.2784 17.5759 14.7501 12.4993 15.9014 8.65192C16.4758 6.73249 16.9543 5.08404 17.6886 4.05749C18.1003 3.48196 18.7864 3 19.7501 3Z"
-              fill="url(#zqv70o08-paint3_linear_262034_2117)"></path>
+              fill="url(#zqv70o08-paint3_linear_262034_2117)"
+            ></path>
             <path
               d="M12.2478 29H23.1852C26.3102 29 28.1852 24.9103 29.4352 20.8207C30.9161 15.9755 32.854 9.49548 27.2477 9.49548H22.3375C21.0364 9.49548 19.893 10.3562 19.5322 11.6062C18.7196 14.4221 17.2479 19.4994 16.0965 23.3474C15.5221 25.2671 15.0436 26.9157 14.3093 27.9424C13.8976 28.518 13.2115 29 12.2478 29Z"
-              fill="url(#zqv70o08-paint4_radial_262034_2117)"></path>
+              fill="url(#zqv70o08-paint4_radial_262034_2117)"
+            ></path>
             <path
               d="M12.2478 29H23.1852C26.3102 29 28.1852 24.9103 29.4352 20.8207C30.9161 15.9755 32.854 9.49548 27.2477 9.49548H22.3375C21.0364 9.49548 19.893 10.3562 19.5322 11.6062C18.7196 14.4221 17.2479 19.4994 16.0965 23.3474C15.5221 25.2671 15.0436 26.9157 14.3093 27.9424C13.8976 28.518 13.2115 29 12.2478 29Z"
-              fill="url(#zqv70o08-paint5_linear_262034_2117)"></path>
+              fill="url(#zqv70o08-paint5_linear_262034_2117)"
+            ></path>
             <defs>
-              <radialGradient id="zqv70o08-paint0_radial_262034_2117" cx="0" cy="0" r="1"
+              <radialGradient
+                id="zqv70o08-paint0_radial_262034_2117"
+                cx="0"
+                cy="0"
+                r="1"
                 gradientTransform="matrix(-7.37821 -8.55084 -7.96607 7.17216 25.5747 13.5466)"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop offset="0.0955758" stop-color="#00AEFF"></stop>
                 <stop offset="0.773185" stop-color="#2253CE"></stop>
                 <stop offset="1" stop-color="#0736C4"></stop>
               </radialGradient>
-              <radialGradient id="zqv70o08-paint1_radial_262034_2117" cx="0" cy="0" r="1"
+              <radialGradient
+                id="zqv70o08-paint1_radial_262034_2117"
+                cx="0"
+                cy="0"
+                r="1"
                 gradientTransform="matrix(6.61516 7.92888 7.80904 -6.47171 7.1753 21.9482)"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stop-color="#FFB657"></stop>
                 <stop offset="0.633728" stop-color="#FF5F3D"></stop>
                 <stop offset="0.923392" stop-color="#C02B3C"></stop>
               </radialGradient>
-              <radialGradient id="zqv70o08-paint2_radial_262034_2117" cx="0" cy="0" r="1"
+              <radialGradient
+                id="zqv70o08-paint2_radial_262034_2117"
+                cx="0"
+                cy="0"
+                r="1"
                 gradientTransform="matrix(-0.990905 -17.2799 98.0282 -5.51056 8.54161 22.4952)"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop offset="0.03" stop-color="#FFC800"></stop>
                 <stop offset="0.31" stop-color="#98BD42"></stop>
                 <stop offset="0.49" stop-color="#52B471"></stop>
                 <stop offset="0.843838" stop-color="#0D91E1"></stop>
               </radialGradient>
-              <linearGradient id="zqv70o08-paint3_linear_262034_2117" x1="9.52186" y1="3" x2="10.3572" y2="22.5029"
-                gradientUnits="userSpaceOnUse">
+              <linearGradient
+                id="zqv70o08-paint3_linear_262034_2117"
+                x1="9.52186"
+                y1="3"
+                x2="10.3572"
+                y2="22.5029"
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stop-color="#3DCBFF"></stop>
-                <stop offset="0.246674" stop-color="#0588F7" stop-opacity="0"></stop>
+                <stop
+                  offset="0.246674"
+                  stop-color="#0588F7"
+                  stop-opacity="0"
+                ></stop>
               </linearGradient>
-              <radialGradient id="zqv70o08-paint4_radial_262034_2117" cx="0" cy="0" r="1"
+              <radialGradient
+                id="zqv70o08-paint4_radial_262034_2117"
+                cx="0"
+                cy="0"
+                r="1"
                 gradientTransform="matrix(-8.64067 24.4636 -29.4075 -10.797 27.8096 7.58585)"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop offset="0.0661714" stop-color="#8C48FF"></stop>
                 <stop offset="0.5" stop-color="#F2598A"></stop>
                 <stop offset="0.895833" stop-color="#FFB152"></stop>
               </radialGradient>
-              <linearGradient id="zqv70o08-paint5_linear_262034_2117" x1="28.6736" y1="8.30469" x2="28.6627" y2="13.617"
-                gradientUnits="userSpaceOnUse">
+              <linearGradient
+                id="zqv70o08-paint5_linear_262034_2117"
+                x1="28.6736"
+                y1="8.30469"
+                x2="28.6627"
+                y2="13.617"
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop offset="0.0581535" stop-color="#F8ADFA"></stop>
-                <stop offset="0.708063" stop-color="#A86EDD" stop-opacity="0"></stop>
+                <stop
+                  offset="0.708063"
+                  stop-color="#A86EDD"
+                  stop-opacity="0"
+                ></stop>
               </linearGradient>
             </defs>
           </svg>
@@ -113,217 +221,412 @@
         <div>
           <i>Ask Copilot in "Desktop"</i>
         </div>
-        <LiquidFilter id="liquid-search" :width="236" :height="29" displacementScale="78" :precise="1" :config_layer2="{
-          radius: 12,
-          gamma: 1,
-          deadzone: 0.05,
-          edge: 12,
-          isInward: true,
-        }" />
+        <LiquidFilter
+          id="liquid-search"
+          :width="236"
+          :height="29"
+          displacementScale="78"
+          :precise="1"
+          :config_layer2="{
+            radius: 12,
+            gamma: 1,
+            deadzone: 0.05,
+            edge: 12,
+            isInward: true,
+          }"
+        />
       </div>
     </div>
     <div class="fab glass-fog">
       <!-- 新建 -->
-      <div style="
+      <div
+        style="
           font-size: 12px;
           display: flex;
           flex-direction: row;
           align-items: center;
           color: #5553;
-        ">
-        <svg t="1760689091864" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-          p-id="5245" width="20" height="20" style="margin: 0 6px 0 12px">
+        "
+      >
+        <svg
+          t="1760689091864"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="5245"
+          width="20"
+          height="20"
+          style="margin: 0 6px 0 12px"
+        >
           <path
             d="M512 942C274.9 942 82 749.11 82 512 82 274.9 274.9 82 512 82c237.11 0 430 192.9 430 430 0 237.11-192.89 430-430 430z m0-800c-204.02 0-370 165.98-370 370s165.98 370 370 370 370-165.98 370-370-165.98-370-370-370z"
-            p-id="5246" fill="#5553"></path>
+            p-id="5246"
+            fill="#5553"
+          ></path>
           <path
             d="M512 768.27c-16.57 0-30-13.44-30-30V285.73c0-16.57 13.43-30 30-30s30 13.43 30 30v452.54c0 16.56-13.43 30-30 30z"
-            p-id="5247" fill="#0078d4AA"></path>
+            p-id="5247"
+            fill="#0078d4AA"
+          ></path>
           <path
             d="M738.27 542H285.73c-16.57 0-30-13.43-30-30s13.43-30 30-30h452.54c16.56 0 30 13.43 30 30s-13.44 30-30 30z"
-            p-id="5248" fill="#0078d4AA"></path>
+            p-id="5248"
+            fill="#0078d4AA"
+          ></path>
         </svg>
         New
       </div>
       <!-- 分隔符 -->
-      <div style="border-right: 1px #5555 solid; margin: 0 0 0 10px; height: 20px"></div>
+      <div
+        style="border-right: 1px #5555 solid; margin: 0 0 0 10px; height: 20px"
+      ></div>
       <!-- 剪切 -->
-      <div style="
+      <div
+        style="
           font-size: 12px;
           display: flex;
           flex-direction: row;
           align-items: center;
-        ">
-        <svg t="1760690658483" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-          p-id="13715" width="20" height="20" style="margin: 0 6px 0 6px">
+        "
+      >
+        <svg
+          t="1760690658483"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="13715"
+          width="20"
+          height="20"
+          style="margin: 0 6px 0 6px"
+        >
           <path
             d="M494.784 465.024l-175.52 180.96-22.976-22.272 177.152-182.656L182.144 113.856l23.904-21.28 488.544 548.736-23.904 21.28-175.904-197.568z m81.12-74.4l-22.528-22.72 278.72-276.16 22.528 22.72-278.72 276.16z"
-            fill="#5553" p-id="13716"></path>
-          <path d="M256 912a144 144 0 1 0 0-288 144 144 0 0 0 0 288z m512 0a144 144 0 1 0 0-288 144 144 0 0 0 0 288z"
-            fill="transparent" p-id="13717"></path>
+            fill="#5553"
+            p-id="13716"
+          ></path>
+          <path
+            d="M256 912a144 144 0 1 0 0-288 144 144 0 0 0 0 288z m512 0a144 144 0 1 0 0-288 144 144 0 0 0 0 288z"
+            fill="transparent"
+            p-id="13717"
+          ></path>
           <path
             d="M256 928a160 160 0 1 1 0-320 160 160 0 0 1 0 320z m0-32a128 128 0 1 0 0-256 128 128 0 0 0 0 256z m512 32a160 160 0 1 1 0-320 160 160 0 0 1 0 320z m0-32a128 128 0 1 0 0-256 128 128 0 0 0 0 256z"
-            fill="#0078d4aa" p-id="13718"></path>
+            fill="#0078d4aa"
+            p-id="13718"
+          ></path>
         </svg>
       </div>
       <!-- 复制 -->
-      <div style="
+      <div
+        style="
           font-size: 12px;
           display: flex;
           flex-direction: row;
           align-items: center;
-        ">
-        <svg t="1760690762342" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-          p-id="7257" width="16" height="16" style="margin: 0 6px 0 6px">
+        "
+      >
+        <svg
+          t="1760690762342"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="7257"
+          width="16"
+          height="16"
+          style="margin: 0 6px 0 6px"
+        >
           <path
             d="M703.351467 895.249067a63.8976 63.8976 0 0 1-63.965867 63.829333H127.931733a63.8976 63.8976 0 0 1-63.965866-63.829333V384.273067c0-35.293867 28.672-63.829333 63.965866-63.829334h63.8976v-63.8976h-63.8976A127.7952 127.7952 0 0 0 0 384.341333v510.976a127.658667 127.658667 0 0 0 127.863467 127.726934h511.3856a127.658667 127.658667 0 0 0 127.863466-127.658667v-63.8976h-63.8976v63.829333z m191.761066-894.293334H383.658667a127.7952 127.7952 0 0 0-127.863467 127.7952V639.658667c0 70.519467 57.207467 127.658667 127.863467 127.658666h511.522133c70.656 0 127.7952-57.207467 127.7952-127.658666V128.750933A127.7952 127.7952 0 0 0 895.112533 1.024z m63.965867 638.7712a63.829333 63.829333 0 0 1-63.8976 63.829334H383.658667a63.8976 63.8976 0 0 1-63.8976-63.829334V128.750933c0-35.2256 28.672-63.829333 63.8976-63.829333h511.522133c35.293867 0 63.8976 28.603733 63.8976 63.829333v510.976z"
-            fill="#5553" p-id="7258"></path>
+            fill="#5553"
+            p-id="7258"
+          ></path>
         </svg>
       </div>
       <!-- 粘贴 -->
-      <div style="
+      <div
+        style="
           font-size: 12px;
           display: flex;
           flex-direction: row;
           align-items: center;
-        ">
-        <svg t="1760690869510" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-          p-id="13922" width="20" height="20" style="margin: 0 6px 0 6px">
+        "
+      >
+        <svg
+          t="1760690869510"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="13922"
+          width="20"
+          height="20"
+          style="margin: 0 6px 0 6px"
+        >
           <path
             d="M576 192h192a32 32 0 0 1 32 32v256h96a32 32 0 0 1 32 32v384a32 32 0 0 1-32 32H512a32 32 0 0 1-32-32H128a32 32 0 0 1-32-32V224a32 32 0 0 1 32-32h192V96h256v96z"
-            fill="transparent" p-id="13923"></path>
+            fill="transparent"
+            p-id="13923"
+          ></path>
           <path
             d="M800 416h-32V224h-192V192h192a32 32 0 0 1 32 32v192zM384 896H128a32 32 0 0 1-32-32V224a32 32 0 0 1 32-32h192v32H128v640h256v32z"
-            fill="#5553" p-id="13924"></path>
-          <path d="M320 96h256v256h-256V96z m32 32v192h192V128h-192z" fill="#5553" p-id="13925"></path>
+            fill="#5553"
+            p-id="13924"
+          ></path>
+          <path
+            d="M320 96h256v256h-256V96z m32 32v192h192V128h-192z"
+            fill="#5553"
+            p-id="13925"
+          ></path>
           <path
             d="M512 480h384a32 32 0 0 1 32 32v384a32 32 0 0 1-32 32H512a32 32 0 0 1-32-32V512a32 32 0 0 1 32-32z m0 32v384h384V512H512z"
-            fill="#0078d4AA" p-id="13926"></path>
+            fill="#0078d4AA"
+            p-id="13926"
+          ></path>
         </svg>
       </div>
       <!-- 重命名 -->
-      <div style="
+      <div
+        style="
           font-size: 12px;
           display: flex;
           flex-direction: row;
           align-items: center;
-        ">
-        <svg t="1760691121425" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-          p-id="17434" width="20" height="20" style="margin: 0 6px 0 6px">
+        "
+      >
+        <svg
+          t="1760691121425"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="17434"
+          width="20"
+          height="20"
+          style="margin: 0 6px 0 6px"
+        >
           <path
             d="M416 85.333333h170.581333a32 32 0 0 1 4.352 63.701334l-4.352 0.298666H533.333333v725.333334h53.12a32 32 0 0 1 31.701334 27.648l0.298666 4.352a32 32 0 0 1-27.648 31.701333l-4.352 0.298667H416a32 32 0 0 1-4.352-63.701334l4.352-0.298666H469.333333v-725.333334H416a32 32 0 0 1-31.701333-27.648L384 117.333333a32 32 0 0 1 27.648-31.701333L416 85.333333h170.581333H416z m362.496 127.872a138.794667 138.794667 0 0 1 138.666667 138.666667l0.170666 320.170667a138.624 138.624 0 0 1-130.730666 138.496l-7.936 0.213333h-202.453334v-64h204.928A74.624 74.624 0 0 0 853.333333 672.042667l-0.128-320.213334a74.794667 74.794667 0 0 0-74.752-74.666666h-202.24v-64h202.24z m-351.829333 0v64H224a74.666667 74.666667 0 0 0-74.666667 74.666667v320.170667c0 41.258667 33.450667 74.666667 74.666667 74.666666h202.453333v64H224A138.666667 138.666667 0 0 1 85.333333 672.042667V351.872a138.666667 138.666667 0 0 1 138.666667-138.666667H426.666667z"
-            p-id="17435" fill="#5553"></path>
+            p-id="17435"
+            fill="#5553"
+          ></path>
         </svg>
       </div>
       <!-- 分享 -->
-      <div style="
+      <div
+        style="
           font-size: 12px;
           display: flex;
           flex-direction: row;
           align-items: center;
-        ">
-        <svg t="1760691121425" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-          p-id="17434" width="20" height="20" style="margin: 0 6px 0 6px">
+        "
+      >
+        <svg
+          t="1760691121425"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="17434"
+          width="20"
+          height="20"
+          style="margin: 0 6px 0 6px"
+        >
           <path
             d="M287.872 170.666667h147.797333a32 32 0 0 1 4.352 63.701333l-4.352 0.298667H287.872a96 96 0 0 0-95.786667 89.429333l-0.213333 6.570667v405.333333a96 96 0 0 0 89.429333 95.786667l6.570667 0.213333h405.333333a96 96 0 0 0 95.786667-89.429333l0.213333-6.570667v-21.248a32 32 0 0 1 63.744-4.309333l0.256 4.309333v21.248a160 160 0 0 1-151.466666 159.786667l-8.533334 0.213333h-405.333333a160 160 0 0 1-159.786667-151.466667l-0.213333-8.533333v-405.333333a160 160 0 0 1 151.466667-159.786667l8.533333-0.213333h147.797333-147.797333zM618.666667 278.186667V160a32 32 0 0 1 50.645333-26.026667l3.498667 2.944 255.744 245.333334c11.946667 11.434667 13.056 29.866667 3.285333 42.538666l-3.285333 3.626667-255.744 245.418667a32 32 0 0 1-53.845334-18.517334l-0.298666-4.565333v-116.266667l-14.677334 1.28c-102.4 10.666667-200.533333 56.746667-294.997333 139.093334-22.186667 19.328-56.448 1.066667-52.778667-28.074667 28.330667-226.986667 147.029333-352.085333 349.653334-367.786667l12.8-0.853333V160v118.186667zM682.666667 235.050667V309.333333a32 32 0 0 1-32 32c-165.290667 0-267.690667 71.509333-311.978667 220.032l-3.370667 11.904 15.018667-10.112C445.866667 500.778667 546.048 469.333333 650.709333 469.333333a32 32 0 0 1 31.701334 27.648l0.298666 4.352v74.368L860.16 405.333333l-177.493333-170.282666z"
-            p-id="36454" fill="#5553"></path>
+            p-id="36454"
+            fill="#5553"
+          ></path>
         </svg>
       </div>
       <!-- 删除 -->
-      <div style="
+      <div
+        style="
           font-size: 12px;
           display: flex;
           flex-direction: row;
           align-items: center;
-        ">
-        <svg t="1760691121425" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-          p-id="17434" width="20" height="20" style="margin: 0 6px 0 6px">
+        "
+      >
+        <svg
+          t="1760691121425"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="17434"
+          width="20"
+          height="20"
+          style="margin: 0 6px 0 6px"
+        >
           <path
             d="M512 74.666667a138.666667 138.666667 0 0 1 138.453333 130.816L650.666667 213.333333h224a32 32 0 0 1 4.352 63.701334L874.666667 277.333333h-33.962667l-54.613333 555.52a117.333333 117.333333 0 0 1-109.269334 105.557334l-7.509333 0.256H354.688a117.333333 117.333333 0 0 1-115.797333-98.432l-0.981334-7.424L183.253333 277.333333H149.333333a32 32 0 0 1-31.701333-27.648L117.333333 245.333333a32 32 0 0 1 27.648-31.701333L149.333333 213.333333h224A138.666667 138.666667 0 0 1 512 74.666667z m264.405333 202.666666H247.552l54.058667 549.205334a53.333333 53.333333 0 0 0 47.658666 47.872l5.418667 0.256h314.624c25.6 0 47.317333-18.133333 52.266667-42.752l0.853333-5.376L776.362667 277.333333zM586.666667 394.666667a32 32 0 0 1 31.701333 27.648L618.666667 426.666667v298.666666a32 32 0 0 1-63.701334 4.352L554.666667 725.333333v-298.666666a32 32 0 0 1 32-32z m-149.333334 0a32 32 0 0 1 31.701334 27.648L469.333333 426.666667v298.666666a32 32 0 0 1-63.701333 4.352L405.333333 725.333333v-298.666666a32 32 0 0 1 32-32z m74.666667-256a74.666667 74.666667 0 0 0-74.410667 68.522666L437.333333 213.333333h149.333334A74.666667 74.666667 0 0 0 512 138.666667z"
-            p-id="36124" fill="#5553"></path>
+            p-id="36124"
+            fill="#5553"
+          ></path>
         </svg>
       </div>
       <!-- 分隔符 -->
-      <div style="border-right: 1px #5555 solid; margin: 0 0 0 10px; height: 20px"></div>
+      <div
+        style="border-right: 1px #5555 solid; margin: 0 0 0 10px; height: 20px"
+      ></div>
       <!-- 分类 -->
-      <div style="
+      <div
+        style="
           font-size: 12px;
           display: flex;
           flex-direction: row;
           align-items: center;
           color: #5553;
-        ">
-        <svg class="icon" width="20" height="20" style="margin: 0 6px 0 12px" viewBox="0 0 1024 1024" version="1.1"
-          xmlns="http://www.w3.org/2000/svg" p-id="1673">
-          <path id="svg_1" p-id="19262"
+        "
+      >
+        <svg
+          class="icon"
+          width="20"
+          height="20"
+          style="margin: 0 6px 0 12px"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="1673"
+        >
+          <path
+            id="svg_1"
+            p-id="19262"
             d="m725.63091,170.86444l4.26666,-0.29866a32,32 0 0 1 31.744,27.648l0.29867,4.352l-0.04267,541.696l137.38667,-137.42934a32,32 0 0 1 41.64267,-3.11466l3.584,3.072a32,32 0 0 1 3.11466,41.68533l-3.072,3.584l-191.872,192a32,32 0 0 1 -41.64266,3.11467l-3.584,-3.11467l-192.17067,-192a32,32 0 0 1 41.64267,-48.34133l3.584,3.072l137.38666,137.30133l0,-541.52533a32,32 0 0 1 27.73334,-31.70134l4.26666,-0.29866l-4.26666,0.29866z"
-            fill="#0078d4aa" />
-          <path id="svg_2" p-id="19284"
+            fill="#0078d4aa"
+          />
+          <path
+            id="svg_2"
+            p-id="19284"
             d="m79.37521,371.84l191.744,-191.78667a32,32 0 0 1 41.64267,-3.11466l3.62666,3.072l192.17067,191.78666a32,32 0 0 1 -41.6,48.384l-3.584,-3.072l-137.51467,-137.25866l0,541.696a32,32 0 0 1 -27.648,31.70133l-4.30933,0.29867a32,32 0 0 1 -31.70133,-27.648l-0.29867,-4.352l-0.04267,-541.78134l-137.25866,137.30134a32,32 0 0 1 -41.64267,3.11466l-3.584,-3.11466a32,32 0 0 1 -3.11467,-41.64267l3.11467,-3.584l191.744,-191.78667l-191.744,191.78667z"
-            fill="currentColor" />
+            fill="currentColor"
+          />
         </svg>
         Sort
       </div>
       <!-- 查看 -->
-      <div style="
+      <div
+        style="
           font-size: 12px;
           display: flex;
           flex-direction: row;
           align-items: center;
           color: #555;
-        ">
-        <svg class="icon" width="20" height="20" style="margin: 0 6px 0 12px" viewBox="0 0 1024 1024" version="1.1"
-          xmlns="http://www.w3.org/2000/svg" p-id="1673">
-          <path id="svg_1" p-id="35296"
+        "
+      >
+        <svg
+          class="icon"
+          width="20"
+          height="20"
+          style="margin: 0 6px 0 12px"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="1673"
+        >
+          <path
+            id="svg_1"
+            p-id="35296"
             d="m181.33333,170.66667a96,96 0 0 0 -96,96l0,106.66666a96,96 0 0 0 96,96l106.66667,0a96,96 0 0 0 96,-96l0,-106.66666a96,96 0 0 0 -96,-96l-106.66667,0zm-32,96a32,32 0 0 1 32,-32l106.66667,0a32,32 0 0 1 32,32l0,106.66666a32,32 0 0 1 -32,32l-106.66667,0a32,32 0 0 1 -32,-32l0,-106.66666zm330.66667,-53.33334a32,32 0 0 0 0,64l426.66667,0a32,32 0 0 0 0,-64l-426.66667,0zm-298.66667,341.33334a96,96 0 0 0 -96,96l0,106.66666a96,96 0 0 0 96,96l106.66667,0a96,96 0 0 0 96,-96l0,-106.66666a96,96 0 0 0 -96,-96l-106.66667,0zm-32,96a32,32 0 0 1 32,-32l106.66667,0a32,32 0 0 1 32,32l0,106.66666a32,32 0 0 1 -32,32l-106.66667,0a32,32 0 0 1 -32,-32l0,-106.66666zm330.66667,-53.33334a32,32 0 0 0 0,64l426.66667,0a32,32 0 0 0 0,-64l-426.66667,0z"
-            fill="currentColor" />
+            fill="currentColor"
+          />
         </svg>
         View
-        <svg class="icon" width="12" height="12" style="margin: 0 0px 0 6px" viewBox="0 0 1024 1024" version="1.1"
-          xmlns="http://www.w3.org/2000/svg" p-id="51718">
+        <svg
+          class="icon"
+          width="12"
+          height="12"
+          style="margin: 0 0px 0 6px"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="51718"
+        >
           <path
             d="M180.053333 361.386667a32 32 0 0 1 45.226667 0L512 648.106667l286.72-286.72a32 32 0 1 1 45.226667 45.226666l-309.333334 309.333334a32 32 0 0 1-45.226666 0L180.053333 406.613333a32 32 0 0 1 0-45.226666z"
-            p-id="51719" fill="currentColor"></path>
+            p-id="51719"
+            fill="currentColor"
+          ></path>
         </svg>
       </div>
 
       <!-- 筛选 -->
-      <div style="
+      <div
+        style="
           font-size: 12px;
           display: flex;
           flex-direction: row;
           align-items: center;
           color: #555;
-        ">
-        <svg class="icon" width="20" height="20" style="margin: 0 6px 0 6px" viewBox="0 0 1024 1024" version="1.1"
-          xmlns="http://www.w3.org/2000/svg" p-id="1673">
+        "
+      >
+        <svg
+          class="icon"
+          width="20"
+          height="20"
+          style="margin: 0 6px 0 6px"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="1673"
+        >
           <path
             d="M872.533333 134.4c-12.8-10.666667-29.866667-17.066667-49.066666-17.066667H198.4C157.866667 117.333333 123.733333 151.466667 123.733333 192c0 17.066667 6.4 34.133333 17.066667 49.066667l256 302.933333v251.733333c0 12.8 6.4 23.466667 17.066667 27.733334l162.133333 81.066666c4.266667 2.133333 8.533333 4.266667 14.933333 4.266667 6.4 0 10.666667-2.133333 17.066667-4.266667 8.533333-6.4 14.933333-17.066667 14.933333-27.733333V541.866667l256-302.933334c12.8-14.933333 19.2-34.133333 17.066667-53.333333 2.133333-19.2-6.4-38.4-23.466667-51.2z m-38.4 64L569.6 509.866667c-4.266667 6.4-8.533333 12.8-8.533333 21.333333v292.266667l-98.133334-49.066667V531.2c0-8.533333-2.133333-14.933333-8.533333-21.333333L189.866667 198.4c0-2.133333-2.133333-4.266667-2.133334-6.4 0-6.4 4.266667-10.666667 10.666667-10.666667h625.066667c2.133333 0 4.266667 0 6.4 2.133334 2.133333 2.133333 4.266667 6.4 4.266666 6.4 2.133333 2.133333 2.133333 6.4 0 8.533333z"
-            fill="currentColor" p-id="80042"></path>
+            fill="currentColor"
+            p-id="80042"
+          ></path>
         </svg>
         Filter
-        <svg class="icon" width="12" height="12" style="margin: 0 6px 0 6px" viewBox="0 0 1024 1024" version="1.1"
-          xmlns="http://www.w3.org/2000/svg" p-id="51718">
+        <svg
+          class="icon"
+          width="12"
+          height="12"
+          style="margin: 0 6px 0 6px"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="51718"
+        >
           <path
             d="M180.053333 361.386667a32 32 0 0 1 45.226667 0L512 648.106667l286.72-286.72a32 32 0 1 1 45.226667 45.226666l-309.333334 309.333334a32 32 0 0 1-45.226666 0L180.053333 406.613333a32 32 0 0 1 0-45.226666z"
-            p-id="51719" fill="currentColor"></path>
+            p-id="51719"
+            fill="currentColor"
+          ></path>
         </svg>
       </div>
       <!-- 分隔符 -->
-      <div style="border-right: 1px #5555 solid; margin: 0 0 0 10px; height: 20px"></div>
+      <div
+        style="border-right: 1px #5555 solid; margin: 0 0 0 10px; height: 20px"
+      ></div>
 
       <!-- 展开 -->
-      <div style="
+      <div
+        style="
           font-size: 12px;
           display: flex;
           flex-direction: row;
           align-items: center;
-        ">
-        <svg t="1760691121425" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-          p-id="17434" width="20" height="20" style="margin: 0 6px 0 6px">
+        "
+      >
+        <svg
+          t="1760691121425"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="17434"
+          width="20"
+          height="20"
+          style="margin: 0 6px 0 6px"
+        >
           <path
             d="M330.666667 512a74.666667 74.666667 0 1 1-149.333334 0 74.666667 74.666667 0 0 1 149.333334 0zM586.666667 512a74.666667 74.666667 0 1 1-149.333334 0 74.666667 74.666667 0 0 1 149.333334 0zM768 586.666667a74.666667 74.666667 0 1 0 0-149.333334 74.666667 74.666667 0 0 0 0 149.333334z"
-            p-id="90776" fill="#555"></path>
+            p-id="90776"
+            fill="#555"
+          ></path>
         </svg>
       </div>
     </div>
@@ -331,6 +634,7 @@
 </template>
 <script setup>
 import LiquidFilter from "/src/components/liquid_v2.vue";
+import LiquidGlass from "/src/components/liquid_glass.vue";
 </script>
 <style scoped>
 .navbtns {
@@ -380,19 +684,21 @@ import LiquidFilter from "/src/components/liquid_v2.vue";
   /* 支持Electron环境下的拖动 */
 }
 
-.address {
-  background: #fff5;
-  border-top: #fffa 2px solid;
-  border-bottom: #fffa 1px solid;
-  border-radius: 14px;
-  height: 20px;
-  padding: 3px 10px;
-  flex: 2;
+.fix-glass {
+  background: rgba(255, 255, 255, 0.2); /* 举例，根据你实际需求调整 */
+  margin: 5px;
+}
+
+.address-content {
   display: flex;
   align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  width: 100%;
+  height: 100%;
   font-size: 14px;
   color: #333;
-  gap: 10px;
+  z-index: 11; /* 确保文字在滤镜层之上 */
 }
 
 .search {

@@ -11,7 +11,7 @@
     }"
   >
     <div class="filter-layer" :style="{ borderRadius: `${config_layer2.radius}px`, backdropFilter: `url(#${filterId})` }"></div>
-    <div class="active-layer" :style="{ borderRadius: `${config_layer2.radius}px`, background: active ? `linear-gradient(to bottom, #23aaf255)` : `transparent` }"></div>
+    <div class="active-layer" :style="props.active ? `border-radius:${config_layer2.radius}px;background:linear-gradient(to bottom, #23aaf233);backdrop-filter: brightness(1.2)` : `background:transparent;border-radius:${config_layer2.radius}px;`"></div>
 
     <div class="glass-content-inner">
       <div v-if="title" class="titlebar" @mousedown="startDrag">
@@ -139,6 +139,7 @@ const stopDrag = () => {
   flex-direction: column;
 }
 .filter-layer, .active-layer {
+  transition: all 0.2s ease-in-out;
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   pointer-events: none;

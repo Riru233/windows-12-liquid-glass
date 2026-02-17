@@ -33,8 +33,8 @@
 </template>
 
 <script setup>
-import LiquidWin from "/src/components/liquid_win.vue";
 import WindowView from "./components/windowView.vue";
+import LiquidWin from "/src/components/liquid_win.vue";
 
 const emit = defineEmits(["close"]);
 const close = () => emit("close", "about");

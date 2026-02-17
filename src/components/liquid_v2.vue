@@ -100,11 +100,6 @@ let computedBase64_layer2 = computed(() => {
 watch(
   [() => props.width, () => props.height, () => props.borderRadius],
   ([newWidth, newHeight, newRadius], [oldWidth, oldHeight, oldRadius]) => {
-    // 打印变化信息（可根据需求替换为业务逻辑）
-    console.log("尺寸/圆角发生变化：");
-    console.log(`宽度：${oldWidth} → ${newWidth}`);
-    console.log(`高度：${oldHeight} → ${newHeight}`);
-    console.log(`圆角：${oldRadius} → ${newRadius}`);
     computedBase64_layer2 = computed(() => {
       return generateDisplacementMap({
         width: props.width,
@@ -119,9 +114,6 @@ watch(
     deep: false, // 基础类型无需深度监听
   },
 );
-onMounted(() => {
-  console.log(props.width);
-});
 </script>
 
 <style scoped>
