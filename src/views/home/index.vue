@@ -23,7 +23,7 @@
   <!-- explorer -->
   <Explorer class="window2" ref="explorerRef" @close="close" />
   <!-- liquidglass -->
-  <!-- <LiquidGlass
+  <LiquidGlass
     :width="250"
     :height="250"
     :initialTop="322"
@@ -56,7 +56,7 @@
     >
       Drag me
     </div>
-  </LiquidGlass> -->
+  </LiquidGlass>
   <!-- taskbar -->
   <Taskbar />
 </template>

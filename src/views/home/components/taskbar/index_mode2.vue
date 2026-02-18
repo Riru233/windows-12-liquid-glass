@@ -41,7 +41,7 @@
         :precise="1"
         :config_layer2="{
           radius: 24,
-          gamma: 6,
+          gamma: 1,
           deadzone: 0.16,
           edge: 18,
           isInward: true,
