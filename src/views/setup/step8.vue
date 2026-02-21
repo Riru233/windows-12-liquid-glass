@@ -1,7 +1,7 @@
 <template>
   <SetupFrame>
     <div class="content">
-      <h1>We're getting a few things ready</h1>
+      <h1>{{ stat.title }}</h1>
       <br>
       <div style="display: flex;flex-direction: row;gap: 10px;align-items: center;">
         <svg class="progressRing" height="28" width="28" viewBox="0 0 16 16">
@@ -25,13 +25,18 @@
 <script setup>
 import { useRouter } from "vue-router";
 import SetupFrame from "@/components/setup/frame.vue";
-import { onMounted } from "vue";
+import { onMounted, reactive } from "vue";
 const router = useRouter();
-
+const stat = reactive({
+  title: "We're getting a few things ready"
+});
 onMounted(() => {
   setTimeout(() => {
-    router.push("/setup/step5");
-  }, 600);
+    stat.title = "Checking your PC"
+  }, 300);
+  setTimeout(() => {
+    router.push("/setup/step9");
+  }, 2300);
 });
 </script>
 

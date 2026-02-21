@@ -65,7 +65,7 @@ const props = defineProps({
   displacementScale: Number,
   initialTop: Number,
   initialLeft: Number,
-  blur: { type: Number, default: 1 },
+  blur: { type: Number, default: 5 },
   precise: { type: Number, default: 0.1 },
   config_layer2: {
     type: Object,

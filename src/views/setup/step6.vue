@@ -30,8 +30,8 @@ const router = useRouter();
 
 onMounted(() => {
   setTimeout(() => {
-    router.push("/setup/step5");
-  }, 600);
+    router.push("/setup/step7");
+  }, 2000);
 });
 </script>
 

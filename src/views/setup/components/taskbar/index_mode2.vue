@@ -5,12 +5,9 @@
         width: 100%;
         height: 30px;
         position: fixed;
-        background: linear-gradient(to bottom, #00000044 0%, #0000 100%);
+        background: linear-gradient(to bottom, #00000081 0%, #0000 100%);
       "
     >
-      <div class="mask-b-from-20-to-55"></div>
-      <div class="mask-b-from-50-to-75"></div>
-      <div class="mask-b-from-70-to-100"></div>
     </div>
     <div class="unit">
       <Widgets direction="row" />
@@ -23,35 +20,17 @@
 
   <div class="taskbar-bottom-container">
     <div ref="taskbarRef" class="glass-component taskbar-bottom">
-      <div class="glass-v2"></div>
       
       <div class="glass-content">
         <div class="unit-inner">
           <Dock />
         </div>
       </div>
-
-      <liquidFilter
-        v-if="autoWidth > 0"
-        :width="autoWidth + 10" 
-        :height="48"
-        :image_base64="WindowSize"
-        id="glass-v2-taskbar"
-        :displacementScale="40"
-        :precise="1"
-        :config_layer2="{
-          radius: 24,
-          gamma: 1,
-          deadzone: 0.16,
-          edge: 18,
-          isInward: true,
-        }"
-      />
     </div>
   </div>
 
   <div class="watermark-fixed">
-    <p>Windows 12 Insider Preview</p>
+    <p>Windows Recovery environment</p>
     <p>Evaluation only. Build 26512.3531.fs_dev11_fit.260118-0936</p>
     <p>If you meet any issues, press Windows+F and feedback it.</p>
   </div>
@@ -106,7 +85,7 @@ onUnmounted(() => {
   position: relative;
   width: auto !important; /* 强制自适应内容 */
   padding: 0 5px;
-  background: #0000001c;
+  background: #ffffff;
   min-width: 60px;
   height: 48px;
   border-radius: 24px;
@@ -121,21 +100,9 @@ onUnmounted(() => {
 
 .taskbar-bottom:hover {
   transform: scale(1.2) translateY(-5px);
-  background: #ffffff4f;
-
+  background: #dadada;
 }
 
-.glass-v2 {
-  backdrop-filter: url(#glass-v2-taskbar);
-  position: absolute; /* 绝对定位同步父级宽度 */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 24px;
-  pointer-events: none;
-  z-index: -1;
-}
 
 
 

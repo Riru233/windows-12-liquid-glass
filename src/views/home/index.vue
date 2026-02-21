@@ -28,11 +28,11 @@
     :height="250"
     :initialTop="322"
     :initialLeft="100"
-    :displacementScale="150"
+    :displacementScale="75"
     precise="1"
     :radius="150"
     layerStyle="background: #fff2"
-    :blur="0"
+    :blur="1"
     :drag="true"
     :zoom="2"
     :config_layer2="{

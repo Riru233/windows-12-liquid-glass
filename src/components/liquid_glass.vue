@@ -46,7 +46,7 @@ const props = defineProps({
   zoom: { type: Number, default: 1 },
   initialTop: { type: Number, default: 100 },
   initialLeft: { type: Number, default: 100 },
-  blur: { type: Number, default: 1 },
+  blur: { type: Number, default: 5 },
   precise: { type: Number, default: 0.1 },
   config_layer2: {
     type: Object,

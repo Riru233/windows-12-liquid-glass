@@ -7,6 +7,19 @@ p {
   margin: 0;
 }
 
+.overflow {
+  margin-right: 3px;
+}
+.overflow::-webkit-scrollbar {
+  width: 2px;
+}
+.overflow::-webkit-scrollbar-thumb {
+  background-color: #888;
+  width: 1px;
+}
+.sidebar::-webkit-scrollbar {
+  width: 1px;
+}
 .background {
   position: absolute;
   inset: 0;

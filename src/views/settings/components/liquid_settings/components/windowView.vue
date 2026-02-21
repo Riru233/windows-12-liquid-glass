@@ -863,16 +863,6 @@ p {
   flex-direction: column;
   flex: 1;
 }
-.overflow {
-  margin-right: 3px;
-}
-.overflow::-webkit-scrollbar {
-  width: 2px;
-}
-.overflow::-webkit-scrollbar-thumb {
-  background-color: #888;
-  width: 1px;
-}
 .sidebar {
   width: 260px;
   overflow-y: scroll;
@@ -881,9 +871,6 @@ p {
   flex-direction: column;
   margin: 5px 15px;
   color: #000;
-}
-.sidebar::-webkit-scrollbar {
-  width: 1px;
 }
 
 .icons {
