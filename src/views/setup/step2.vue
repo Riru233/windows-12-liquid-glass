@@ -29,7 +29,7 @@
       <div class="textbtn"><u>S</u>upport</div>
       <div class="textbtn"><u>L</u>egal</div>
       <div style="flex-grow: 1"></div>
-      <button class="fillbtn" @click="router.push('/setup/step1')"><u>B</u>ack</button>
+      <button class="fillbtn" @click="router.push('/setup/step1?back=1')"><u>B</u>ack</button>
       <button class="fillbtnnext" @click="router.push('/setup/step3')">
         <u>N</u>ext
       </button>

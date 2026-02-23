@@ -69,7 +69,7 @@ const props = defineProps({
   precise: { type: Number, default: 0.1 },
   config_layer2: {
     type: Object,
-    default: () => ({ radius: 10, gamma: 1.9, deadzone: 0.5, edge: 8, isInward: true }),
+    default: () => ({ radius: 10, gamma: 1.9, deadzone: 0, edge: 8, isInward: true }),
   },
 });
 
@@ -107,8 +107,8 @@ const handleDrag = (e) => {
   const el = glassWindow.value;
   let l = e.clientX - offsetX;
   let t = e.clientY - offsetY;
-  el.style.left = `${Math.max(0, Math.min(l, window.innerWidth - el.offsetWidth))}px`;
-  el.style.top = `${Math.max(0, Math.min(t, window.innerHeight - el.offsetHeight))}px`;
+  el.style.left = `${Math.max(-window.innerWidth, Math.min(l, window.innerWidth - 30))}px`;
+  el.style.top = `${Math.max(30, Math.min(t, window.innerHeight - 30))}px`;
 };
 
 const stopDrag = () => {

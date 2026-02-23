@@ -8,7 +8,7 @@
       <div
         style="
           border: #ccc 1px solid;
-          height: 320px;
+          height: 300px;
           overflow-y: scroll;
           margin: 40px 10px;
           padding: 10px;
@@ -776,7 +776,7 @@
       <button class="fillbtn" @click="router.push('/setup/step7')">
         <u>B</u>ack
       </button>
-      <button class="fillbtn" @click="router.push('/setup/step10')">
+      <button class="fillbtnnext" @click="router.push('/setup/step10')">
         <u>N</u>ext
       </button>
     </div>

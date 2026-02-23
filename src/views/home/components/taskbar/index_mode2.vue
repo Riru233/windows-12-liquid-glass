@@ -121,7 +121,7 @@ onUnmounted(() => {
 
 .taskbar-bottom:hover {
   transform: scale(1.2) translateY(-5px);
-  background: #ffffff4f;
+  background: #ffffff18;
 
 }
 

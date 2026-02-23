@@ -7,11 +7,11 @@
       style="
         text-wrap: inherit;
         width: 64px;
+        font-weight: 500;
         text-align: center;
         font-size: 12px;
         color: #fff;
-        text-shadow: 2px 2px 0 #000;
-        text-stroke: 0.2px #0006;
+        text-shadow: 1px 1px 1px #000,1px 1px 2px #000,1px 1px 3px #000,1px 1px 4px #000;
       "
     >
       Install Windows 12
@@ -19,7 +19,7 @@
   </div>
   <div class="setup-container">
     <!-- 安装程序窗口 -->
-    <div class="window-frame" ref="windowFrame">
+    <div class="window-frame" ref="windowFrame" :style="props.delay == 0 ? '' : `animation: anim 0.3s cubic-bezier(0, 1, 0, 1) forwards;opacity:0;animation-delay: ${props.delay}ms;`">
       <!-- 标题栏 -->
       <div class="title-bar" @mousedown="startDrag">
         <img
@@ -76,6 +76,13 @@ import { onMounted, ref } from "vue";
 import Taskbar from "/src/views/setup/components/taskbar/index_mode2.vue";
 const router = useRouter();
 
+const props = defineProps({
+  delay: {
+    type: Number,
+    default: 0,
+  },
+});
+
 let isDragging = false;
 let offsetX = 0;
 let offsetY = 0;
@@ -98,8 +105,8 @@ const handleDrag = (e) => {
   const el = windowFrame.value;
   let l = e.clientX - offsetX;
   let t = e.clientY - offsetY;
-  el.style.left = `${Math.max(0, Math.min(l, window.innerWidth - el.offsetWidth))}px`;
-  el.style.top = `${Math.max(0, Math.min(t, window.innerHeight - el.offsetHeight))}px`;
+  el.style.left = `${Math.max(-window.innerWidth, Math.min(l, window.innerWidth - 30))}px`;
+  el.style.top = `${Math.max(30, Math.min(t, window.innerHeight - 30))}px`;
   localStorage.setItem("winPosLeft", `${el.style.left}`);
   localStorage.setItem("winPosTop", `${el.style.top}`);
 };
@@ -125,7 +132,7 @@ const stopDrag = () => {
 // });
 
 const close = () => {
-  router.push("/setup/step2");
+  router.push("/setup/step1");
 };
 
 onMounted(()=> {
@@ -134,6 +141,30 @@ onMounted(()=> {
 })
 </script>
 <style>
+@keyframes anim {
+  0% {
+    transform: scale(0.5) perspective(1000px) rotate3d(0.5, 0, 0, -45deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) perspective(1000px) rotate3d(0, 0, 0, 0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes anim-reverse {
+  0% {
+    transform: scale(1) perspective(1000px) rotate3d(0, 0, 0, 0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.5) perspective(1000px) rotate3d(0.5, 0, 0, 45deg);
+    opacity: 0;
+  }
+}
+
 /* 全局样式重置 */
 body {
   margin: 0;

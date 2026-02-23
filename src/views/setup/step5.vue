@@ -29,8 +29,10 @@
         >
           <input
             type="text"
-            v-model="productKey"
-            placeholder=""
+            :value="productKey"
+            @input="handleInput"
+            placeholder="Dashes will be added automatically."
+            maxlength="29"
             style="
               height: 24px;
               border: 1px solid #ababab;
@@ -101,7 +103,7 @@
 
 <script setup>
 import { useRouter } from "vue-router";
-import { reactive, ref } from "vue";
+import { reactive, ref, nextTick } from "vue";
 import SetupFrame from "@/components/setup/frame.vue";
 const router = useRouter();
 
@@ -110,6 +112,39 @@ const stat = reactive({
   alert: false,
 });
 
+// 字符串仿真
+
+const handleInput = (e) => {
+  const input = e.target;
+  // 记录当前光标位置
+  let cursorPosition = input.selectionStart;
+  let originalValue = input.value;
+
+  // 1. 强制转大写并过滤非法字符（仅保留字母数字）
+  let rawValue = originalValue.toUpperCase().replace(/[^A-Z0-9]/g, '');
+
+  // 2. 限制总长度为 25 个有效字符 (5串 * 5字符)
+  rawValue = rawValue.substring(0, 25);
+
+  // 3. 核心格式化逻辑：每 5 个字符后自动补全横杠
+  // 这同时也处理了删除逻辑：如果删除了某串首字符，由于 rawValue 减少，join('-') 会自动重新排列横杠
+  const segments = rawValue.match(/.{1,5}/g);
+  const formattedValue = segments ? segments.join('-') : rawValue;
+
+  // 4. 计算光标修正偏移量
+  // 如果输入后自动补了横杠，或者删除了字符导致横杠变动，需要调整光标防止跳到末尾
+  const diff = formattedValue.length - originalValue.length;
+  
+  productKey.value = formattedValue;
+
+  // 5. 在 DOM 更新后恢复光标位置
+  nextTick(() => {
+    const newPosition = cursorPosition + diff;
+    input.setSelectionRange(newPosition, newPosition);
+  });
+};
+
+// 认证
 const verify = () => {
   if (productKey.value === "") {
     stat.alert = true;

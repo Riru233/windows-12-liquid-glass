@@ -152,7 +152,7 @@ setTimeout(() => {
   fadein.value.style.animation = "fadeout 0.3s ease-in-out forwards";
 }, 6450);
 setTimeout(() => {
-  router.push("/setup/step1_launch");
+  router.push("/setup/step15");
 }, 10450);
 </script>
 <style>

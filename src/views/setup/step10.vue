@@ -34,9 +34,9 @@ onMounted(() => {
   setTimeout(() => {
     stat.title = "Searching for disks"
   }, 4000);
-  // setTimeout(() => {
-  //   router.push("/setup/step9");
-  // }, 2300);
+  setTimeout(() => {
+    router.push("/setup/step11");
+  }, 8300);
 });
 </script>
 
