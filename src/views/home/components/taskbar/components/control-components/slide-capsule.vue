@@ -15,7 +15,7 @@
       :width="parentWidth"
       :height="32"
       :radius="10"
-      :displacementScale="150"
+      :displacementScale="75"
       :layerClass="props.selected ? 'colorful-open' : 'colorful'"
       :drag="false"
       :blur="10"

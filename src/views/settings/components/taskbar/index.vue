@@ -62,7 +62,7 @@
   >
     <!-- <p>Do not take screen shots of this build.</p> -->
     <p>Windows 12 Insider Preview</p>
-    <p>Evaluation only. Build 26512.3531.fs_dev11_fit.260118-0936</p>
+    <p>Evaluation only. Build 29835.1020.fs_dev11_fit.260118-0936</p>
     <p>If you meet any issues, press Windows+F and feedback it.</p>
   </div>
 </template>

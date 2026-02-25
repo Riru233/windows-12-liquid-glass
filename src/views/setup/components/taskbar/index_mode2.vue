@@ -31,7 +31,7 @@
 
   <div class="watermark-fixed">
     <p>Windows Recovery environment</p>
-    <p>Evaluation only. Build 26512.3531.fs_dev11_fit.260118-0936</p>
+    <p>Evaluation only. Build 29835.1020.fs_dev11_fit.260118-0936</p>
     <p>If you meet any issues, press Windows+F and feedback it.</p>
   </div>
 </template>
