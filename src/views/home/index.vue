@@ -6,7 +6,7 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      background-image: url(&quot;/public/img0.jpg&quot;);
+      background-image: url(&quot;/public/imgbeta12.png&quot;);
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
@@ -24,44 +24,32 @@
   <Explorer class="window2" ref="explorerRef" @close="close" />
   <!-- liquidglass -->
   <LiquidGlass
-    :width="250"
-    :height="250"
+    :width="200"
+    :height="200"
     :initialTop="322"
     :initialLeft="100"
-    :displacementScale="75"
-    precise="1"
-    :radius="150"
+    :displacementScale="200"
+    position="fixed"
+    :bounce="1"
+    :precise="1"
+    :radius="99"
     layerStyle="background: #fff2"
-    :blur="1"
+    :blur="0"
     :drag="true"
     :zoom="2"
     :config_layer2="{
-      gamma: 0.2,
+      gamma: 1,
       deadzone: 0,
       edge: 10,
       isInward: true,
     }"
   >
-    <div
-      style="
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        text-shadow:
-          #000 0 0 2px,
-          #000 0 0 4px,
-          #000 0 0 8px;
-      "
-    >
-      Drag me
-    </div>
   </LiquidGlass>
   <!-- taskbar -->
   <Taskbar />
 </template>
 <script setup>
-import Taskbar from "/src/views/home/components/taskbar/index_mode2.vue";
+import Taskbar from "/src/views/home/components/taskbar/index_mode1.vue";
 import AboutWindow from "/src/views/home/components/aboutWindow/index.vue";
 import LiquidGlass from "/src/components/liquid_glass.vue";
 import Explorer from "/src/views/home/components/explorer/index.vue";

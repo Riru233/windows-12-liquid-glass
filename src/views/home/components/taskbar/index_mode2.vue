@@ -37,7 +37,7 @@
         :height="48"
         :image_base64="WindowSize"
         id="glass-v2-taskbar"
-        :displacementScale="40"
+        :displacementScale="78"
         :precise="1"
         :config_layer2="{
           radius: 24,
@@ -121,7 +121,7 @@ onUnmounted(() => {
 
 .taskbar-bottom:hover {
   transform: scale(1.2) translateY(-5px);
-  background: #ffffff18;
+  background: #67a4ffa4;
 
 }
 
@@ -179,8 +179,6 @@ onUnmounted(() => {
 }
 
 p { margin: 0; }
-</style>
-<style scoped>
 @import "/src/assets/liquidglass.css";
 @import "/src/assets/gradientblur.css";
 
@@ -199,6 +197,7 @@ p { margin: 0; }
 /* 2. 核心自适应任务栏 */
 .taskbar-bottom {
   position: relative;
+  background-color: #5197ff41;
   width: auto !important; /* 强制覆盖所有 width: 100% */
   min-width: 100px;
   height: 48px;

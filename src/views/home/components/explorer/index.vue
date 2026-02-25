@@ -2,7 +2,7 @@
   <LiquidWin
     :width="900"
     :height="610"
-    :displacementScale="150"
+    :displacementScale="300"
     :active="true"
     :initialTop="150"
     :initialLeft="480"

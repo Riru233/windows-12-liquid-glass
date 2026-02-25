@@ -103,7 +103,11 @@
       </LiquidGlass>
       <!-- 搜索栏 -->
       <div class="search" style="backdrop-filter: url(#liquid-search)">
-        <div>
+        <div
+          style="
+            filter: drop-shadow(0 0 2px #ffffff) drop-shadow(0 0 4px #ffffff);
+          "
+        >
           <!-- copilot -->
           <svg
             viewBox="0 0 32 32"
@@ -218,7 +222,11 @@
             </defs>
           </svg>
         </div>
-        <div>
+        <div
+          style="
+            filter: drop-shadow(0 0 2px #ffffff) drop-shadow(0 0 4px #ffffff);
+          "
+        >
           <i>Ask Copilot in "Desktop"</i>
         </div>
         <LiquidFilter
@@ -666,7 +674,6 @@ import LiquidGlass from "/src/components/liquid_glass.vue";
   padding: 0 5px;
   font-size: 12px;
   gap: 10px;
-  text-shadow: 3px 3px 10px #000a;
   -webkit-app-region: drag;
   /* 支持Electron环境下的拖动 */
 }
@@ -690,6 +697,7 @@ import LiquidGlass from "/src/components/liquid_glass.vue";
 }
 
 .address-content {
+  filter: drop-shadow(0 0 2px #ffffff) drop-shadow(0 0 4px #ffffff);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -703,8 +711,6 @@ import LiquidGlass from "/src/components/liquid_glass.vue";
 
 .search {
   background: #fff5;
-  border-top: #fffa 2px solid;
-  border-bottom: #fffa 1px solid;
   border-radius: 14px;
   padding: 3px 10px;
   height: 20px;

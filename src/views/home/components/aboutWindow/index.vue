@@ -3,7 +3,7 @@
     title="About Windows"
     :width="400"
     :height="400"
-    :displacementScale="100"
+    :displacementScale="200"
     :active="false"
     :winPattern="0"
     :initialTop="500"
