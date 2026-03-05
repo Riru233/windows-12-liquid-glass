@@ -13,15 +13,38 @@
         <toolbar />
         <div style="flex-grow: 1"></div>
         
-        <div style="display: flex; flex-direction: row; align-items: center;">
-          <div class="win-btn-wrapper">
-            <div class="win-btn-icon" style="mask-image: url(/public/minimize.png);"></div>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            height: 24px;
+            align-items: center;
+            font-size: 14px;
+          "
+        >
+          <div style="padding: 0 16px">
+            <svg class="icon windowBtnStd" viewBox="0 0 1024 1024">
+              <path
+                d="M160.213333 533.333333h703.658667a32 32 0 0 0 0-64H160.213333a32 32 0 0 0 0 64z"
+                fill="currentColor"
+              ></path>
+            </svg>
           </div>
-          <div class="win-btn-wrapper">
-            <div class="win-btn-icon" style="mask-image: url(/public/maximum.png);"></div>
+          <div style="padding: 0 16px">
+            <svg class="icon windowBtnStd" viewBox="0 0 1024 1024">
+              <path
+                d="M245.333333 128h533.333334A117.333333 117.333333 0 0 1 896 245.333333v533.333334A117.333333 117.333333 0 0 1 778.666667 896H245.333333A117.333333 117.333333 0 0 1 128 778.666667V245.333333A117.333333 117.333333 0 0 1 245.333333 128z m0 64c-29.44 0-53.333333 23.893333-53.333333 53.333333v533.333334c0 29.44 23.893333 53.333333 53.333333 53.333333h533.333334c29.44 0 53.333333-23.893333 53.333333-53.333333V245.333333c0-29.44-23.893333-53.333333-53.333333-53.333333H245.333333z"
+                fill="currentColor"
+              ></path>
+            </svg>
           </div>
-          <div class="win-btn-wrapper">
-            <div class="win-btn-icon" style="mask-image: url(/public/close.png);"></div>
+          <div style="padding: 0 11px 0 16px" @click="close">
+            <svg class="icon windowBtnClose" viewBox="0 0 1024 1024">
+              <path
+                d="M187.605333 194.304l3.114667-3.584a32 32 0 0 1 41.642667-3.114667l3.584 3.114667L512 466.730667l276.053333-276.053334a32 32 0 1 1 45.226667 45.269334L557.269333 512l276.053334 276.053333a32 32 0 0 1 3.072 41.642667l-3.114667 3.584a32 32 0 0 1-41.642667 3.114667l-3.584-3.114667L512 557.269333l-276.053333 276.053334a32 32 0 0 1-45.226667-45.269334L466.730667 512l-276.053334-276.053333a32 32 0 0 1-3.072-41.642667l3.114667-3.584-3.114667 3.584z"
+                fill="currentColor"
+              ></path>
+            </svg>
           </div>
         </div>
       </div>

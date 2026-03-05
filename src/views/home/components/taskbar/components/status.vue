@@ -1,29 +1,47 @@
 <template>
-  <svg
-    t="1760700232942"
-    class="icon"
-    viewBox="0 0 1024 1024"
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    p-id="51444"
-    width="16"
-    height="16"
-    style="padding: 0 10px"
-    :style="direction === 'row' ? ' transform: rotate(180deg);' : ''"
-  >
-    <path
-      d="M180.053333 662.613333a32 32 0 0 0 45.226667 0L512 375.893333l286.72 286.72a32 32 0 1 0 45.226667-45.226666l-309.333334-309.333334a32 32 0 0 0-45.226666 0l-309.333334 309.333334a32 32 0 0 0 0 45.226666z"
-      p-id="51445"
-      fill="#fff"
-    ></path>
-  </svg>
-  <img
-    src="/public/icons/mmcndmgr_30509.ico"
-    alt=""
-    style="width: 16px; height: 16px; padding: 0 7px"
-  />
-  <div style="font-size: 11px; padding: 0 7px">ENG</div>
-  <div class="panel" @click="togglePanel">
+  <div class="panel-each">
+    <svg
+      t="1760700232942"
+      class="icon"
+      viewBox="0 0 1024 1024"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      p-id="51444"
+      width="16"
+      height="16"
+      :style="direction === 'row' ? ' transform: rotate(180deg);' : ''"
+    >
+      <path
+        d="M180.053333 662.613333a32 32 0 0 0 45.226667 0L512 375.893333l286.72 286.72a32 32 0 1 0 45.226667-45.226666l-309.333334-309.333334a32 32 0 0 0-45.226666 0l-309.333334 309.333334a32 32 0 0 0 0 45.226666z"
+        p-id="51445"
+        fill="#fff"
+      ></path>
+    </svg>
+  </div>
+  <div class="panel-each">
+    <img
+      src="/public/icons/mmcndmgr_30509.ico"
+      alt=""
+      style="width: 16px; height: 16px; padding: 0 7px"
+    />
+  </div>
+  <div style="font-size: 11px;" class="panel-each">ENG</div>
+  <!-- 控制中心 -->
+  <div class="panel-control" @click="togglePanel">
+    <LiquidFilter
+      id="panel-hover-control"
+      :width="78"
+      :height="32"
+      displacementScale="42"
+      :precise="1"
+      :config_layer2="{
+        radius: 12,
+        gamma: 1,
+        deadzone: 0.05,
+        edge: 12,
+        isInward: true,
+      }"
+    />
     <svg
       t="1760700314622"
       class="icon"
@@ -80,11 +98,12 @@
     </svg>
   </div>
   <div
+    class="panel-notification"
     style="
       display: flex;
 
       align-items: flex-end;
-      margin-right: 20px;
+      margin-right: 10px;
     "
     :style="
       direction === 'row'
@@ -93,8 +112,8 @@
     "
   >
     <LiquidFilter
-      id="panel-hover"
-      :width="78"
+      id="panel-hover-notification"
+      :width="70"
       :height="32"
       displacementScale="42"
       :precise="1"
@@ -107,9 +126,24 @@
       }"
     />
     <div style="font-weight: 500">{{ currentTime }}</div>
-    <div :style="direction === 'row' ? '' : 'color: #ccc'">
+    <div :style="direction === 'row' ? '' : 'color: #eee'">
       {{ direction === "row" ? currentWeek : "" }} {{ currentDate }}
     </div>
+
+    <LiquidFilter
+      id="panel-hover-each"
+      :width="32"
+      :height="32"
+      displacementScale="42"
+      :precise="1"
+      :config_layer2="{
+        radius: 12,
+        gamma: 1,
+        deadzone: 0.05,
+        edge: 12,
+        isInward: true,
+      }"
+    />
   </div>
 </template>
 
@@ -173,26 +207,65 @@ onUnmounted(() => {
 <style scoped>
 @keyframes panel-hover {
   0% {
+    transform: scaleX(1);
+  }
+  10% {
     transform: scaleX(1.2);
   }
-  30% {
+  40% {
     transform: scaleX(1) scaleY(1.2);
   }
   100% {
     transform: scaleX(1) scaleY(1);
   }
 }
-.panel {
+
+/* 全局 */
+.panel-control,
+.panel-notification,
+.panel-each {
+  border-radius: 12px;
+  filter: drop-shadow(0 0 2px #000a) drop-shadow(0 0 8px #0006);
+  transition: all 0.3s ease-out;
+  user-select: none;
+}
+.panel-control:hover,
+.panel-notification:hover,
+.panel-each:hover {
+  animation: panel-hover 0.3s ease-out forwards;
+  filter: none;
+  background-color: #0002;
+}
+
+/* 控制中心 */
+.panel-control {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 32px;
   width: 78px;
-  margin: 0 5px;
-  border-radius: 12px;
 }
-.panel:hover {
-  animation: panel-hover 0.3s ease-out forwards;
-  backdrop-filter: url(#panel-hover);
+.panel-control:hover {
+  backdrop-filter: url(#panel-hover-control);
+}
+/* 时间和通知 */
+.panel-notification {
+  height: 32px;
+  width: 50px;
+  padding: 0 10px;
+}
+.panel-notification:hover {
+  backdrop-filter: url(#panel-hover-notification);
+}
+/* 单独 */
+.panel-each {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.panel-each:hover {
+  backdrop-filter: url(#panel-hover-each);
 }
 </style>

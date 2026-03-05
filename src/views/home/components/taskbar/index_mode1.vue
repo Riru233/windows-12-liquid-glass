@@ -95,7 +95,7 @@ const togglePanel = () => {
 }
 
 .glass-content {
-  background: linear-gradient(to top, #00000081 0%, #0000 100%);
+  /* background: linear-gradient(to top, #00000081 0%, #0000 100%); */
   box-shadow: none;
 }
 
@@ -108,6 +108,7 @@ const togglePanel = () => {
   justify-content: center;
   align-items: center;
   margin-left: 10px;
+  user-select: none;
 }
 
 p {
@@ -133,7 +134,7 @@ p {
     bottom: 30px;
   }
   100% {
-    transform: scaleX(0.4) scaleY(4) translateY(300px);
+    transform: scaleY(3) translateY(300px);
     bottom: -200px;
   }
 }

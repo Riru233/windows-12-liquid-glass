@@ -40,8 +40,7 @@ p {
 }
 
 .glass-fog {
-  filter: drop-shadow(0px 0px 2px #fffa) drop-shadow(0px 0px 2px #fffa)
-    drop-shadow(0px 0px 4px #fffa) drop-shadow(0px 0px 4px #fffa);
+  filter: drop-shadow(0px 0px 2px #fffd) drop-shadow(0px 0px 4px #fffd);
 }
 
 .windowBtnStd {
@@ -99,12 +98,31 @@ p {
   padding: 0;
   overflow: hidden;
   user-select: none;
-  box-shadow: rgba(58, 58, 58, 0.333) 0px 0px 20px 1px;
-  border: solid 1px #ffffffaa;
-  outline: solid #6663 1px;
 }
 
 .titlebar img {
   -webkit-app-region: no-drag;
   /* 按钮区域不允许拖动 */
+}
+
+
+
+@keyframes winanim {
+  0% {
+    transform: scale(0) perspective(1000px) rotate3d(0.5, 0, 0, -45deg);
+  }
+
+  100% {
+    transform: scale(1) perspective(1000px) rotate3d(0, 0, 0, 0deg);
+  }
+}
+
+@keyframes winanim-reverse {
+  0% {
+    transform: scale(1) perspective(1000px) rotate3d(0, 0, 0, 0deg);
+  }
+
+  100% {
+    transform: scale(0) perspective(1000px) rotate3d(0.5, 0, 0, 45deg);
+  }
 }

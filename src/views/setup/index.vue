@@ -142,7 +142,7 @@ const stat = reactive({
 });
 // config
 
-const uefi = true;
+const uefi = false;
 
 // function
 setTimeout(() => {

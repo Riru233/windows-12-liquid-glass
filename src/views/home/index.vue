@@ -78,32 +78,5 @@ const close = (name) => {
 };
 </script>
 <style scoped>
-@keyframes anim {
-  0% {
-    transform: scale(0.5) perspective(1000px) rotate3d(0.5, 0, 0, 45deg);
-    opacity: 0;
-  }
 
-  100% {
-    transform: scale(1) perspective(1000px) rotate3d(0, 0, 0, 0deg);
-    opacity: 1;
-  }
-}
-
-@keyframes anim-reverse {
-  0% {
-    transform: scale(1) perspective(1000px) rotate3d(0, 0, 0, 0deg);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scale(0.5) perspective(1000px) rotate3d(0.5, 0, 0, 45deg);
-    opacity: 0;
-  }
-}
-
-.window1,
-.window2 {
-  animation: anim 0.3s cubic-bezier(0, 1, 0, 1);
-}
 </style>
