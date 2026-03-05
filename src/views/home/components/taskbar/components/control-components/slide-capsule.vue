@@ -16,9 +16,8 @@
       :height="32"
       :radius="10"
       :displacementScale="75"
-      :layerClass="props.selected ? 'colorful-open' : 'colorful'"
       :drag="false"
-      :blur="10"
+      :blur="5"
       position="relative"
       layerStyle="justify-content: center;align-items:center;"
       :precise="1"
@@ -26,7 +25,7 @@
       <div
         :style="`width: 100%;height:100%;color:${props.vol<8 ? '#333':'#fff'};background: linear-gradient(to right, #39f5 0%, #39f5 ${props.vol}%,#fff0 ${props.vol}%);justify-content:center;display:flex;align-items:center;`"
       >
-        <div style="margin-left: 5px">
+        <div :style="`margin-left: 5px;${props.vol<8 ? 'filter:drop-shadow(0px 0px 2px #fff) drop-shadow(0px 0px 4px #fff) drop-shadow(0px 0px 6px #fff);':''}`">
           <slot></slot>
         </div>
         <div style="flex-grow: 1"></div>

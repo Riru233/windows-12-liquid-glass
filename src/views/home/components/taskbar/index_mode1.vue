@@ -115,11 +115,11 @@ p {
 }
 @keyframes panel-open {
   0% {
-    bottom: -400px;
+    bottom: -200px;
     transform: scaleX(1) scaleY(1);
   }
   50% {
-    transform: scaleX(0.8) scaleY(1.3) translateY(-40px);
+    transform: scaleX(0.8) scaleY(1.2) translateY(-80px);
     bottom: 30px;
   }
   100% {

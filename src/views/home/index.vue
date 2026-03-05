@@ -6,7 +6,7 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      background-image: url(&quot;/public/imgbeta12.png&quot;);
+      background-image: url(&quot;/public/img0.jpg&quot;);
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
@@ -23,7 +23,7 @@
   <!-- explorer -->
   <Explorer class="window2" ref="explorerRef" @close="close" />
   <!-- liquidglass -->
-  <LiquidGlass
+  <!-- <LiquidGlass
     :width="200"
     :height="200"
     :initialTop="322"
@@ -44,7 +44,7 @@
       isInward: true,
     }"
   >
-  </LiquidGlass>
+  </LiquidGlass> -->
   <!-- taskbar -->
   <Taskbar />
 </template>

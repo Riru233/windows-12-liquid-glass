@@ -69,7 +69,7 @@ const props = defineProps({
   precise: { type: Number, default: 0.1 },
   config_layer2: {
     type: Object,
-    default: () => ({ radius: 10, gamma: 1, deadzone: 0, edge: 8, isInward: true }),
+    default: () => ({ radius: 10, gamma: 1, deadzone: 0, edge: 10, isInward: true }),
   },
 });
 

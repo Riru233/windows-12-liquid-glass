@@ -196,8 +196,6 @@ const stopDrag = () => {
 .glass-content-inner {
   z-index: 10;
   width: 100%;
-  display: flex;
-  flex-direction: column;
 }
 .filter-layer {
   position: absolute;
