@@ -26,6 +26,7 @@
     @close="handleClose(win.id)" 
     @mousedown.stop="activate(win.id)" 
   />
+  <button @click="openWindow('demo')" alt="Open Demo Window" style="position:fixed;right:10px;bottom:80px;width:42px;height:42px;border:none;border-radius: 21px;">＋</button>
 
   <Taskbar @mousedown.stop />
 </template>
@@ -73,15 +74,46 @@ const setRef = (el, id) => {
  * 实时初始化新窗口的位置和层级
  */
 watch(windowList, (newList) => {
-  newList.forEach((win, index) => {
-    // 如果是新窗口（没有坐标记录），初始化它
+  newList.forEach((win) => {
     if (!pos[win.id]) {
-      const offset = (Object.keys(pos).length) * 30;
+      const taskbarHeight = 46;
+      const startPos = 120;
+      const step = 30;
+      
+      // 假设窗口的平均尺寸，用于碰撞检测
+      const winW = 600; 
+      const winH = 400;
+
+      // 1. 计算当前的索引（第几个窗口）
+      let index = Object.keys(pos).length;
+
+      // 2. 初始预设计算（常规阶梯）
+      let targetTop = startPos + index * step;
+      let targetLeft = startPos + index * step;
+
+      // 3. 底部边界检测：如果 Top 触及任务栏
+      if (targetTop + winH + taskbarHeight > window.innerHeight) {
+        // 固定 Top 坐标在底部的安全位置，不再向下增加
+        targetTop = window.innerHeight - taskbarHeight - winH - 20; 
+        
+        // 此时 targetLeft 仍然会随 index 增加而向右移动
+      }
+
+      // 4. 右侧边界检测：如果 Left 也触及屏幕边缘
+      if (targetLeft + winW > window.innerWidth) {
+        // 彻底重置：根据当前窗口总数取模，让它回到左上角区域循环
+        const resetIndex = index % 8; 
+        targetTop = startPos + resetIndex * step;
+        targetLeft = startPos + resetIndex * step;
+      }
+
+      // 5. 应用坐标
       pos[win.id] = { 
-        top: 120 + offset, 
-        left: 120 + offset 
+        top: Math.max(0, targetTop), // 确保不会变成负数
+        left: Math.max(0, targetLeft) 
       };
       
+      // 层级与激活
       const maxZ = Math.max(...Object.values(zIndexes), 0);
       zIndexes[win.id] = maxZ + 1;
       activeWindow.value = win.id;
