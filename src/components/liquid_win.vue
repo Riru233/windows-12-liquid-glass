@@ -148,7 +148,7 @@ const props = defineProps({
   active: Boolean,
   winPattern: Number, // 0: 只有关闭按钮 1: 三大金刚按钮
   displacementScale: Number,
-  blur: { type: Number, default: 3 },
+  blur: { type: Number, default: 2 },
   precise: { type: Number, default: 0.1 },
   config_layer2: {
     type: Object,

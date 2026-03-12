@@ -1,58 +1,65 @@
 # Windows 12概念版介绍
 
+![alt text](readme/image.png)
+
 本项目主要改进液态玻璃特性，让开发者能够快速上手
 
-# 示例
+# 创建窗口
 
-1. 无边框窗口
-
-
-```vue
-<template>
-  <LiquidWin
-    :width="900"
-    :height="610"
-    :displacementScale="150"
-    :active="true"
-    :initialTop="150"
-    :initialLeft="480"
-    v-slot="{ startDrag }"
-  >
-  <!-- width、height是大小，displacementScale控制扭曲度，active控制的是窗口活跃状态，initialTop、initialLeft是窗口初始位置 -->
-  example
-  </LiquidWin>
-</template>
-<script setup>
-import LiquidWin from "/src/components/liquid_win.vue";
-</script>
-```
-
-2. 带有标题栏的窗口
+首先在`@/views/home/components`目录下创建一个文件夹，起名`demo`，在此文件夹下新建`index.vue`文件，内容如下：
 
 ```vue
 <template>
-  <liquidWin
-    title="About"
-    :width="400"
-    :height="400"
-    :displacementScale="100"
-    :active="false"
-    :winPattern="0"
-    :initialTop="500"
-    :initialLeft="1480"
-    @close="close"
-  >
-  <!-- 有title时需要带winPattern属性：
-   0: 只有叉号
-   1: 三大金刚按钮
-   2: 带帮助的叉号（暂没有做） -->
-  example
+  <liquidWin title="Windows Demo" :width="200" :height="200" :displacementScale="200" @updatePos="updatePos"
+    :active="props.active" :winPattern="0" v-model:top="top" v-model:left="left" @close="close">
   </liquidWin>
 </template>
+
 <script setup>
+// 基本窗口必需库
 import LiquidWin from "/src/components/liquid_win.vue";
+const top = defineModel("top")
+const left = defineModel("left")
+const props = defineProps({
+  active: Boolean,
+});
+const updatePos = (top, left) => {
+  emit("updatePos:top", top);
+  emit("updatePos:left", left);
+};
 </script>
+
+<style scoped>
+@import "/src/assets/liquidglass.css";
+
+.std-btn {
+  margin: 10px;
+  height: 32px;
+  font-size: 14px;
+  border: none;
+  border-radius: 20px;
+  padding: 0 10px;
+  color: #fffc;
+  box-shadow: #fff -0.5px -0.5px 0.5px, #fff 0.5px 0.5px 0.5px;
+  background: linear-gradient(to bottom, #fff6, #8886);
+}
+
+.std-btn.primary {
+  background-color: #24acf2;
+}
+</style>
 ```
+
+然后在`@/views/home/index.vue`中，找到：
+```js
+
+// 1. 窗口配置列表 (只需在这里维护窗口名称)
+const windowList = ["about", "explorer", "settings"];
+```
+
+在这个表后面添加：demo即可
+
+拟态玻璃会自动适应窗口大小
 
 # 开源注意事项
 
