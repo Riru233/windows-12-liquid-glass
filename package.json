@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@creatorsn/vfluent3": "^0.3.37",
     "@tailwindcss/vite": "^4.1.17",
     "@wxperia/liquid-glass-vue": "^1.0.9",
     "tailwindcss": "^4.1.17",

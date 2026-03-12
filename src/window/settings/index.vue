@@ -1,8 +1,6 @@
 <template>
-  <LiquidWin :width="950" :height="650" 
-    :displacementScale="78" v-model:top="top" v-model:left="left"
-    @updatePos="updatePos"
-    :active="props.active" v-slot="{ startDrag }">
+  <LiquidWin :width="950" :height="650" :displacementScale="78" v-model:top="top" v-model:left="left"
+    @updatePos="updatePos" :active="props.active" v-slot="{ startDrag }">
     <div class="glass-content" style="display: flex; flex-direction: column; flex: 1;">
 
       <div class="titlebar" @mousedown="startDrag">
