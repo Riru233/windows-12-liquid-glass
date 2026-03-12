@@ -169,7 +169,6 @@ const updatePos = (top, left) => {
 }
 
 .glass-content {
-  background-color: rgba(172, 208, 255, 0.467);
   flex: 1;
   display: flex;
 }

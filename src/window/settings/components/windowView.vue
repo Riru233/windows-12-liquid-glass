@@ -382,7 +382,7 @@
             </div>
           </div>
           <!-- 水晶亚克力可读性设置 -->
-          <div class="flex-lr" style="height: 70px; border-top: #ccc 1px solid">
+          <div class="flex-lr" style="height: 60px; border-top: #ccc 1px solid">
             <div class="icons">
               <div style="width: 24px"></div>
             </div>
@@ -392,9 +392,9 @@
                 flex: 1;
                 justify-content: center;
               ">
-              <div style="color: #000; font-size: 14px">Aero Mask</div>
+              <div style="color: #000; font-size: 14px">Aero Ultra Pattern</div>
               <div style="color: #555; font-size: 12px">
-                Enhance readability of Aero Ultra
+                You can set foggy texture or mica texture according to your taste
               </div>
             </div>
             <div style="
@@ -410,7 +410,7 @@
                 width: 100px;
                 margin: 0 10px;
               ">
-              <div style="color: #000; font-size: 14px">Light Fog</div>
+              <div style="color: #000; font-size: 14px">Foggy Aero</div>
               <div style="flex-grow: 1"></div>
               <svg class="icon" width="12" height="12" style="margin: 0" viewBox="0 0 1024 1024" version="1.1"
                 xmlns="http://www.w3.org/2000/svg" p-id="51718">
@@ -423,8 +423,8 @@
               <div style="width: 24px"></div>
             </div>
           </div>
-          <!-- 水晶亚克力模糊度 -->
-          <div class="flex-lr" style="height: 48px; border-top: #ccc 1px solid">
+          <!-- 水晶亚克力浓度 -->
+          <div class="flex-lr" style="height: 60px; border-top: #ccc 1px solid">
             <div class="icons">
               <div style="width: 24px"></div>
             </div>
@@ -435,35 +435,14 @@
                 justify-content: center;
               ">
               <div style="color: #000; font-size: 14px">
-                The blurriness of Acrylic
+                The color density of Aero Ultra
               </div>
               <div style="color: #555; font-size: 12px">
-                You can adjust the blurriness of Acrylic to balance ensure
-                readability
+                To balance transparency and readability
               </div>
             </div>
-            <div style="
-                display: flex;
-                flex-direction: row;
-                height: 10px;
-                align-items: center;
-                border-radius: 5px;
-                background-color: #fffc;
-                border-bottom: 1px solid #ddd;
-                outline: #ddd 1px solid;
-                padding: 10px 10px;
-                width: 100px;
-                margin: 0 10px;
-              ">
-              <div style="color: #000; font-size: 14px">Tiny</div>
-              <div style="flex-grow: 1"></div>
-              <svg class="icon" width="12" height="12" style="margin: 0" viewBox="0 0 1024 1024" version="1.1"
-                xmlns="http://www.w3.org/2000/svg" p-id="51718">
-                <path
-                  d="M180.053333 361.386667a32 32 0 0 1 45.226667 0L512 648.106667l286.72-286.72a32 32 0 1 1 45.226667 45.226666l-309.333334 309.333334a32 32 0 0 1-45.226666 0L180.053333 406.613333a32 32 0 0 1 0-45.226666z"
-                  p-id="51719" fill="#888"></path>
-              </svg>
-            </div>
+            <fv-slider :mininum="9" :maxinum="30" :showLabel="true">
+            </fv-slider>
             <div>
               <div style="width: 24px"></div>
             </div>

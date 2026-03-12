@@ -131,7 +131,6 @@ const props = defineProps({
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: rgba(172, 208, 255, 0.467);
 }
 
 .titlebar {
