@@ -1,0 +1,128 @@
+/* 全局英文字体使用微软正黑体 */
+* {
+  font-family: "Segoe UI";
+}
+
+p {
+  margin: 0;
+}
+
+.overflow {
+  margin-right: 3px;
+}
+.overflow::-webkit-scrollbar,
+.contentOne::-webkit-scrollbar {
+  width: 2px;
+}
+.overflow::-webkit-scrollbar-thumb,
+.contentOne::-webkit-scrollbar-thumb {
+  background-color: #888;
+  width: 1px;
+}
+.contentOne::-webkit-scrollbar-thumb:hover {
+  background-color: #c0c0c0;
+  width: 3px;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 1px;
+}
+.background {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.bg-line {
+  width: 10%;
+  height: 10%;
+  background: linear-gradient(135deg, #ff7eb3, #65d6ce);
+}
+
+.glass-fog {
+  filter: drop-shadow(0px 0px 2px #fffd) drop-shadow(0px 0px 4px #fffd);
+}
+
+.windowBtnStd {
+  height: 1em;
+  width: 1em;
+  vertical-align: middle;
+  color: #fff;
+  filter: drop-shadow(0px 0px 2px #888a) drop-shadow(0px 0px 2px #888a);
+  transition: all 0.3s ease;
+}
+
+.windowBtnStdBasic {
+  height: 1em;
+  width: 1em;
+  vertical-align: middle;
+  color: #333;
+}
+
+.windowBtnCloseBasic {
+  height: 1.2em;
+  width: 1.2em;
+  vertical-align: middle;
+}
+
+.windowBtnClose {
+  height: 1.2em;
+  width: 1.2em;
+  vertical-align: middle;
+  color: #fff;
+  filter: drop-shadow(0px 0px 2px #888a) drop-shadow(0px 0px 2px #888a);
+  transition: all 0.3s ease;
+}
+
+.fix-glass {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  flex-shrink: 0;
+  box-shadow: none;
+  align-items: center;
+}
+
+.windowBtnClose:hover {
+  filter: drop-shadow(0px 0px 2px #ff0000) drop-shadow(0px 0px 4px #ff4747)
+    drop-shadow(0px 0px 6px #ff7e7e) drop-shadow(0px 0px 8px #ff8e8e)
+    drop-shadow(0px 0px 10px #ffb7b7) drop-shadow(0px 0px 12px #ffffff);
+}
+.windowBtnStd:hover {
+  filter: drop-shadow(0px 0px 2px #aaebff) drop-shadow(0px 0px 4px #aaebff)
+    drop-shadow(0px 0px 6px #aaebff) drop-shadow(0px 0px 8px #aaebff)
+    drop-shadow(0px 0px 10px #aaebff) drop-shadow(0px 0px 12px #aaebff);
+}
+.glass-component {
+  color: #fff;
+  padding: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+.titlebar img {
+  -webkit-app-region: no-drag;
+  /* 按钮区域不允许拖动 */
+}
+
+
+
+@keyframes winanim {
+  0% {
+    transform: scale(0) perspective(1000px) rotate3d(0.5, 0, 0, -45deg);
+  }
+
+  100% {
+    transform: scale(1) perspective(1000px) rotate3d(0, 0, 0, 0deg);
+  }
+}
+
+@keyframes winanim-reverse {
+  0% {
+    transform: scale(1) perspective(1000px) rotate3d(0, 0, 0, 0deg);
+  }
+
+  100% {
+    transform: scale(0) perspective(1000px) rotate3d(0.5, 0, 0, 45deg);
+  }
+}

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>位移矢量贴图生成器</title>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          Segoe UI,
+          Arial;
+        display: flex;
+        gap: 20px;
+        margin: 20px;
+        flex-direction: column;
+      }
+      .container {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      #panel {
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      input[type="range"],
+      input[type="number"],
+      input[type="file"] {
+        width: 100%;
+      }
+      label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      canvas {
+        border: 1px solid #ddd;
+        max-width: 100%;
+      }
+      button {
+        padding: 8px 12px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+      }
+      .row {
+        display: flex;
+        gap: 8px;
+      }
+      .config-group {
+        margin: 15px 0;
+        padding: 10px;
+        background: #f5f5f5;
+        border-radius: 5px;
+      }
+      .config-group h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+      #dataPreview {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 300px;
+      }
+      #base64Data {
+        flex: 1;
+        background: #f8f8f8;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px;
+        font-family: 'Courier New', monospace;
+        font-size: 12px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-y: auto;
+        max-height: 500px;
+        margin-top: 10px;
+        line-height: 1.4;
+      }
+      .preview-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .data-controls {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      #dataSize {
+        font-size: 12px;
+        color: #666;
+      }
+      .data-info {
+        font-size: 12px;
+        color: #666;
+        margin-top: 5px;
+        line-height: 1.5;
+      }
+      .base64-line {
+        margin-bottom: 2px;
+        word-break: break-all;
+      }
+      .copy-btn {
+        background: #4CAF50;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+      .copy-btn:hover {
+        background: #45a049;
+      }
+      .copy-btn:active {
+        background: #3d8b40;
+      }
+      .data-section {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f9f9f9;
+        border-radius: 5px;
+      }
+      .data-section h4 {
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+      .format-example {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 3px;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 11px;
+        font-family: 'Courier New', monospace;
+        color: #666;
+      }
+      .base64-preview {
+        font-size: 11px;
+        color: #666;
+        margin-top: 5px;
+      }
+      .base64-preview .truncated {
+        color: #999;
+        font-style: italic;
+      }
+      
+      /* 拟态玻璃效果区域 */
+      .glass-preview-container {
+        margin-top: 20px;
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      #backgroundPreview {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: none;
+      }
+      
+      #glassEffect {
+        position: absolute;
+        filter: url(#realistic-glass);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 24px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 
+          0 8px 32px rgba(0, 0, 0, 0.1),
+          inset 0 1px 0 rgba(255,255,255,0.2);
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+      
+      /* SVG滤镜隐藏 */
+      .svg-filters {
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+      }
+      
+      /* 按钮样式 */
+      .btn-primary {
+        background: #667eea;
+        color: white;
+      }
+      
+      .btn-primary:hover {
+        background: #5a67d8;
+      }
+      
+      .btn-secondary {
+        background: #4a5568;
+        color: white;
+      }
+      
+      .btn-secondary:hover {
+        background: #2d3748;
+      }
+      
+      /* 文件上传样式 */
+      .file-upload-container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .file-upload-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        background: #edf2f7;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      .file-upload-label:hover {
+        background: #e2e8f0;
+      }
+      
+      .file-input {
+        display: none;
+      }
+      
+      /* 响应式布局 */
+      @media (max-width: 1200px) {
+        .container {
+          flex-direction: column;
+        }
+        #panel {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>位移矢量贴图生成器</h2>
+    
+    <div class="container">
+      <div id="panel">
+        <div class="config-group">
+          <h3>形状配置</h3>
+          <label>宽度<span><input id="shapeWidth" type="number" min="10" max="512" value="200" /></span></label>
+          <label>高度<span><input id="shapeHeight" type="number" min="10" max="512" value="100" /></span></label>
+          <label>圆角半径<span><input id="cornerRadius" type="range" min="0" max="100" value="20" /><span id="cornerRadiusV">20</span></span></label>
+        </div>
+
+        <div class="config-group">
+          <h3>背景图片</h3>
+          <div class="file-upload-container">
+            <label class="file-upload-label">
+              <input type="file" id="bgImage" class="file-input" accept="image/*" />
+              <span>选择背景图片</span>
+            </label>
+            <button id="clearBg" class="btn-secondary">清除背景</button>
+          </div>
+        </div>
+
+        <div class="config-group">
+          <h3>位移参数</h3>
+          <label>Gamma<span><input id="gamma" type="range" min="0.1" max="3" step="0.1" value="0.8" /><span id="gammaV">0.8</span></span></label>
+          <label>中心平坦区<span><input id="deadzone" type="range" min="0" max="0.8" step="0.01" value="0.5" /><span id="deadzoneV">0.5</span></span></label>
+          <label>边缘扭曲强化程度<span><input id="edge" type="range" min="0" max="3" step="0.1" value="1.5" /><span id="edgeV">1.5</span></span></label>
+        </div>
+        
+        <div class="config-group">
+          <h3>位移方向</h3>
+          <div class="row">
+            <label><input type="radio" name="dir" value="inward" checked /> 向内 (inward)</label>
+            <label><input type="radio" name="dir" value="outward" /> 向外 (outward)</label>
+          </div>
+        </div>
+        
+        <div class="row" style="margin-top: 20px;">
+          <button id="gen" class="btn-primary">生成位移贴图</button>
+          <button id="copyData" class="copy-btn">复制Base64</button>
+        </div>
+      </div>
+      
+      <div id="dataPreview">
+        <div class="preview-header">
+          <h3>Base64 图像数据</h3>
+          <div class="data-controls">
+            <span id="dataSize">长度: 0 字符</span>
+          </div>
+        </div>
+        
+        <div id="base64Data">
+          <div class="data-info">点击"生成位移贴图"按钮生成Base64数据</div>
+        </div>
+        
+        <div class="data-section">
+          <h4>拟态玻璃效果</h4>
+          <div class="data-info">
+            <p>生成的位移贴图已应用到拟态玻璃效果中。您可以看到右侧的玻璃效果预览。</p>
+            <p>SVG滤镜代码已自动生成，可以直接复制使用。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="glass-preview-container" id="glassContainer">
+      <img id="backgroundPreview" alt="背景预览">
+      <div id="glassEffect">拟态玻璃效果</div>
+    </div>
+    
+    <div style="margin-top: 20px;">
+      <h3>位移贴图可视化预览</h3>
+      <canvas id="out" width="400" height="200"></canvas>
+    </div>
+
+    <!-- SVG滤镜定义 -->
+    <svg class="svg-filters">
+      <defs>
+        <filter id="realistic-glass">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0" result="blurred_source"></feGaussianBlur>
+          <feImage id="displacement-image" x="0" y="0" result="displacement_map"></feImage>
+          <feDisplacementMap in="blurred_source" in2="displacement_map" scale="78.53293977771185"
+            xChannelSelector="R" yChannelSelector="G" result="displaced"></feDisplacementMap>
+          <feColorMatrix in="displaced" type="saturate" result="displaced_saturated" values="0"></feColorMatrix>
+          <feImage href="" x="0" y="0" result="specular_layer"></feImage>
+          <feComposite in="displaced_saturated" operator="in" result="specular_saturated"></feComposite>
+          <feComponentTransfer in="specular_layer" result="specular_faded">
+            <feFuncA type="linear" slope="1"></feFuncA>
+          </feComponentTransfer>
+          <feBlend in="specular_saturated" in2="displaced" mode="normal" result="withSaturation"></feBlend>
+          <feBlend in="specular_faded" in2="withSaturation" mode="normal"></feBlend>
+        </filter>
+      </defs>
+    </svg>
+
+    <script>
+      // 获取DOM元素
+      const gamma = document.getElementById("gamma");
+      const deadzone = document.getElementById("deadzone");
+      const edge = document.getElementById("edge");
+      const shapeWidth = document.getElementById("shapeWidth");
+      const shapeHeight = document.getElementById("shapeHeight");
+      const cornerRadius = document.getElementById("cornerRadius");
+      const cornerRadiusV = document.getElementById("cornerRadiusV");
+      const gen = document.getElementById("gen");
+      const copyData = document.getElementById("copyData");
+      const dataSize = document.getElementById("dataSize");
+      const base64Data = document.getElementById("base64Data");
+      const gammaV = document.getElementById("gammaV");
+      const deadzoneV = document.getElementById("deadzoneV");
+      const edgeV = document.getElementById("edgeV");
+      const bgImage = document.getElementById("bgImage");
+      const clearBg = document.getElementById("clearBg");
+      const backgroundPreview = document.getElementById("backgroundPreview");
+      const glassEffect = document.getElementById("glassEffect");
+      const glassContainer = document.getElementById("glassContainer");
+      const outC = document.getElementById("out");
+      const outX = outC.getContext("2d");
+      const displacementImage = document.getElementById("displacement-image");
+
+      let imgW = 200, imgH = 100;
+      let mask = null;
+      let currentBase64Data = '';
+      let currentBackgroundUrl = '';
+
+      // 更新数值显示
+      [gamma, deadzone, edge, cornerRadius].forEach(e => 
+        e.addEventListener("input", () => {
+          gammaV.textContent = gamma.value;
+          deadzoneV.textContent = deadzone.value;
+          edgeV.textContent = edge.value;
+          cornerRadiusV.textContent = cornerRadius.value;
+        })
+      );
+
+      // 形状尺寸变化时更新玻璃效果
+      [shapeWidth, shapeHeight, cornerRadius].forEach(e => {
+        e.addEventListener("input", () => {
+          updateGlassEffect();
+        });
+      });
+
+      // 加载背景图片
+      bgImage.addEventListener("change", function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            currentBackgroundUrl = e.target.result;
+            backgroundPreview.src = currentBackgroundUrl;
+            backgroundPreview.style.display = 'block';
+            glassContainer.style.background = 'none';
+            updateGlassEffect();
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // 清除背景
+      clearBg.addEventListener("click", function() {
+        bgImage.value = '';
+        currentBackgroundUrl = '';
+        backgroundPreview.style.display = 'none';
+        backgroundPreview.src = '';
+        glassContainer.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        updateGlassEffect();
+      });
+
+      // 创建圆角矩形路径
+      function createRoundedRectPath(ctx, x, y, width, height, radius) {
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.lineTo(x + width - radius, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+        ctx.lineTo(x + width, y + height - radius);
+        ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        ctx.lineTo(x + radius, y + height);
+        ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+        ctx.lineTo(x, y + radius);
+        ctx.quadraticCurveTo(x, y, x + radius, y);
+        ctx.closePath();
+      }
+
+      // 更新玻璃效果
+      function updateGlassEffect() {
+        const width = parseInt(shapeWidth.value);
+        const height = parseInt(shapeHeight.value);
+        const radius = parseInt(cornerRadius.value);
+        
+        // 更新玻璃div的样式
+        glassEffect.style.width = width + 'px';
+        glassEffect.style.height = height + 'px';
+        glassEffect.style.borderRadius = radius + 'px';
+        
+        // 居中显示
+        const containerWidth = glassContainer.clientWidth;
+        const containerHeight = glassContainer.clientHeight;
+        glassEffect.style.left = ((containerWidth - width) / 2) + 'px';
+        glassEffect.style.top = ((containerHeight - height) / 2) + 'px';
+      }
+
+      // 生成形状
+      function generateShape() {
+        imgW = parseInt(shapeWidth.value);
+        imgH = parseInt(shapeHeight.value);
+        const radius = parseInt(cornerRadius.value);
+        
+        // 更新预览canvas尺寸
+        outC.width = imgW;
+        outC.height = imgH;
+        
+        // 创建临时canvas用于生成形状
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = imgW;
+        tempCanvas.height = imgH;
+        const tempCtx = tempCanvas.getContext('2d');
+        
+        // 绘制圆角矩形
+        tempCtx.fillStyle = "white";
+        createRoundedRectPath(tempCtx, 0, 0, imgW, imgH, radius);
+        tempCtx.fill();
+        
+        // 获取图像数据
+        const imgData = tempCtx.getImageData(0, 0, imgW, imgH);
+        mask = new Uint8Array(imgW * imgH);
+        
+        // 创建mask（基于alpha通道）
+        const data = imgData.data;
+        for (let y = 0; y < imgH; y++) {
+          for (let x = 0; x < imgW; x++) {
+            const idx = y * imgW + x;
+            const dataIdx = idx * 4;
+            mask[idx] = data[dataIdx + 3] > 128 ? 1 : 0;
+          }
+        }
+        
+        return imgData;
+      }
+
+      // 构建边界
+      function buildBoundary() {
+        const e = new Uint8Array(imgW * imgH);
+        for (let t = 0; t < imgH; t++) {
+          for (let n = 0; n < imgW; n++) {
+            const a = t * imgW + n;
+            if (!mask[a]) {
+              e[a] = 0;
+              continue;
+            }
+            let m = 0;
+            for (let e = -1; e <= 1; e++) {
+              for (let a = -1; a <= 1; a++) {
+                if (0 === a && 0 === e) continue;
+                const o = n + a,
+                      i = t + e;
+                if (o < 0 || i < 0 || o >= imgW || i >= imgH) {
+                  m = 1;
+                  break;
+                }
+                if (0 === mask[i * imgW + o]) {
+                  m = 1;
+                  break;
+                }
+              }
+              if (m) break;
+            }
+            e[a] = m ? 1 : 0;
+          }
+        }
+        return e;
+      }
+
+      // Sobel算子计算梯度
+      function sobelAt(e, t) {
+        const n = Math.max(0, e - 1),
+              a = Math.min(imgW - 1, e + 1),
+              m = Math.max(0, t - 1),
+              o = Math.min(imgH - 1, t + 1),
+              i = mask[m * imgW + n],
+              g = mask[m * imgW + e],
+              l = mask[m * imgW + a],
+              r = mask[t * imgW + n],
+              c = mask[t * imgW + a],
+              d = mask[o * imgW + n],
+              s = mask[o * imgW + e],
+              u = mask[o * imgW + a];
+        return [l + 2 * c + u - (i + 2 * r + d), d + 2 * s + u - (i + 2 * g + l)];
+      }
+
+      // 一维欧氏距离变换
+      function edt1d(e, t) {
+        const n = new Int32Array(t),
+              a = new Float32Array(t + 1),
+              m = new Float32Array(t);
+        let o = 0;
+        n[0] = 0;
+        a[0] = -1e20;
+        a[1] = 1e20;
+        
+        for (let m = 1; m < t; m++) {
+          let t = (e[m] + m * m - (e[n[o]] + n[o] * n[o])) / (2 * (m - n[o]));
+          while (t <= a[o]) {
+            if (--o < 0) {
+              o = 0;
+              t = -1e20;
+              break;
+            }
+            t = (e[m] + m * m - (e[n[o]] + n[o] * n[o])) / (2 * (m - n[o]));
+          }
+          n[++o] = m;
+          a[o] = t;
+          a[o + 1] = 1e20;
+        }
+        
+        o = 0;
+        for (let i = 0; i < t; i++) {
+          while (a[o + 1] < i) o++;
+          const t = i - n[o];
+          m[i] = t * t + e[n[o]];
+        }
+        return m;
+      }
+
+      // 二维欧氏距离变换
+      function distanceEDT(e) {
+        const t = 1e9,
+              n = new Float32Array(imgW * imgH);
+        
+        // 水平方向
+        for (let a = 0; a < imgH; a++) {
+          const m = new Float32Array(imgW);
+          for (let n = 0; n < imgW; n++) {
+            const o = a * imgW + n;
+            m[n] = e[o] ? 0 : t;
+          }
+          const o = edt1d(m, imgW);
+          for (let e = 0; e < imgW; e++) {
+            n[a * imgW + e] = o[e];
+          }
+        }
+        
+        // 垂直方向
+        const a = new Float32Array(imgW * imgH);
+        for (let e = 0; e < imgW; e++) {
+          const t = new Float32Array(imgH);
+          for (let a = 0; a < imgH; a++) {
+            t[a] = n[a * imgW + e];
+          }
+          const m = edt1d(t, imgH);
+          for (let t = 0; t < imgH; t++) {
+            const n = t * imgW + e;
+            a[n] = mask[n] ? Math.sqrt(m[t]) : 0;
+          }
+        }
+        
+        let m = 0;
+        for (let e = 0; e < a.length; e++) {
+          if (mask[e] && a[e] > m) m = a[e];
+        }
+        return [a, m];
+      }
+
+      // 显示Base64数据
+      function displayBase64Data(base64String) {
+        // 保存完整的Base64数据
+        currentBase64Data = base64String;
+        
+        // 更新数据长度
+        const length = base64String.length;
+        dataSize.textContent = `长度: ${length} 字符`;
+        
+        let html = '';
+        
+        // 显示完整格式
+        const fullData = `data:image/png;base64,${base64String}`;
+        
+        // 分割显示，每行显示80个字符
+        const prefix = "data:image/png;base64,";
+        let remaining = base64String;
+        
+        // 先显示第一行（包含前缀）
+        html += `<div class="base64-line"><strong>${prefix}</strong></div>`;
+        
+        // 显示Base64数据，每行80个字符
+        for (let i = 0; i < remaining.length; i += 80) {
+          const line = remaining.substring(i, i + 80);
+          html += `<div class="base64-line">${line}</div>`;
+        }
+        
+        // 显示预览信息
+        html += `<div class="base64-preview">`;
+        html += `数据预览: <span class="truncated">${base64String.substring(0, 50)}...</span>`;
+        html += `</div>`;
+        
+        base64Data.innerHTML = html;
+      }
+
+      // 更新SVG滤镜
+      function updateSVGFilter(base64String) {
+        if (base64String) {
+          const fullDataUrl = `data:image/png;base64,${base64String}`;
+          displacementImage.setAttribute('href', fullDataUrl);
+          displacementImage.setAttribute('width', imgW);
+          displacementImage.setAttribute('height', imgH);
+        }
+      }
+
+      // 生成位移贴图
+      function generate() {
+        // 先生成形状
+        const shapeData = generateShape();
+        
+        const e = "inward" === document.querySelector('input[name="dir"]:checked').value;
+        const t = distanceEDT(buildBoundary());
+        const n = t[0], a = t[1];
+        
+        // 计算质心
+        let m = 0, o = 0, i = 0;
+        for (let e = 0; e < imgH; e++) {
+          for (let t = 0; t < imgW; t++) {
+            if (mask[e * imgW + t]) {
+              m += t;
+              o += e;
+              i++;
+            }
+          }
+        }
+        
+        const g = i ? m / i : 0.5 * imgW;
+        const l = i ? o / i : 0.5 * imgH;
+        const r = outX.createImageData(imgW, imgH);
+        const c = r.data;
+        const d = +gamma.value;
+        const s = +deadzone.value;
+        const u = +edge.value;
+        const W = Math.max(1e-6, 1 - s);
+        
+        for (let t = 0; t < imgH; t++) {
+          for (let m = 0; m < imgW; m++) {
+            const o = t * imgW + m;
+            const i = 4 * o;
+            
+            if (!mask[o]) {
+              // 透明区域
+              c[i] = 127;     // R: 中性位置
+              c[i + 1] = 127; // G: 中性位置
+              c[i + 2] = 0;   // B: 未使用
+              c[i + 3] = 0;   // A: 透明
+              continue;
+            }
+            
+            // 计算距离场
+            const dist = Math.max(0, Math.min(1, n[o] / (a || 1)));
+            const E = Math.max(0, Math.min(1, (W - dist) / W));
+            
+            // 应用gamma和边缘增强
+            let w = Math.pow(E, d);
+            let x = Math.min(1, Math.max(0, w / (1 + u * (1 - E))));
+            
+            // 计算方向向量
+            let b = g - m;
+            let A = l - t;
+            const C = Math.hypot(b, A) || 1e-6;
+            let v = b / C;
+            let V = A / C;
+            
+            // 方向反转
+            if (!e) {
+              v = -v;
+              V = -V;
+            }
+            
+            // 计算位移
+            let D = v * x;
+            let F = V * x;
+            
+            // 转换为RGB格式（0-255）
+            const z = Math.max(0, Math.min(255, Math.round(127.5 + 127.5 * D)));
+            const R = Math.max(0, Math.min(255, Math.round(127.5 + 127.5 * F)));
+            
+            // 设置像素
+            c[i] = z;         // R: X轴位移
+            c[i + 1] = R;     // G: Y轴位移
+            c[i + 2] = 0;     // B: 未使用
+            c[i + 3] = 255;   // A: 不透明
+          }
+        }
+        
+        // 输出到canvas
+        outX.putImageData(r, 0, 0);
+        
+        // 将canvas转换为Base64数据
+        const base64String = outC.toDataURL("image/png").split(',')[1];
+        
+        // 显示Base64数据
+        displayBase64Data(base64String);
+        
+        // 更新SVG滤镜
+        updateSVGFilter(base64String);
+        
+        // 更新玻璃效果
+        updateGlassEffect();
+      }
+
+      // 复制数据到剪贴板
+      function copyToClipboard() {
+        if (!currentBase64Data) {
+          alert('请先生成位移贴图数据');
+          return;
+        }
+        
+        // 复制完整的data URL
+        const fullDataUrl = `data:image/png;base64,${currentBase64Data}`;
+        
+        navigator.clipboard.writeText(fullDataUrl)
+          .then(() => {
+            alert('Base64数据已复制到剪贴板！\n\n提示：您可以直接使用 data:image/png;base64,... 格式');
+          })
+          .catch(err => {
+            console.error('复制失败: ', err);
+            
+            // 备用方法：使用textarea
+            const textArea = document.createElement('textarea');
+            textArea.value = fullDataUrl;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+              document.execCommand('copy');
+              alert('Base64数据已复制到剪贴板！');
+            } catch (err) {
+              console.error('备用复制方法也失败了: ', err);
+              alert('复制失败，请手动选择并复制');
+            }
+            document.body.removeChild(textArea);
+          });
+      }
+
+      // 事件绑定
+      gen.onclick = generate;
+      copyData.onclick = copyToClipboard;
+
+      // 初始生成
+      window.addEventListener("load", () => {
+        generate();
+        updateGlassEffect();
+      });
+
+      // 窗口大小变化时更新玻璃位置
+      window.addEventListener('resize', updateGlassEffect);
+    </script>
+  </body>
+</html>
