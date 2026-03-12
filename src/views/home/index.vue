@@ -8,22 +8,17 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-    " />
+      position: absolute; /* 确保它在最底层且覆盖全屏 */
+      width: 100%;
+      top: 0;
+      left: 0;
+    " @mousedown.self="deactivateAll" />
 
-  <component
-    v-for="name in running"
-    :key="name"
-    :is="windowComponents[name]"
-    :ref="(el) => setRef(el, name)"
-    :active="activeWindow === name"
-    :style="{ zIndex: zIndexes[name] }"
-    v-model:top="pos[name].top"
-    v-model:left="pos[name].left"
-    @close="close(name)"
-    @mousedown="activate(name)"
-  />
+  <component v-for="name in running" :key="name" :is="windowComponents[name]" :ref="(el) => setRef(el, name)"
+    :active="activeWindow === name" :style="{ zIndex: zIndexes[name] }" v-model:top="pos[name].top"
+    v-model:left="pos[name].left" @close="close(name)" @mousedown.stop="activate(name)" />
 
-  <Taskbar />
+  <Taskbar @mousedown.self="deactivateAll" />
 </template>
 
 <script setup>
@@ -40,7 +35,7 @@ const windowComponents = {
 
 // 2. 状态管理
 const running = reactive(["about", "explorer", "settings"]);
-const activeWindow = ref("explorer");
+const activeWindow = ref("");
 
 const pos = reactive({
   about: { top: 120, left: 120 },
@@ -60,8 +55,13 @@ const setRef = (el, name) => {
   if (el) windowRefs.set(name, el);
 };
 
-// 3. 核心逻辑
+const deactivateAll = () => {
+  activeWindow.value = "";
+  console.log("已点击桌面，取消所有窗口激活状态");
+};
+
 const activate = (name) => {
+  if (activeWindow.value === name) return; // 已经是激活状态则跳过
   activeWindow.value = name;
   const maxZ = Math.max(...Object.values(zIndexes));
   zIndexes[name] = maxZ + 1;

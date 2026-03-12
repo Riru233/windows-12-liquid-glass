@@ -20,7 +20,7 @@
       class="active-layer"
       :style="
         props.active
-          ? `border-radius:${props.config_layer2.radius}px;background: #0023f543;backdrop-filter: brightness(1.2)`
+          ? `border-radius:${props.config_layer2.radius}px;background: #0023f543;`
           : `background: #0000000f;border-radius:${props.config_layer2.radius}px;`
       "
     ></div>
