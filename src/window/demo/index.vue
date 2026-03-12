@@ -17,23 +17,3 @@ const updatePos = (top, left) => {
   emit("updatePos:left", left);
 }
 </script>
-
-<style scoped>
-@import "/src/assets/liquidglass.css";
-
-.std-btn {
-  margin: 10px;
-  height: 32px;
-  font-size: 14px;
-  border: none;
-  border-radius: 20px;
-  padding: 0 10px;
-  color: #fffc;
-  box-shadow: #fff -0.5px -0.5px 0.5px, #fff 0.5px 0.5px 0.5px;
-  background: linear-gradient(to bottom, #fff6, #8886);
-}
-
-.std-btn.primary {
-  background-color: #24acf2;
-}
-</style>
