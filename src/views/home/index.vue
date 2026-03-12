@@ -81,8 +81,8 @@ watch(windowList, (newList) => {
       const step = 30;
       
       // 假设窗口的平均尺寸，用于碰撞检测
-      const winW = 600; 
-      const winH = 400;
+      const winW = 200; 
+      const winH = 200;
 
       // 1. 计算当前的索引（第几个窗口）
       let index = Object.keys(pos).length;
