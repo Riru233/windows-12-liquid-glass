@@ -14,16 +14,13 @@
       <!-- 分隔 -->
       <div style="flex: 1.23"></div>
       <!-- 居中 -->
-      <div
-        class="unit"
-        style="
+      <div class="unit" style="
           gap: 6px;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-direction: row;
-        "
-      >
+        ">
         <Dock />
       </div>
       <!-- 分隔 -->
@@ -40,29 +37,23 @@
         <p>Unauthorized use or disclosure in any manner may result in disciplinary action up to and including termination of employment (in the case of employees), termination of an assignment or contract (int the case of contigent staff), and potential civil and criminal liability.</p>
        </div> -->
   <!-- 右下角水印 -->
-  <div
-    style="
+  <div style="
       position: fixed;
       color: #fff;
       font-size: 12px;
       bottom: 50px;
       right: 0;
       text-align: right;
-    "
-  >
+    ">
     <!-- <p>Do not take screen shots of this build.</p> -->
     <p>Windows 12 Insider Preview</p>
     <p>Evaluation only. Build 29835.1020.fs_dev11_fit.260118-0936</p>
   </div>
   <!-- 右下角控制中心 -->
-  <control :class="stat.panel === 1 ? 'panel-open' : 'panel-close'" />
+  <control :class="stat.panel" />
   <!-- 右下角通知横幅 -->
-  <notification
-    title="Wechat"
-    detailLine1="Windows Developer Team"
-    detailLine2="Thanks for your support to choose Windows 12."
-    :class="stat.notification"
-  />
+  <notification title="Wechat" detailLine1="Windows Developer Team"
+    detailLine2="Thanks for your support to choose Windows 12." :class="stat.notification" />
 </template>
 <script setup>
 import Widgets from "./components/widgets.vue";
@@ -70,17 +61,17 @@ import Dock from "./components/dock.vue";
 import Status from "./components/status.vue";
 import control from "./components/control.vue";
 import notification from "./components/notification.vue";
-import { reactive,onMounted } from "vue";
+import { reactive, onMounted } from "vue";
 const stat = reactive({
-  panel: 0,
-  notification: "notification-close",
+  panel: 'panel-init',
+  notification: "notification-init",
 });
 
 const togglePanel = () => {
-  if (stat.panel === 0) {
-    stat.panel = 1;
+  if (stat.panel === 'panel-init' || stat.panel === 'panel-close') {
+    stat.panel = 'panel-open';
   } else {
-    stat.panel = 0;
+    stat.panel = 'panel-close';
   }
 };
 
@@ -134,59 +125,82 @@ onMounted(() => {
 p {
   margin: 0;
 }
+
 @keyframes panel-open {
   0% {
     bottom: -200px;
-    transform: scaleX(1) scaleY(1);
+    transform: scaleY(3) translateY(300px);
   }
+
   50% {
     transform: scaleX(0.8) scaleY(1.2) translateY(-80px);
     bottom: 30px;
   }
+
   100% {
     transform: scaleX(1) scaleY(1) translateY(0px);
     bottom: 30px;
   }
 }
+
 @keyframes panel-close {
   0% {
     transform: scaleX(1) scaleY(1) translateY(0px);
     bottom: 30px;
   }
+
   100% {
     transform: scaleY(3) translateY(300px);
     bottom: -200px;
   }
 }
+
 .panel-open {
   animation: panel-open 0.3s ease-out forwards;
 }
+
+.panel-init {
+  bottom: -200px;
+  transform: scaleY(3) translateY(300px);
+}
+
 .panel-close {
   animation: panel-close 0.3s ease-out forwards;
   pointer-events: none;
 }
+
 @keyframes nopen {
   0% {
     transform: translateX(120%);
   }
+
   50% {
-    transform: translateX(-10%)  scaleY(1.2) scaleX(0.8);
+    transform: translateX(-10%) scaleY(1.2) scaleX(0.8);
   }
+
   100% {
     transform: translateX(0);
   }
 }
+
 @keyframes nclose {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(120%);
   }
 }
+
 .notification-open {
   animation: nopen 0.5s ease forwards;
 }
+
+.notification-init {
+  transform: translateX(120%);
+}
+
 .notification-close {
   animation: nclose 0.3s ease forwards;
   pointer-events: none;
