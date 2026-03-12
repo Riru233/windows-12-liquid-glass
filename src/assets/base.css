@@ -109,7 +109,7 @@ p {
 
 @keyframes winanim {
   0% {
-    transform: scale(0) perspective(1000px) rotate3d(0.5, 0, 0, -45deg);
+    transform: scale(0) perspective(1000px) rotate3d(0.5, 0, 0, -90deg);
   }
 
   100% {
@@ -123,6 +123,6 @@ p {
   }
 
   100% {
-    transform: scale(0) perspective(1000px) rotate3d(0.5, 0, 0, 45deg);
+    transform: scale(0) perspective(1000px) rotate3d(0.5, 0, 0, 90deg);
   }
 }

@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, defineAsyncComponent, markRaw, onMounted, watch } from "vue";
+import { ref, reactive, defineAsyncComponent, markRaw, onMounted, watch, provide } from "vue";
 import Taskbar from "/src/views/home/components/taskbar/index_mode1.vue";
 
 /**
@@ -89,6 +89,7 @@ watch(windowList, (newList) => {
   });
 }, { immediate: true, deep: true });
 
+
 // 核心逻辑
 const deactivateAll = () => {
   activeWindow.value = "";
@@ -97,23 +98,42 @@ const deactivateAll = () => {
 const activate = (id) => {
   if (activeWindow.value === id) return;
   activeWindow.value = id;
-  const maxZ = Math.max(...Object.values(zIndexes), 0);
+  
+  // 核心：找到当前所有窗口中最大的 zIndex
+  const zValues = Object.values(zIndexes);
+  const maxZ = zValues.length > 0 ? Math.max(...zValues) : 1;
+  
+  // 将当前点击的窗口 zIndex 设置为最大值 + 1
   zIndexes[id] = maxZ + 1;
 };
-
 // 处理关闭逻辑（带动画）
 const handleClose = (id) => {
   const instance = windowRefs.get(id);
   if (!instance) return;
 
-  // 执行关闭动画
+  // 1. 执行关闭动画
   if (typeof instance.close === 'function') {
     instance.close();
   } else if (instance.$el) {
-    instance.$el.style.animation = "anim-reverse 0.3s cubic-bezier(0, 1, 0, 1) forwards";
+    instance.$el.style.animation = "winanim-reverse 0.5s cubic-bezier(1,0,0,0.5) forwards";
   }
 
-  // 动画结束后从 windowList 中彻底移除
+  if (activeWindow.value === id) {
+    // 找出所有还在运行但不是当前要关闭的窗口
+    const otherWindows = windowList.value.filter(w => w.id !== id);
+    
+    if (otherWindows.length > 0) {
+      // 找到 zIndex 最大的窗口
+      const nextActiveWin = otherWindows.reduce((prev, current) => {
+        return (zIndexes[prev.id] > zIndexes[current.id]) ? prev : current;
+      });
+      // 激活它，但不改变它的 zIndex（保持原层级）
+      activeWindow.value = nextActiveWin.id;
+    } else {
+      // 没有其他窗口了，清空活跃状态
+      activeWindow.value = "";
+    }
+  }
   setTimeout(() => {
     const idx = windowList.value.findIndex(w => w.id === id);
     if (idx > -1) {
@@ -123,8 +143,7 @@ const handleClose = (id) => {
     delete pos[id];
     delete zIndexes[id];
     windowRefs.delete(id);
-    if (activeWindow.value === id) activeWindow.value = "";
-  }, 300);
+  }, 500);
 };
 
 /**
@@ -146,10 +165,35 @@ onMounted(() => {
   // 测试：重复打开多个 demo 窗口
   setTimeout(() => {
     openWindow("demo");
-  }, 3000);
+  }, 1000);
+});
 
-  setTimeout(() => {
-    openWindow("demo");
-  }, 4000);
+// 任务栏配置
+
+const appConfigs = {
+  explorer: {
+    title: "文件资源管理器",
+    url: "/public/icons/explorer_ICO_MYCOMPUTER.ico",
+  },
+  settings: {
+    title: "设置",
+    url: "/public/icons/settings/logo.scale-100.png",
+  },
+  demo: {
+    title: "演示程序",
+    icon: `<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><circle cx="512" cy="512" r="400" fill="#4CAF50"/></svg>`
+  },
+  about: {
+    title: "关于系统",
+    icon: `<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512 85.290667c235.690667 0 426.752 191.061333 426.752 426.752 0 235.648-191.061333 426.709333-426.752 426.709333-235.690667 0-426.752-191.061333-426.752-426.709333C85.248 276.352 276.309333 85.290667 512 85.290667z m0 64a362.752 362.752 0 1 0 0 725.461333A362.752 362.752 0 0 0 512 149.333333z m-0.170667 298.666666a32 32 0 0 1 31.744 27.648l0.298667 4.352 0.128 234.752a32 32 0 0 1-63.701333 4.352l-0.298667-4.309333-0.128-234.752a32 32 0 0 1 32-32zM512 298.794667a42.624 42.624 0 1 1 0 85.205333 42.624 42.624 0 0 1 0-85.205333z" fill="#fff"></path></svg>`
+  }
+};
+
+provide('desktopContext', {
+  appConfigs,
+  windowList,
+  activeWindow,
+  activate, // 使用上面定义的 activate
+  openWindow
 });
 </script>

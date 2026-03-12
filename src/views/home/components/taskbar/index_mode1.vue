@@ -8,23 +8,22 @@
     </div>
     <div class="glass-content">
       <!-- 左侧 -->
-      <div class="unit">
-        <Widgets direction="column" />
-      </div>
-      <!-- 分隔 -->
-      <div style="flex: 1.23"></div>
-      <!-- 居中 -->
       <div class="unit" style="
           gap: 6px;
           display: flex;
           align-items: center;
-          justify-content: center;
           flex-direction: row;
         ">
         <Dock />
       </div>
+      <div style="flex: 1.23"></div>
       <!-- 分隔 -->
       <div style="flex: 1"></div>
+      <!-- 右侧2 -->
+      <div class="unit">
+        <Widgets direction="column" />
+      </div>
+      <!-- 分隔 -->
       <!-- 右侧 -->
       <div class="unit" style="height: 42px; margin: 0">
         <Status direction="column" @toggle-panel="togglePanel" />
