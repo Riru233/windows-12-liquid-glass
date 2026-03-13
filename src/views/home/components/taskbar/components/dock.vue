@@ -1,31 +1,26 @@
 <template>
-    <div class="dock-container">
-        <div v-for="item in fixedItems" :key="item.name" class="dock-item" @click="handleFixedClick(item.name)">
-            <div class="icon-group" style="margin-top:-2px">
-                <div v-html="item.icon" class="app-icon-svg"></div>
-            </div>
-        </div>
-
-        <div class="separator" v-if="pagedItems.length > 0"></div>
-
-        <div v-for="win in pagedItems" :key="win.id" class="dock-item" @click="activate(win.id)">
-            <div class="icon-group">
-                <div v-if="win.icon" v-html="win.icon" class="app-icon-svg"></div>
-                <div v-else-if="win.url" :style="{
-                    backgroundImage: `url(${win.url})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                }" class="app-icon-img" />
-                <div class="status-bar" :class="activeWindow === win.id ? 'bar-active' : 'bar-running'"></div>
-            </div>
-        </div>
-
-        <div v-if="totalTabs > 1" class="pagination-controls">
-            <span @click="prevPage" :class="{ 'disabled': currentPage === 0 }"> < </span>
-            <span class="page-info">{{ currentPage + 1 }}/{{ totalTabs }}</span>
-            <span @click="nextPage" :class="{ 'disabled': currentPage === totalTabs - 1 }"> > </span>
-        </div>
+<div class="dock-container" ref="dockRef">
+    <div v-for="item in fixedItems" :key="item.name" class="dock-item" @click="handleFixedClick(item.name)">
+      <div class="icon-group" style="margin-top:-5px">
+        <div v-html="item.icon" class="app-icon-svg"></div>
+      </div>
     </div>
+
+    <div class="separator" v-if="pagedItems.length > 0"></div>
+
+    <div v-for="win in pagedItems" :key="win.id" class="dock-item" @click="activate(win.id)">
+      <div class="icon-group">
+        <div v-if="win.icon" v-html="win.icon" class="app-icon-svg"></div>
+        <div v-else-if="win.url" :style="{ backgroundImage: `url(${win.url})` }" class="app-icon-img" />
+        <div class="status-bar" :class="activeWindow === win.id ? 'bar-active' : 'bar-running'"></div>
+      </div>
+    </div>
+
+    <div v-if="totalTabs > 1" class="pagination-controls">
+      <span @click="prevPage" :class="{ 'disabled': currentPage === 0 }"> < </span>
+      <span @click="nextPage" :class="{ 'disabled': currentPage === totalTabs - 1 }"> > </span>
+    </div>
+  </div>
 </template>
 
 <script setup>
