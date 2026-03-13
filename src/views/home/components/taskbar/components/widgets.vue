@@ -1,6 +1,6 @@
 <template>
   <!-- 小部件图标 -->
-  <div style="padding: 3px; margin: 0 -36px 0 10px">
+  <!-- <div style="padding: 3px; margin: 0 -36px 0 10px">
     <svg
       t="1760579924821"
       class="icon"
@@ -23,17 +23,17 @@
         p-id="4673"
       ></path>
     </svg>
-  </div>
+  </div> -->
   <!-- 小部件内容 -->
   <div
     style="display: flex"
-    :style="{flexDirection: direction}"
+    :style="{flexDirection: direction,textShadow: ' 0 0 2px #000,0 0 4px #000'}"
   >
-    <div :style=" direction === 'row' ? {fontSize: '12px'} : {fontSize: '11px'} ">Mostly Sunny</div>
+    <div :style=" direction === 'row' ? {fontSize: '12px'} : {fontSize: '11px'} ">Widgets</div>
     <div
-      :style="direction === 'row' ? 'margin-left: 10px;font-size: 12px;' : 'color: #fff;font-size: 11px;text-shadow: 0 0 2px #000,0 0 4px #000,0 0 6px #000;'"
+      :style="direction === 'row' ? 'margin-left: 10px;font-size: 12px;' : 'color: #fff;font-size: 11px;'"
     >
-      70°F
+      Try to drag a widget to desktop 
     </div>
   </div>
 </template>

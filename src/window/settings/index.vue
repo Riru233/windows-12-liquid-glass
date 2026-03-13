@@ -80,7 +80,7 @@
             </svg>
           </div>
           <div style="padding: 0 16px">
-            <svg class="icon windowBtnStd" viewBox="0 0 1024 1024">
+            <svg class="icon windowBtnStd" viewBox="0 0 1024 1024" @click="$emit('minimize')">
               <path d="M160.213333 533.333333h703.658667a32 32 0 0 0 0-64H160.213333a32 32 0 0 0 0 64z"
                 fill="currentColor"></path>
             </svg>

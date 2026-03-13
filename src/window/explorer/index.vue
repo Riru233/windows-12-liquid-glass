@@ -61,7 +61,7 @@
               font-size: 14px;
             "
           >
-            <div style="padding: 0 16px">
+            <div style="padding: 0 16px" @click="$emit('minimize')">
               <svg class="icon windowBtnStd" viewBox="0 0 1024 1024">
                 <path
                   d="M160.213333 533.333333h703.658667a32 32 0 0 0 0-64H160.213333a32 32 0 0 0 0 64z"
@@ -77,7 +77,7 @@
                 ></path>
               </svg>
             </div>
-            <div style="padding: 0 16px" @click="close">
+            <div style="padding: 0 16px" @click="$emit('close')">
               <svg class="icon windowBtnClose" viewBox="0 0 1024 1024">
                 <path
                   d="M187.605333 194.304l3.114667-3.584a32 32 0 0 1 41.642667-3.114667l3.584 3.114667L512 466.730667l276.053333-276.053334a32 32 0 1 1 45.226667 45.269334L557.269333 512l276.053334 276.053333a32 32 0 0 1 3.072 41.642667l-3.114667 3.584a32 32 0 0 1-41.642667 3.114667l-3.584-3.114667L512 557.269333l-276.053333 276.053334a32 32 0 0 1-45.226667-45.269334L466.730667 512l-276.053334-276.053333a32 32 0 0 1-3.072-41.642667l3.114667-3.584-3.114667 3.584z"
@@ -108,8 +108,7 @@ const props = defineProps({
   active: Boolean,
 });
 
-const emit = defineEmits(["close"]);
-const close = () => emit("close", "explorer");
+const emit = defineEmits(["close","minimize"]);
 
 const updatePos = (top, left) => {
   emit("updatePos:top", top);
