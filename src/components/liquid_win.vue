@@ -29,7 +29,7 @@
       class="glass-content-inner"
       :style="{
         borderRadius: `${props.config_layer2.radius}px`,
-        overflow: `hidden`
+        overflow: `hidden`,
       }"
     >
       <div v-if="props.title" class="titlebar" @mousedown="startDrag">
@@ -78,7 +78,11 @@
           v-if="props.winPattern === 1"
         >
           <div style="padding: 0 16px">
-            <svg class="icon windowBtnStd" viewBox="0 0 1024 1024" @click="$emit('minimize')">
+            <svg
+              class="icon windowBtnStd"
+              viewBox="0 0 1024 1024"
+              @click="$emit('minimize')"
+            >
               <path
                 d="M160.213333 533.333333h703.658667a32 32 0 0 0 0-64H160.213333a32 32 0 0 0 0 64z"
                 fill="currentColor"
@@ -161,10 +165,10 @@ const props = defineProps({
     }),
   },
 });
-const top=defineModel("top")
-const left=defineModel("left")
+const top = defineModel("top");
+const left = defineModel("left");
 
-defineEmits(["close","minimize"]);
+defineEmits(["close", "minimize"]);
 
 const glassWindow = ref(null);
 const filterId = `win_filter_${Math.random().toString(36).substr(2, 5)}`;
@@ -200,8 +204,8 @@ const handleDrag = (e) => {
   let t = e.clientY - offsetY;
   el.style.left = `${Math.max(-window.innerWidth, Math.min(l, window.innerWidth - 30))}px`;
   el.style.top = `${Math.max(-30, Math.min(t, window.innerHeight - 30))}px`;
-  top.value=el.style.top.replace("px", "")
-  left.value=el.style.left.replace("px", "")
+  top.value = el.style.top.replace("px", "");
+  left.value = el.style.left.replace("px", "");
 };
 
 const stopDrag = () => {
@@ -222,7 +226,6 @@ const stopDrag = () => {
   display: flex;
 }
 .glass-content-inner {
-  animation: winanim 0.5s cubic-bezier(0, 1, 0, 1);
   position: relative;
   z-index: 10;
   width: 100%;
@@ -241,7 +244,6 @@ const stopDrag = () => {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  animation: winanim 0.5s cubic-bezier(0, 1, 0, 1);
 }
 
 /* --- 原封不动搬运的标题栏样式 --- */
