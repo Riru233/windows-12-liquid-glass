@@ -116,25 +116,71 @@
         <filter :id="filterId">
           <feGaussianBlur
             in="SourceGraphic"
-            :stdDeviation="blur"
+            :stdDeviation="props.blur"
             result="blurred"
           />
+
           <feImage
             :href="displacementMap"
             x="0"
             y="0"
-            :width="width"
-            :height="height"
+            :width="props.width"
+            :height="props.height"
             result="map"
           />
           <feDisplacementMap
             in="blurred"
             in2="map"
-            :scale="displacementScale"
+            :scale="props.displacementScale"
             xChannelSelector="R"
             yChannelSelector="G"
+            result="displaced"
           />
-          <feColorMatrix type="saturate" :values="props.active ? 1.2 : 1.0" />
+
+          <feColorMatrix
+            in="displaced"
+            result="red"
+            type="matrix"
+            values="1 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 1 0"
+          />
+          <feOffset in="red" dx="-0.5" dy="-0.5" result="redOffset" />
+
+          <feColorMatrix
+            in="displaced"
+            result="blue"
+            type="matrix"
+            values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 1 0 0
+                0 0 0 1 0"
+          />
+          <feOffset in="blue" dx="0.5" dy="0.5" result="blueOffset" />
+
+          <feColorMatrix
+            in="displaced"
+            result="green"
+            type="matrix"
+            values="0 0 0 0 0
+                0 1 0 0 0
+                0 0 0 0 0
+                0 0 0 1 0"
+          />
+
+          <feBlend in="redOffset" in2="green" mode="screen" result="redGreen" />
+          <feBlend
+            in="redGreen"
+            in2="blueOffset"
+            mode="screen"
+            result="chromatic"
+          />
+          <feColorMatrix
+            in="chromatic"
+            type="saturate"
+            :values="props.active ? 1.2 : 1.0"
+          />
         </filter>
       </defs>
     </svg>
@@ -152,7 +198,7 @@ const props = defineProps({
   active: Boolean,
   winPattern: Number, // 0: 只有关闭按钮 1: 三大金刚按钮
   displacementScale: Number,
-  blur: { type: Number, default: 2 },
+  blur: { type: Number, default: 1 },
   precise: { type: Number, default: 0.1 },
   config_layer2: {
     type: Object,

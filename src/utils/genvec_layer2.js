@@ -274,7 +274,7 @@ export const generateEdgeMap = ({
   radius = 10,
   angle = 45,
   precise = 1, // 建议设为 1 或 0.5 以保持锐利度
-  edge = 1,
+  edge = 0.3,
 }) => {
   const renderW = width * precise;
   const renderH = height * precise;
@@ -302,9 +302,9 @@ export const generateEdgeMap = ({
 
   const gradient = ctx.createLinearGradient(x0, y0, x1, y1);
   // 使用你要求的渐变色标
-  gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
-  gradient.addColorStop(0.5, "rgba(255, 255, 255, 0)");
-  gradient.addColorStop(1, "rgba(255, 255, 255, 1)");
+  gradient.addColorStop(0, "rgba(255, 255, 255, 0.8)");
+  gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.4)");
+  gradient.addColorStop(1, "rgba(255, 255, 255, 0.8)");
 
   // 3. 【核心修改】：使用 stroke 描边模式
   // 描边需要将路径向内偏移半个线宽，以保证边框紧贴容器边缘且不被切掉

@@ -209,7 +209,7 @@
         <div style="color: rgb(92, 92, 92)">Personalisation ></div>
         <div style="color: #000">Appearence</div>
       </liquid_glass>
-      <div style="height: calc(100% - 275px); overflow-y: scroll;padding-top:95px;margin-top:-95px;" class="overflow">
+      <div style="height: 550px; overflow-y: scroll;padding-top:95px;margin-top:-95px;" class="overflow">
         <!-- 预览 -->
         <div>
           <div style="
@@ -363,7 +363,7 @@
                 width: 100px;
                 margin: 0 10px;
               ">
-              <div style="color: #000; font-size: 14px">Aero Ultra</div>
+              <div style="color: #000; font-size: 14px">Fluent 3D</div>
               <div style="flex-grow: 1"></div>
               <svg class="icon" width="12" height="12" style="margin: 0" viewBox="0 0 1024 1024" version="1.1"
                 xmlns="http://www.w3.org/2000/svg" p-id="51718">
@@ -381,7 +381,7 @@
               </svg>
             </div>
           </div>
-          <!-- 水晶亚克力可读性设置 -->
+          <!-- Fluent玻璃可读性设置 -->
           <div class="flex-lr" style="height: 60px; border-top: #ccc 1px solid">
             <div class="icons">
               <div style="width: 24px"></div>
@@ -392,9 +392,9 @@
                 flex: 1;
                 justify-content: center;
               ">
-              <div style="color: #000; font-size: 14px">Aero Ultra Pattern</div>
+              <div style="color: #000; font-size: 14px">Text Cloud shadow</div>
               <div style="color: #555; font-size: 12px">
-                You can set foggy texture or mica texture according to your taste
+                Both enhancing readability and transparency.
               </div>
             </div>
             <div style="
@@ -410,7 +410,7 @@
                 width: 100px;
                 margin: 0 10px;
               ">
-              <div style="color: #000; font-size: 14px">Foggy Aero</div>
+              <div style="color: #000; font-size: 14px">Auto</div>
               <div style="flex-grow: 1"></div>
               <svg class="icon" width="12" height="12" style="margin: 0" viewBox="0 0 1024 1024" version="1.1"
                 xmlns="http://www.w3.org/2000/svg" p-id="51718">
@@ -423,7 +423,7 @@
               <div style="width: 24px"></div>
             </div>
           </div>
-          <!-- 水晶亚克力浓度 -->
+          <!-- 窗口最大化关闭透明效果 -->
           <div class="flex-lr" style="height: 60px; border-top: #ccc 1px solid">
             <div class="icons">
               <div style="width: 24px"></div>
@@ -434,17 +434,36 @@
                 flex: 1;
                 justify-content: center;
               ">
-              <div style="color: #000; font-size: 14px">
-                The color density of Aero Ultra
-              </div>
+              <div style="color: #000; font-size: 14px">Transparency effect</div>
               <div style="color: #555; font-size: 12px">
-                To balance transparency and readability
+                Adjust transparent behavior. The effect is not available for battery-save mode.
               </div>
             </div>
-            <fv-slider :mininum="9" :maxinum="30" :showLabel="true">
-            </fv-slider>
+            <div style="
+                display: flex;
+                flex-direction: row;
+                height: 10px;
+                align-items: center;
+                border-radius: 5px;
+                background-color: #fffc;
+                border-bottom: 1px solid #ddd;
+                outline: #ddd 1px solid;
+                padding: 10px 10px;
+                width: 170px;
+                color: #000;
+                margin: 0 10px;
+              ">
+              Auto
+              <div style="flex-grow: 1"></div>
+              <svg class="icon" width="12" height="12" style="margin: 0" viewBox="0 0 1024 1024" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" p-id="51718">
+                <path
+                  d="M180.053333 361.386667a32 32 0 0 1 45.226667 0L512 648.106667l286.72-286.72a32 32 0 1 1 45.226667 45.226666l-309.333334 309.333334a32 32 0 0 1-45.226666 0L180.053333 406.613333a32 32 0 0 1 0-45.226666z"
+                  p-id="51719" fill="#888"></path>
+              </svg>
+            </div>
             <div>
-              <div style="width: 24px"></div>
+              <div style="width: 24px"> </div>
             </div>
           </div>
         </div>
@@ -514,7 +533,9 @@
             font-weight: 600;
             font-size: 14px;
             margin: 20px 0 0 10px;
-          ">
+          "
+          class="glass-fog"
+          >
           Related Settings
         </div>
         <!-- 高对比度主题 -->
@@ -564,7 +585,8 @@
             font-weight: 600;
             font-size: 14px;
             margin: 20px 0 0 10px;
-          ">
+          "
+          class="glass-fog">
           Related Support
         </div>
         <!-- 选择样式 -->
@@ -593,15 +615,15 @@
               flex-direction: column;
               flex: 1;
               justify-content: center;
-            ">
+            " @click="showHelp">
             <div style="color: #000; font-size: 14px">Appearence Help</div>
           </div>
           <div>
             <svg class="icon" width="14" height="14" style="margin: 0 10px 0 0" viewBox="0 0 1024 1024" version="1.1"
               xmlns="http://www.w3.org/2000/svg" p-id="51718">
               <path
-                d="M180.053333 361.386667a32 32 0 0 1 45.226667 0L512 648.106667l286.72-286.72a32 32 0 1 1 45.226667 45.226666l-309.333334 309.333334a32 32 0 0 1-45.226666 0L180.053333 406.613333a32 32 0 0 1 0-45.226666z"
-                p-id="51719" fill="#666"></path>
+                d="M361.386667 180.053333a32 32 0 0 0 0 45.226667L648.106667 512l-286.72 286.72a32 32 0 1 0 45.226666 45.226667l309.333334-309.333334a32 32 0 0 0 0-45.226666L406.613333 180.053333a32 32 0 0 0-45.226666 0z"
+                p-id="18300"></path>
             </svg>
           </div>
         </div>
@@ -613,6 +635,20 @@
 import liquid_glass from '@/components/liquid_glass.vue';
 import { ref } from 'vue';
 const contentbar = ref(null);
+const showHelp = () => {
+  console.log(`
+  From Windows 12, the UI has changed a lot.
+
+  Windows 12 has introduced Fluent 3D Glass, which looks like liquid glass in MacOS.
+
+  For appearence texture, you can choose from 3 types:
+
+  - Blur: Less performance cost than Fluent Glass, classic.
+  - Flat: Battery-friendly, but it is transparent in taskbar.
+  - Fluent Glass: Like a realistic glass.
+  
+  `)
+};
 </script>
 <style scoped>
 @import "/src/assets/gradientblur.css";
