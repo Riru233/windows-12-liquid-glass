@@ -116,7 +116,7 @@
         <filter :id="filterId">
           <feGaussianBlur
             in="SourceGraphic"
-            :stdDeviation="props.blur"
+            :stdDeviation="blur"
             result="blurred"
           />
 
@@ -124,63 +124,20 @@
             :href="displacementMap"
             x="0"
             y="0"
-            :width="props.width"
-            :height="props.height"
+            :width="width"
+            :height="height"
             result="map"
           />
+
           <feDisplacementMap
             in="blurred"
             in2="map"
-            :scale="props.displacementScale"
+            :scale="displacementScale"
             xChannelSelector="R"
             yChannelSelector="G"
-            result="displaced"
           />
 
-          <feColorMatrix
-            in="displaced"
-            result="red"
-            type="matrix"
-            values="1 0 0 0 0
-                0 0 0 0 0
-                0 0 0 0 0
-                0 0 0 1 0"
-          />
-          <feOffset in="red" dx="-0.5" dy="-0.5" result="redOffset" />
-
-          <feColorMatrix
-            in="displaced"
-            result="blue"
-            type="matrix"
-            values="0 0 0 0 0
-                0 0 0 0 0
-                0 0 1 0 0
-                0 0 0 1 0"
-          />
-          <feOffset in="blue" dx="0.5" dy="0.5" result="blueOffset" />
-
-          <feColorMatrix
-            in="displaced"
-            result="green"
-            type="matrix"
-            values="0 0 0 0 0
-                0 1 0 0 0
-                0 0 0 0 0
-                0 0 0 1 0"
-          />
-
-          <feBlend in="redOffset" in2="green" mode="screen" result="redGreen" />
-          <feBlend
-            in="redGreen"
-            in2="blueOffset"
-            mode="screen"
-            result="chromatic"
-          />
-          <feColorMatrix
-            in="chromatic"
-            type="saturate"
-            :values="props.active ? 1.2 : 1.0"
-          />
+          <feColorMatrix type="saturate" :values="props.active ? 1.2 : 1.0" />
         </filter>
       </defs>
     </svg>
