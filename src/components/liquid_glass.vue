@@ -31,65 +31,46 @@
       <slot :startDrag="startDrag"></slot>
     </div>
 
-<svg color-interpolation-filters="sRGB" style="display: none">
-  <defs>
-    <filter :id="filterId">
-      <feGaussianBlur
-        in="magnified_source"
-        :stdDeviation="props.blur"
-        result="blurred_source"
-      />
-      
-      <feImage
-        :href="displacementMap"
-        x="0" y="0"
-        :width="props.width"
-        :height="props.height"
-        result="displacement_map"
-      />
-      <feDisplacementMap
-        in="blurred_source"
-        in2="displacement_map"
-        :scale="displacementScale"
-        xChannelSelector="R"
-        yChannelSelector="G"
-        result="displaced_source"
-      />
-
-      <feColorMatrix in="displaced_source" result="red_chan" type="matrix"
-        values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" />
-      <feOffset in="red_chan" dx="-0.5" dy="0.5" result="red_moved" />
-
-      <feColorMatrix in="displaced_source" result="blue_chan" type="matrix"
-        values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" />
-      <feOffset in="blue_chan" dx="0.5" dy="0.5" result="blue_moved" />
-
-      <feColorMatrix in="displaced_source" result="green_chan" type="matrix"
-        values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" />
-
-      <feBlend in="red_moved" in2="green_chan" mode="screen" result="rg_mix" />
-      <feBlend in="rg_mix" in2="blue_moved" mode="screen" result="chromatic_source" />
-      <feColorMatrix in="chromatic_source" type="saturate" values="1" result="saturated_chromatic" />
-
-      <feImage
-        :href="SpecularLayer"
-        x="0" y="0"
-        :width="props.width"
-        :height="props.height"
-        result="specular_layer"
-      />
-      
-      <feComposite in="saturated_chromatic" in2="specular_layer" operator="in" result="specular_saturated"></feComposite>
-      
-      <feComponentTransfer in="specular_layer" result="specular_faded">
-        <feFuncA type="linear" slope="0.8"></feFuncA>
-      </feComponentTransfer>
-
-      <feBlend in="specular_saturated" in2="saturated_chromatic" mode="normal" result="withSaturation"></feBlend>
-      <feBlend in="specular_faded" in2="withSaturation" mode="normal"></feBlend>
-    </filter>
-  </defs>
-</svg>
+    <svg color-interpolation-filters="sRGB" style="display: none">
+      <defs>
+        <filter :id="filterId">
+          <feGaussianBlur
+            in="magnified_source"
+            :stdDeviation="props.blur"
+            result="blurred_source"
+          />
+          <feImage
+            :href="displacementMap"
+            x="0"
+            y="0"
+            :width="props.width"
+            :height="props.height"
+            result="displacement_map"
+          />
+          <feDisplacementMap
+            in="blurred_source"
+            in2="displacement_map"
+            :scale="displacementScale"
+            xChannelSelector="R"
+            yChannelSelector="G"
+            result="displaced_source"
+          />
+          <feColorMatrix type="saturate" values="1.6" />
+          <feImage
+            :href="SpecularLayer"
+            x="0"
+            y="0"
+            :width="props.width"
+            :height="props.height"
+            result="specular_layer"
+          ></feImage>
+          <feComposite in="displaced_source" in2="specular_layer" operator="in" result="specular_saturated"></feComposite>
+          <feComponentTransfer in="specular_layer" result="specular_faded"><feFuncA type="linear" slope="0.8"></feFuncA></feComponentTransfer>
+          <feBlend in="specular_saturated" in2="displaced_source" mode="normal" result="withSaturation"></feBlend>
+          <feBlend in="specular_faded" in2="withSaturation" mode="normal"></feBlend>
+        </filter>
+      </defs>
+    </svg>
   </div>
 </template>
 
@@ -147,7 +128,7 @@ const SpecularLayer = computed(() => {
     height: props.height,
     radius: props.radius,
     angle: 45,
-    edge: 1,
+    edge: 2,
     precise: 1,
   });
 });
