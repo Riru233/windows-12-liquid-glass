@@ -1,10 +1,10 @@
 <template>
   <!-- 任务栏——沉浸样式 -->
   <div class="taskbar">
-    <div style="width: 100%; height: 48px; position: fixed">
-      <div class="mask-u-from-70-to-100"></div>
+    <div style="width: 100%; height: 48px; position: fixed;background:linear-gradient(to top, #95a3a4aa, #fff0)">
+      <!-- <div class="mask-u-from-70-to-100"></div>
       <div class="mask-u-from-50-to-75"></div>
-      <div class="mask-u-from-20-to-55"></div>
+      <div class="mask-u-from-20-to-55"></div> -->
     </div>
     <div class="glass-content">
       <!-- 左侧 -->

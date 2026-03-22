@@ -4,7 +4,7 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      background-image: url(&quot;/public/imgbeta12.png&quot;);
+      background-image: url(&quot;/public/img32.jpg&quot;);
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
