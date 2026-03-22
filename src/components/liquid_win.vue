@@ -13,7 +13,7 @@
       class="filter-layer"
       :style="{
         borderRadius: `${props.config_layer2.radius}px`,
-        backdropFilter: `url(#${filterId})`,
+        backdropFilter: props.displacementScale !== 0 ? `url(#${filterId})` : `blur(${props.blur * 10}px)`,
       }"
     ></div>
     <div
@@ -111,7 +111,7 @@
       <slot :startDrag="startDrag"></slot>
     </div>
 
-    <svg color-interpolation-filters="sRGB" style="display: none">
+    <svg color-interpolation-filters="sRGB" style="display: none" v-if="displacementScale != 0">
       <defs>
         <filter :id="filterId">
           <feGaussianBlur
@@ -154,7 +154,7 @@ const props = defineProps({
   height: Number,
   active: Boolean,
   winPattern: Number, // 0: 只有关闭按钮 1: 三大金刚按钮
-  displacementScale: Number,
+  displacementScale: { type: Number, default: 150 },
   blur: { type: Number, default: 1 },
   precise: { type: Number, default: 0.1 },
   config_layer2: {

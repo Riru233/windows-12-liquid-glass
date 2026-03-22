@@ -38,9 +38,9 @@
       @mousedown.stop="activate(win.id)"
     />
   </TransitionGroup>
-    <liquid_glass style="color:#000;" layerClass="" blur="0"
+    <!-- <liquid_glass style="color:#000;" layerClass="" blur="0"
       layerStyle="" width="250" height="250" radius="125" :displacementScale="125" :precise="1" :drag="true"
-      position="fixed" />
+      position="fixed" /> -->
 
   <button
     @click="openWindow('demo')"

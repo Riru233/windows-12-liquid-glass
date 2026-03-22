@@ -1,5 +1,5 @@
 <template>
-  <liquidWin title="Windows Demo" :width="200" :height="200" :displacementScale="78" @updatePos="updatePos"
+  <liquidWin title="Windows Demo" :width="200" :height="200" @updatePos="updatePos"
     :active="props.active" :winPattern="0" v-model:top="top" v-model:left="left">
   </liquidWin>
 </template>

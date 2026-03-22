@@ -2,7 +2,6 @@
   <LiquidWin
     :width="900"
     :height="610"
-    :displacementScale="78"
     :active="props.active"
     v-model:top="top" v-model:left="left"
     @updatePos="updatePos"

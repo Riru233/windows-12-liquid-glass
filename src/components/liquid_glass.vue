@@ -9,7 +9,7 @@
       borderRadius: `${props.radius}px`,
       top: `${props.initialTop}px`,
       left: `${props.initialLeft}px`,
-      position: `${props.position}`
+      position: `${props.position}`,
     }"
   >
     <div
@@ -21,7 +21,7 @@
         backdropFilter: `url(#${filterId})`,
       }"
     ></div>
-    
+
     <div
       class="glass-content-inner"
       @mousedown="startDrag"
@@ -31,71 +31,117 @@
       <slot :startDrag="startDrag"></slot>
     </div>
 
-<svg color-interpolation-filters="sRGB" style="display: none">
-  <defs>
-    <filter :id="filterId">
-      <feGaussianBlur
-        in="magnified_source"
-        :stdDeviation="props.blur"
-        result="blurred_source"
-      />
-      
-      <feImage
-        :href="displacementMap"
-        x="0" y="0"
-        :width="props.width"
-        :height="props.height"
-        result="displacement_map"
-      />
-      <feDisplacementMap
-        in="blurred_source"
-        in2="displacement_map"
-        :scale="displacementScale"
-        xChannelSelector="R"
-        yChannelSelector="G"
-        result="displaced_source"
-      />
+    <svg color-interpolation-filters="sRGB" style="display: none">
+      <defs>
+        <filter :id="filterId">
+          <feGaussianBlur
+            in="magnified_source"
+            :stdDeviation="props.blur"
+            result="blurred_source"
+          />
 
-      <feColorMatrix in="displaced_source" result="red_chan" type="matrix"
-        values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" />
-      <feOffset in="red_chan" dx="-0.5" dy="0.5" result="red_moved" />
+          <feImage
+            :href="displacementMap"
+            x="0"
+            y="0"
+            :width="props.width"
+            :height="props.height"
+            result="displacement_map"
+          />
+          <feDisplacementMap
+            in="blurred_source"
+            in2="displacement_map"
+            :scale="displacementScale"
+            xChannelSelector="R"
+            yChannelSelector="G"
+            result="displaced_source"
+          />
 
-      <feColorMatrix in="displaced_source" result="blue_chan" type="matrix"
-        values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" />
-      <feOffset in="blue_chan" dx="0.5" dy="0.5" result="blue_moved" />
+          <feColorMatrix
+            in="displaced_source"
+            result="red_chan"
+            type="matrix"
+            values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"
+          />
+          <feOffset in="red_chan" dx="-0.5" dy="0.5" result="red_moved" />
 
-      <feColorMatrix in="displaced_source" result="green_chan" type="matrix"
-        values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" />
+          <feColorMatrix
+            in="displaced_source"
+            result="blue_chan"
+            type="matrix"
+            values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0"
+          />
+          <feOffset in="blue_chan" dx="0.5" dy="0.5" result="blue_moved" />
 
-      <feBlend in="red_moved" in2="green_chan" mode="screen" result="rg_mix" />
-      <feBlend in="rg_mix" in2="blue_moved" mode="screen" result="chromatic_source" />
-      <feColorMatrix in="chromatic_source" type="saturate" values="1" result="saturated_chromatic" />
+          <feColorMatrix
+            in="displaced_source"
+            result="green_chan"
+            type="matrix"
+            values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0"
+          />
 
-      <feImage
-        :href="SpecularLayer"
-        x="0" y="0"
-        :width="props.width"
-        :height="props.height"
-        result="specular_layer"
-      />
-      
-      <feComposite in="saturated_chromatic" in2="specular_layer" operator="in" result="specular_saturated"></feComposite>
-      
-      <feComponentTransfer in="specular_layer" result="specular_faded">
-        <feFuncA type="linear" slope="0.8"></feFuncA>
-      </feComponentTransfer>
+          <feBlend
+            in="red_moved"
+            in2="green_chan"
+            mode="screen"
+            result="rg_mix"
+          />
+          <feBlend
+            in="rg_mix"
+            in2="blue_moved"
+            mode="screen"
+            result="chromatic_source"
+          />
+          <feColorMatrix
+            in="chromatic_source"
+            type="saturate"
+            values="1"
+            result="saturated_chromatic"
+          />
 
-      <feBlend in="specular_saturated" in2="saturated_chromatic" mode="normal" result="withSaturation"></feBlend>
-      <feBlend in="specular_faded" in2="withSaturation" mode="normal"></feBlend>
-    </filter>
-  </defs>
-</svg>
+          <feImage
+            :href="SpecularLayer"
+            x="0"
+            y="0"
+            :width="props.width"
+            :height="props.height"
+            result="specular_layer"
+          />
+
+          <feComposite
+            in="saturated_chromatic"
+            in2="specular_layer"
+            operator="in"
+            result="specular_saturated"
+          ></feComposite>
+
+          <feComponentTransfer in="specular_layer" result="specular_faded">
+            <feFuncA type="linear" slope="0.8"></feFuncA>
+          </feComponentTransfer>
+
+          <feBlend
+            in="specular_saturated"
+            in2="saturated_chromatic"
+            mode="normal"
+            result="withSaturation"
+          ></feBlend>
+          <feBlend
+            in="specular_faded"
+            in2="withSaturation"
+            mode="normal"
+          ></feBlend>
+        </filter>
+      </defs>
+    </svg>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from "vue";
-import { generateDisplacementMap,generateEdgeMap } from "/src/utils/genvec_layer2.js";
+import {
+  generateDisplacementMap,
+  generateEdgeMap,
+} from "/src/utils/genvec_layer2.js";
 
 const props = defineProps({
   width: Number,
@@ -148,7 +194,7 @@ const SpecularLayer = computed(() => {
     radius: props.radius,
     angle: 45,
     edge: 1,
-    precise: 1,
+    precise: 0.5,
   });
 });
 
@@ -206,7 +252,8 @@ const stopDrag = () => {
 .glass-component {
   overflow: hidden;
   user-select: none;
-  border:none;outline:none;
+  border: none;
+  outline: none;
   box-shadow: rgba(58, 58, 58, 0.333) 0px 0px 20px 1px;
   z-index: 10;
   display: flex;

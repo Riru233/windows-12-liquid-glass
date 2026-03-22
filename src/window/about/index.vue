@@ -1,5 +1,5 @@
 <template>
-  <liquidWin title="About Windows" :width="400" :height="400" :displacementScale="200" @updatePos="updatePos"
+  <liquidWin title="About Windows" :width="400" :height="400" @updatePos="updatePos"
     :active="props.active" :winPattern="0" v-model:top="top" v-model:left="left" @close="close">
     <div style="display: flex; flex-direction: column; flex: 1; justify-content: center;">
       <div id="actionbar"
