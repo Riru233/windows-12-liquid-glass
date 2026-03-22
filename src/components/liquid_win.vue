@@ -7,21 +7,22 @@
       height: `${props.height}px`,
       top: `${top}px`,
       left: `${left}px`,
+      willChange: isDragging ? 'top, left' : 'auto'
     }"
   >
     <div
       class="filter-layer"
       :style="{
         borderRadius: `${props.config_layer2.radius}px`,
-        backdropFilter: props.displacementScale !== 0 ? `url(#${filterId})` : `blur(${props.blur * 10}px)`,
+        backdropFilter: props.displacementScale !== 0 ? `url(#${filterId})` : `blur(${props.blur * 5}px)`,
       }"
     ></div>
     <div
       class="active-layer"
       :style="
         props.active
-          ? `border-radius:${props.config_layer2.radius}px;background: #0023f543;`
-          : `background: #ffffff0f;border-radius:${props.config_layer2.radius}px;`
+          ? `border-radius:${props.config_layer2.radius}px;background: #ffffffbb;`
+          : `background: #ffffffee;border-radius:${props.config_layer2.radius}px;`
       "
     ></div>
 
@@ -135,9 +136,23 @@
             :scale="displacementScale"
             xChannelSelector="R"
             yChannelSelector="G"
+            result="displaced_source"
           />
 
-          <feColorMatrix type="saturate" :values="props.active ? 1.2 : 1.0" />
+          <feColorMatrix in="displaced_source" type="saturate" :values="props.active ? 1.2 : 1.0" />
+          
+          <feImage
+            :href="SpecularLayer"
+            x="0"
+            y="0"
+            :width="props.width"
+            :height="props.height"
+            result="specular_layer"
+          ></feImage>
+          <feComposite in="displaced_source" in2="specular_layer" operator="in" result="specular_saturated"></feComposite>
+          <feComponentTransfer in="specular_layer" result="specular_faded"><feFuncA type="linear" slope="0.8"></feFuncA></feComponentTransfer>
+          <feBlend in="specular_saturated" in2="displaced_source" mode="normal" result="withSaturation"></feBlend>
+          <feBlend in="specular_faded" in2="withSaturation" mode="normal"></feBlend>
         </filter>
       </defs>
     </svg>
@@ -146,7 +161,7 @@
 
 <script setup>
 import { ref, computed } from "vue";
-import { generateDisplacementMap } from "/src/utils/genvec_layer2.js";
+import { generateDisplacementMap, generateEdgeMap } from "/src/utils/genvec_layer2.js";
 
 const props = defineProps({
   title: String,
@@ -154,7 +169,7 @@ const props = defineProps({
   height: Number,
   active: Boolean,
   winPattern: Number, // 0: 只有关闭按钮 1: 三大金刚按钮
-  displacementScale: { type: Number, default: 150 },
+  displacementScale: { type: Number, default: 78 },
   blur: { type: Number, default: 1 },
   precise: { type: Number, default: 0.1 },
   config_layer2: {
@@ -176,6 +191,16 @@ defineEmits(["close", "minimize"]);
 const glassWindow = ref(null);
 const filterId = `win_filter_${Math.random().toString(36).substr(2, 5)}`;
 
+const SpecularLayer = computed(() => {
+  return generateEdgeMap({
+    width: props.width,
+    height: props.height,
+    radius: 10,
+    angle: 45,
+    edge: 2,
+    precise: 0.5,
+  });
+});
 const displacementMap = computed(() => {
   return generateDisplacementMap({
     width: props.width,
@@ -227,6 +252,13 @@ const stopDrag = () => {
   user-select: none;
   z-index: 10;
   display: flex;
+  transform: translateZ(0); 
+  backface-visibility: hidden;
+}
+
+.filter-layer {
+  /* 限制 backdrop-filter 的范围，减少 GPU 采样面积 */
+  contain: strict;
 }
 .glass-content-inner {
   position: relative;
@@ -235,7 +267,7 @@ const stopDrag = () => {
   display: flex;
   flex-direction: column;
   box-shadow: rgba(58, 58, 58, 0.333) 0px 0px 20px 1px;
-  border: solid 1px #ffffffaa;
+  /* border: solid 1px #ffffffaa; */
   outline: solid #6663 1px;
 }
 .filter-layer,

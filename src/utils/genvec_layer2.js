@@ -57,6 +57,8 @@ export const generateGradientMap = (config) => {
   ctx.putImageData(resultData, 0, 0);
   return canvas.toDataURL("image/png");
 };
+
+const MAX_CALC_W = 150; // 这里的 150 像素足够支撑 1000px 的窗口效果
 // 第二层：生成向量场
 export const generateDisplacementMap = (config) => {
   const {
@@ -67,7 +69,7 @@ export const generateDisplacementMap = (config) => {
     deadzone = 0.5,
     edge = 1.5,
     isInward = false,
-    precise = 0.2,
+    precise = 1,
   } = config;
 
   // --- 核心修复：比例对齐逻辑 ---
@@ -75,7 +77,7 @@ export const generateDisplacementMap = (config) => {
   // 1. 确定主轴缩放
   // 我们以宽度为基准计算缩放系数，确保它是一个精确的浮点数
   const rawCalcW = width * precise;
-  const calcW = Math.max(8, Math.floor(rawCalcW));
+  const calcW = Math.max(MAX_CALC_W, Math.max(8, Math.floor(width * precise)));
 
   // 2. 根据 calcW 和原始比例，精确计算 calcH
   // 这样可以保证 (calcW / calcH) 始终等于 (width / height)
@@ -302,9 +304,10 @@ export const generateEdgeMap = ({
 
   const gradient = ctx.createLinearGradient(x0, y0, x1, y1);
   // 使用你要求的渐变色标
-  gradient.addColorStop(0, "rgba(255, 255, 255, 0.8)");
-  gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.4)");
-  gradient.addColorStop(1, "rgba(255, 255, 255, 0.8)");
+  gradient.addColorStop(0, "rgba(255, 255, 255, 0.6)");
+  gradient.addColorStop(0.3, "rgba(255, 255, 255, 0.2)");
+  gradient.addColorStop(0.7, "rgba(255, 255, 255, 0.2)");
+  gradient.addColorStop(1, "rgba(255, 255, 255, 0.6)");
 
   // 3. 【核心修改】：使用 stroke 描边模式
   // 描边需要将路径向内偏移半个线宽，以保证边框紧贴容器边缘且不被切掉
