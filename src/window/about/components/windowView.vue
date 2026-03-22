@@ -2,11 +2,11 @@
     <div id="contentbar">
         <div style="margin: 10px 40px; color: #000; font-size: 11px">
             <p>Microsoft Windows</p>
-            <p>Version: 29835.1020</p>
+            <p>Version: 29900.2620</p>
             <p>© Microsoft Corporation. All rights reserved.</p>
             <br />
             <p>
-                Windows 12 Pro operating system and its user
+                Windows 12 Developer Preview operating system and its user
                 interface are protected by trademark and other pending or
                 existing intellectual property rights in the United States and
                 other countries.

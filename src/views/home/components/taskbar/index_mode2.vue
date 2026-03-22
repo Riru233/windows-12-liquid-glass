@@ -52,7 +52,7 @@
 
   <div class="watermark-fixed">
     <p>Windows 12 Insider Preview</p>
-    <p>Evaluation only. Build 29835.1020.fs_dev11_fit.260118-0936</p>
+    <p>Build 29900.2620.fs_dev11_fit.260322-2312</p>
     <p>If you meet any issues, press Windows+F and feedback it.</p>
   </div>
 </template>

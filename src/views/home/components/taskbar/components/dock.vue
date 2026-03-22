@@ -27,7 +27,7 @@ const currentPage = ref(0);
 const fixedItems = [
   { 
     name: 'start', 
-    icon: `<svg t="1758723718980" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5255" style="width: 22px;height:22px;"><defs><linearGradient id="linearGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fffc" /><stop offset="100%" stop-color="#fff3" /></linearGradient></defs><path d="M81.92 289.42336v207.79008h415.29344V81.92H81.92v207.50336z m444.86656 0v207.79008H942.08V81.92H526.78656v207.50336zM81.92 734.57664V942.08h415.29344V526.78656H81.92v207.79008z m444.86656 0V942.08H942.08V526.78656H526.78656v207.79008z" p-id="5256" fill="url(#linearGradient)"></path></svg>` 
+    icon: `<svg t="1758723718980" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5255" style="width: 22px;height:22px;"><defs><linearGradient id="linearGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fffc" /><stop offset="100%" stop-color="#fffc" /></linearGradient></defs><path d="M81.92 289.42336v207.79008h415.29344V81.92H81.92v207.50336z m444.86656 0v207.79008H942.08V81.92H526.78656v207.50336zM81.92 734.57664V942.08h415.29344V526.78656H81.92v207.79008z m444.86656 0V942.08H942.08V526.78656H526.78656v207.79008z" p-id="5256" fill="url(#linearGradient)"></path></svg>` 
   },
   { 
     name: 'search', 
