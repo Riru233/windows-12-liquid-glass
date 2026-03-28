@@ -10,7 +10,7 @@
       :displacementScale="75"
       :layerClass="props.selected ? 'colorful-open' : 'colorful'"
       :drag="false"
-      :blur="5"
+      :blur="1"
       :config_layer2="{
         gamma: 0.2,
         deadzone: 0,

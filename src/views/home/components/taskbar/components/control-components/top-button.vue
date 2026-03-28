@@ -10,7 +10,7 @@
       :displacementScale="150"
       :bgClass="props.selected ? 'colorful-open' : 'colorful'"
       :drag="false"
-      :blur="10"
+      :blur="1"
       position="relative"
       layerStyle="justify-content: center;align-items:center;display: flex;flex-direction:row;color: #333;gap:3px;filter:drop-shadow(0px 0px 2px #fff) drop-shadow(0px 0px 4px #fff) drop-shadow(0px 0px 6px #fff);"
       :precise="1"

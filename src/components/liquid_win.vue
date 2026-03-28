@@ -21,8 +21,8 @@
       class="active-layer"
       :style="
         props.active
-          ? `border-radius:${props.config_layer2.radius}px;background: #ffffffbb;`
-          : `background: #ffffffee;border-radius:${props.config_layer2.radius}px;`
+          ? `border-radius:${props.config_layer2.radius}px;background: #0069cc66;`
+          : `background: transparent;border-radius:${props.config_layer2.radius}px;`
       "
     ></div>
 

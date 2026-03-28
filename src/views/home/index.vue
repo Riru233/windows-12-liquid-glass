@@ -42,7 +42,7 @@
       layerStyle="" width="250" height="250" radius="125" :displacementScale="125" :precise="1" :drag="true"
       position="fixed" /> -->
 
-  <button
+  <!-- <button
     @click="openWindow('demo')"
     style="
       position: fixed;
@@ -59,7 +59,7 @@
     "
   >
     ＋
-  </button>
+  </button> -->
 
   <Taskbar @mousedown.stop @restore="handleRestore" />
 </template>

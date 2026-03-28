@@ -40,15 +40,15 @@ p {
 }
 
 .glass-fog {
-  /* filter: drop-shadow(0px 0px 2px #fffd) drop-shadow(0px 0px 4px #fffd); */
+  filter: drop-shadow(0px 0px 2px #fffd) drop-shadow(0px 0px 4px #fffd);
 }
 
 .windowBtnStd {
   height: 1em;
   width: 1em;
   vertical-align: middle;
-  color: #333;
-  /* filter: drop-shadow(0px 0px 2px #888a) drop-shadow(0px 0px 2px #888a); */
+  color: #fff;
+  filter: drop-shadow(0px 0px 2px #888a) drop-shadow(0px 0px 2px #888a);
   transition: all 0.3s ease;
 }
 
@@ -69,8 +69,8 @@ p {
   height: 1.2em;
   width: 1.2em;
   vertical-align: middle;
-  color: #333;
-  /* filter: drop-shadow(0px 0px 2px #888a) drop-shadow(0px 0px 2px #888a); */
+  color: #fff;
+  filter: drop-shadow(0px 0px 2px #888a) drop-shadow(0px 0px 2px #888a);
   transition: all 0.3s ease;
 }
 
