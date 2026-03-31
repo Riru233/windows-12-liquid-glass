@@ -58,8 +58,8 @@
               style="width: 48px; height: 48px; margin: 0 10px"
             />
             <div style="display: flex; flex-direction: column">
-              <div style="color: #333; font-size: 14px">Desktop</div>
-              <div style="color: #666; font-size: 12px">14 Objects</div>
+              <div style="color: #333; font-size: 14px">桌面</div>
+              <div style="color: #666; font-size: 12px">14 个项目</div>
               <div
                 class="cloud"
                 :style="{
@@ -95,7 +95,7 @@
                   ></path>
                 </svg>
                 <div class="glass-fog" style="font-size: 14px">
-                  Select object(s) to show details.
+                  选择单个文件以获取详细信息
                 </div>
               </div>
             </div>
@@ -126,7 +126,7 @@
             alt=""
             style="width: 16px; height: 16px"
           />
-          <div>Favorites</div>
+          <div>快捷访问</div>
         </div>
         <div class="item">
           <img
@@ -134,7 +134,7 @@
             alt=""
             style="width: 16px; height: 12px; margin-left: 2em"
           />
-          <div>Desktop</div>
+          <div>桌面</div>
         </div>
         <div class="item">
           <img
@@ -142,7 +142,7 @@
             alt=""
             style="width: 16px; height: 16px; margin-left: 2em"
           />
-          <div>Downloads</div>
+          <div>下载</div>
         </div>
         <br />
         <div class="item">
@@ -151,7 +151,7 @@
             alt=""
             style="width: 16px; height: 16px"
           />
-          <div>Gallery</div>
+          <div>图库</div>
         </div>
         <br />
         <div class="item">
@@ -160,7 +160,7 @@
             alt=""
             style="width: 16px; height: 16px"
           />
-          <div>Main Folder</div>
+          <div>主文件夹</div>
         </div>
         <br />
         <div class="item">
@@ -169,7 +169,7 @@
             alt=""
             style="width: 16px; height: 16px"
           />
-          <div>Storage</div>
+          <div>文件资源管理器</div>
         </div>
         <br />
         <div class="item">
@@ -178,7 +178,7 @@
             alt=""
             style="width: 16px; height: 16px"
           />
-          <div>This PC</div>
+          <div>计算机</div>
         </div>
         <br />
         <div class="item">
@@ -187,7 +187,7 @@
             alt=""
             style="width: 16px; height: 16px"
           />
-          <div>Onedrive</div>
+          <div>OneDrive</div>
         </div>
         <br />
         <div class="item">
@@ -196,7 +196,7 @@
             alt=""
             style="width: 16px; height: 16px"
           />
-          <div>Network</div>
+          <div>网络</div>
         </div>
       </div>
       <div class="content">
@@ -209,12 +209,12 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        font-size: 11px;
+        font-size: 12px;
         margin-left: 10px;
         color: #333;
       "
     >
-      <div>14 Objects</div>
+      <div>14 个项目</div>
       <div style="flex-grow: 1"></div>
       <div>
         <svg
@@ -316,7 +316,7 @@ p {
 
 .item {
   color: #000;
-  font-size: 11px;
+  font-size: 12px;
   padding: 5px 15px;
   display: flex;
   flex-direction: row;

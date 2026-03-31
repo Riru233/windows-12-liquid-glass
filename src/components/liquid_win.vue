@@ -3,7 +3,7 @@
     class="glass-component"
     ref="glassWindow"
     :style="{
-      width: `${props.width}px`,
+      width: `${props.width - 4}px`,
       height: `${props.height}px`,
       top: `${top}px`,
       left: `${left}px`,

@@ -1,7 +1,7 @@
 <template>
   <!-- 小部件图标 -->
-  <!-- <div style="padding: 3px; margin: 0 -36px 0 10px">
-    <svg
+  <div style="padding: 3px; margin: 0 0 0 10px">
+  <!-- <svg
       t="1760579924821"
       class="icon"
       viewBox="0 0 1024 1024"
@@ -22,18 +22,22 @@
         fill="#FFCF0066"
         p-id="4673"
       ></path>
-    </svg>
-  </div> -->
+    </svg> -->
+    <img src="/icons/sidebar_100.ico" alt="" 
+      :width="direction === 'row'?'24px':'28px'"
+      :height="direction === 'row'?'24px':'28px'"
+      :style="direction === 'row' ? 'margin:-8px 0':'margin: 0px 0'">
+  </div>
   <!-- 小部件内容 -->
   <div
     style="display: flex"
     :style="{flexDirection: direction,textShadow: ' 0 0 2px #000,0 0 4px #000'}"
   >
-    <div :style=" direction === 'row' ? {fontSize: '12px'} : {fontSize: '11px'} ">Widgets</div>
+    <div :style=" direction === 'row' ? {fontSize: '12px'} : {fontSize: '11px'} " style="font-weight: 600;">“小工具”回归</div>
     <div
-      :style="direction === 'row' ? 'margin-left: 10px;font-size: 12px;' : 'color: #fff;font-size: 11px;'"
+      :style="direction === 'row' ? 'margin-left: 10px;font-size: 12px;' : 'color: #fff;font-size: 11px;'" style="color: #ccc"
     >
-      Try to drag a widget to desktop 
+      将喜欢的小工具固定在桌面
     </div>
   </div>
 </template>
