@@ -650,8 +650,8 @@
         </LiquidGlass>
         <div style="flex-grow: 1"></div>
         <LiquidGlass :width="80" :height="32" :radius="20" :displacementScale="75" :drag="false" :blur="0"
-          position="relative" style="background-color: #24acf230;margin: 10px;" :layer-style="`text-align:center;font-size: 14px;justify-content:center;align-items:center;display:flex;`" :precise="1">
-          确认
+          position="relative" style="background-color: #24acf230;margin: 10px;" :layer-style="`text-align:center;font-size: 14px;justify-content:center;align-items:center;display:flex;text-shadow: 0 0 2px #000;`" :precise="1">
+          确定
         </LiquidGlass>
       </div>
     </div>

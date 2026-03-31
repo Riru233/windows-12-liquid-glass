@@ -18,13 +18,13 @@
       ></path>
     </svg>
   </div>
-  <div class="panel-each">
+  <!-- <div class="panel-each">
     <img
       src="/public/icons/mmcndmgr_30509.ico"
       alt=""
       style="width: 16px; height: 16px; padding: 0 7px"
     />
-  </div>
+  </div> -->
   <div style="font-size: 11px;" class="panel-each">ENG</div>
   <!-- 控制中心 -->
   <div class="panel-control" @click="togglePanel">
@@ -179,7 +179,7 @@ const updateTime = () => {
   // 3. 格式化分钟 (始终保持两位)
   const minutes = String(now.getMinutes()).padStart(2, "0");
 
-  currentTime.value = `${ampm} ${String(hours).padStart(2, "0")}:${minutes}`;
+  currentTime.value = ` ${ampm}${String(hours).padStart(2, "0")}:${minutes}`;
 
   // 格式化日期: 2026/2/9
   const year = now.getFullYear();
