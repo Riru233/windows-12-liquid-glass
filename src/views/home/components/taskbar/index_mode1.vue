@@ -50,7 +50,7 @@
     <p>Build 29900.2620.fs_dev11_fit.260322-2312</p>
   </div>
   <!-- 右下角控制中心 -->
-  <control :class="stat.panel" />
+  <control :panel="stat.panel" />
   <!-- 右下角通知横幅 -->
   <notification title="Wechat" detailLine1="Windows Developer Team"
     detailLine2="Thanks for your support to choose Windows 12." :class="stat.notification" />
@@ -124,52 +124,6 @@ onMounted(() => {
 
 p {
   margin: 0;
-}
-
-@keyframes panel-open {
-  0% {
-    bottom: -200px;
-    transform: scaleY(1) translateY(300px);
-  }
-
-  40% {
-    transform: scaleX(0.9) scaleY(1.3) translateY(-120px);
-    bottom: 30px;
-  }
-  75% {
-    transform: scaleX(1.05) scaleY(1);
-    bottom: 30px;
-  }
-  100% {
-    transform: scaleX(1) scaleY(1) translateY(0px);
-    bottom: 30px;
-  }
-}
-
-@keyframes panel-close {
-  0% {
-    transform: scaleX(1) scaleY(1) translateY(0px);
-    bottom: 30px;
-  }
-
-  100% {
-    transform: scaleY(3) translateY(300px);
-    bottom: -200px;
-  }
-}
-
-.panel-open {
-  animation: panel-open 0.5s ease-out forwards;
-}
-
-.panel-init {
-  bottom: -200px;
-  transform: scaleY(3) translateY(300px);
-}
-
-.panel-close {
-  animation: panel-close 0.3s ease-out forwards;
-  pointer-events: none;
 }
 
 @keyframes nopen {

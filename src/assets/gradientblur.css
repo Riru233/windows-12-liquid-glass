@@ -1,3 +1,4 @@
+/* 向下渐变 */
 .mask-b-from-70-to-100 {
   mask-image: linear-gradient(
     to bottom,
@@ -39,7 +40,7 @@
   height: 100%;
   width: 100%;
 }
-
+/* 向上渐变 */
 .mask-u-from-70-to-100 {
   mask-image: linear-gradient(
     to top,
@@ -71,6 +72,47 @@
 .mask-u-from-20-to-55 {
   mask-image: linear-gradient(
     to top,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 0) 55%
+  );
+  backdrop-filter: blur(10px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+/* 从右下角向左上角渐变 */
+.mask-ul-from-70-to-100 {
+  mask-image: radial-gradient(
+    circle at 100% 100%,
+    rgba(0, 0, 0, 1) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  backdrop-filter: blur(0.8px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.mask-ul-from-50-to-75 {
+  mask-image: radial-gradient(
+    circle at 100% 100%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 0) 75%
+  );
+  backdrop-filter: blur(2px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.mask-ul-from-20-to-55 {
+  mask-image: radial-gradient(
+    circle at 100% 100%,
     rgba(0, 0, 0, 1) 20%,
     rgba(0, 0, 0, 0) 55%
   );

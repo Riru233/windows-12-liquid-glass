@@ -15,7 +15,7 @@
       :style="{
         borderRadius: `${props.config_layer2.radius}px`,
         backdropFilter: props.displacementScale !== 0 ? `url(#${filterId})` : `blur(${props.blur * 5}px)`,
-        border: props.displacementScale !== 0 ? `none` : `solid 1px #ffffffaa`,
+        border: `solid 1px #ffffffaa`,
       }"
     ></div>
     <div
@@ -170,7 +170,7 @@ const props = defineProps({
   height: Number,
   active: Boolean,
   winPattern: Number, // 0: 只有关闭按钮 1: 三大金刚按钮
-  displacementScale: { type: Number, default: 0 },
+  displacementScale: { type: Number, default: 78 },
   blur: { type: Number, default: 1 },
   precise: { type: Number, default: 0.1 },
   config_layer2: {
@@ -199,7 +199,7 @@ const SpecularLayer = computed(() => {
     radius: 10,
     angle: 45,
     edge: 2,
-    precise: 0.5,
+    precise: 0.1,
   });
 });
 const displacementMap = computed(() => {

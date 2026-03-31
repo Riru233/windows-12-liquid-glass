@@ -7,8 +7,8 @@
       <div class="mask-b-from-50-to-75" style="border-radius:10px"></div>
       <div class="mask-b-from-20-to-55" style="border-radius:10px"></div>
     </div>
-    <liquid_glass style="margin:10px 20px;color:#000;background: #fff8;" layerClass="sidebar" blur="10"
-      layerStyle="margin:10px;" width="230" height="570" radius="20" :displacementScale="250" :precise="1" :drag="false"
+    <liquid_glass style="margin:10px 20px;color:#000;background: #fff6;" layerClass="sidebar"
+      layerStyle="margin:10px;" width="230" height="570" radius="20" :displacementScale="250" :precise="0.1" :drag="false"
       position="relative">
       <!-- 登录信息 -->
       <div style="display: flex; flex-direction: row; gap: 10px">
@@ -203,7 +203,7 @@
     </liquid_glass>
     <div class="content">
       <!-- 标题拟态玻璃 -->
-      <liquid_glass style="margin:10px 20px;color:#000;background: #fff8;" blur="10"
+      <liquid_glass style="margin:10px 20px;color:#000;background: #fff6;"
         layerStyle="margin:10px;display:flex;flex-direction:row;gap:0.4em" width="250" height="40" radius="20"
         :displacementScale="250" :precise="1" :drag="false" position="relative">
         <div style="color: rgb(92, 92, 92)">Personalisation ></div>

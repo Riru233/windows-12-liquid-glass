@@ -11,12 +11,6 @@
       :layerClass="props.selected ? 'colorful-open' : 'colorful'"
       :drag="false"
       :blur="1"
-      :config_layer2="{
-        gamma: 0.2,
-        deadzone: 0,
-        edge: 10,
-        isInward: true,
-      }"
       position="relative"
       layerStyle="justify-content: center;align-items:center;"
       :precise="1"
