@@ -22,6 +22,7 @@ const routes = Object.keys(modules).map((filePath) => {
 })
 
 const router = createRouter({
+  mode: 'hash',
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
