@@ -1,20 +1,30 @@
 <template>
   <!-- 任务栏——沉浸样式 -->
   <div class="taskbar">
-    <div style="width: 100%; height: 48px; position: fixed;background:linear-gradient(to top, #95a3a4aa, #fff0)">
+    <div
+      style="
+        width: 100%;
+        height: 48px;
+        position: fixed;
+        background: linear-gradient(to top, #95a3a4aa, #fff0);
+      "
+    >
       <!-- <div class="mask-u-from-70-to-100"></div>
       <div class="mask-u-from-50-to-75"></div>
       <div class="mask-u-from-20-to-55"></div> -->
     </div>
     <div class="glass-content">
       <!-- 左侧 -->
-      <div class="unit" style="
+      <div
+        class="unit"
+        style="
           gap: 6px;
           display: flex;
           align-items: center;
           flex-direction: row;
-        ">
-        <Dock />
+        "
+      >
+        <Dock @toggle-start="toggleStart" />
       </div>
       <div style="flex: 1.23"></div>
       <!-- 分隔 -->
@@ -36,42 +46,61 @@
         <p>Unauthorized use or disclosure in any manner may result in disciplinary action up to and including termination of employment (in the case of employees), termination of an assignment or contract (int the case of contigent staff), and potential civil and criminal liability.</p>
        </div> -->
   <!-- 右下角水印 -->
-  <div style="
+  <div
+    style="
       position: fixed;
       color: #fff;
       font-size: 12px;
       bottom: 50px;
       right: 0;
       text-align: right;
-      text-shadow: #000 0 0 2px,#000 0 0 4px;
-    ">
+      text-shadow:
+        #000 0 0 2px,
+        #000 0 0 4px;
+    "
+  >
     <!-- <p>Do not take screen shots of this build.</p> -->
     <!-- <p>Windows 12 Developer Preview</p>
     <p>Build 29900.2620.fs_dev11_fit.260322-2312</p> -->
   </div>
   <!-- 右下角控制中心 -->
   <control :panel="stat.panel" />
+  <Start :panel="stat.start" />
   <!-- 右下角通知横幅 -->
-  <notification title="Wechat" detailLine1="Windows Developer Team"
-    detailLine2="Thanks for your support to choose Windows 12." :class="stat.notification" />
+  <notification
+    title="Wechat"
+    detailLine1="Windows Developer Team"
+    detailLine2="Thanks for your support to choose Windows 12."
+    :class="stat.notification"
+  />
 </template>
 <script setup>
 import Widgets from "./components/widgets.vue";
 import Dock from "./components/dock.vue";
 import Status from "./components/status.vue";
+import Start from "./components/start.vue";
 import control from "./components/control.vue";
 import notification from "./components/notification.vue";
 import { reactive, onMounted } from "vue";
 const stat = reactive({
-  panel: 'panel-init',
+  panel: "panel-init",
+  start: "panel-init",
   notification: "notification-init",
 });
 
 const togglePanel = () => {
-  if (stat.panel === 'panel-init' || stat.panel === 'panel-close') {
-    stat.panel = 'panel-open';
+  if (stat.panel === "panel-init" || stat.panel === "panel-close") {
+    stat.panel = "panel-open";
   } else {
-    stat.panel = 'panel-close';
+    stat.panel = "panel-close";
+  }
+};
+
+const toggleStart = () => {
+  if (stat.start === "panel-init" || stat.start === "panel-close") {
+    stat.start = "panel-open";
+  } else {
+    stat.start = "panel-close";
   }
 };
 
@@ -128,7 +157,7 @@ p {
 
 @keyframes nopen {
   0% {
-    transform: translateX(120%);
+    transform: translateX(180%);
   }
 
   50% {
@@ -146,7 +175,7 @@ p {
   }
 
   100% {
-    transform: translateX(120%);
+    transform: translateX(180%);
   }
 }
 
@@ -155,7 +184,8 @@ p {
 }
 
 .notification-init {
-  transform: translateX(120%);
+  transform: translateX(180%);
+  pointer-events: none;
 }
 
 .notification-close {

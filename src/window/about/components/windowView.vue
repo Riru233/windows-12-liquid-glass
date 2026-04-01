@@ -2,7 +2,7 @@
     <div id="contentbar">
         <div style="margin: 10px 70px; color: #000; font-size: 12px;line-height: 1.8em;">
             <p>Microsoft Windows</p>
-            <p>版本 26H2（29900.2620）</p>
+            <p>版本 26H2（系统内部版本：29900.2620）</p>
             <p>© 微软公司。保留所有权利。</p>
             <br />
             <p>
