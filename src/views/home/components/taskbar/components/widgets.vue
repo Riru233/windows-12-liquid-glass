@@ -1,7 +1,7 @@
 <template>
   <!-- 小部件图标 -->
-  <!-- <div style="padding: 3px; margin: 0 -36px 0 10px">
-    <svg
+  <div style="padding:0; margin: 0 0 5px 0;width:180px;" class="panel-sidebar">
+    <!-- <svg
       t="1760579924821"
       class="icon"
       viewBox="0 0 1024 1024"
@@ -22,22 +22,43 @@
         fill="#FFCF0066"
         p-id="4673"
       ></path>
-    </svg>
-  </div> -->
-  <!-- 小部件内容 -->
-  <div
-    style="display: flex"
-    :style="{flexDirection: direction,textShadow: ' 0 0 2px #000,0 0 4px #000'}"
-  >
-    <div :style=" direction === 'row' ? {fontSize: '12px'} : {fontSize: '11px'} ">Widgets</div>
-    <div
-      :style="direction === 'row' ? 'margin-left: 10px;font-size: 12px;' : 'color: #fff;font-size: 11px;'"
-    >
-      Try to drag a widget to desktop 
+    </svg> -->
+    <LiquidFilter id="panel-sidebar" :width="180" :height="32" displacementScale="42" :precise="1" :config_layer2="{
+      radius: 12,
+      gamma: 1,
+      deadzone: 0.05,
+      edge: 12,
+      isInward: true,
+    }" />
+    <div style="display: flex;flex-direction: row;">
+      <img src="/icons/sidebar_100.ico" alt="" :width="direction === 'row' ? '24px' : '28px'"
+        :height="direction === 'row' ? '24px' : '28px'"
+        :style="direction === 'row' ? 'margin:-8px 0' : 'margin: 0px 0'">
+      <div style="display: flex;flex-direction: column;">
+
+        <div :style="direction === 'row' ? { fontSize: '12px' } : { fontSize: '11px' }" style="font-weight: 600;">
+          “小工具”回归
+        </div>
+        <div :style="direction === 'row' ? 'margin-left: 10px;font-size: 12px;' : 'color: #fff;font-size: 11px;'"
+          style="color: #ccc">
+          将喜欢的小工具固定在桌面
+        </div>
+      </div>
     </div>
   </div>
+  <!-- 小部件内容 -->
+  <!-- <div style="display: flex" :style="{ flexDirection: direction, textShadow: ' 0 0 2px #000,0 0 4px #000' }" class="panel-sidebar">
+    <LiquidFilter id="panel-sidebar" :width="78" :height="32" displacementScale="42" :precise="1" :config_layer2="{
+      radius: 12,
+      gamma: 1,
+      deadzone: 0.05,
+      edge: 12,
+      isInward: true,
+    }" />
+  </div> -->
 </template>
 <script setup>
+import LiquidFilter from "@/components/liquid_v2.vue";
 const prop = defineProps({
   direction: {
     type: String,
@@ -45,3 +66,35 @@ const prop = defineProps({
   },
 });
 </script>
+<style>
+@keyframes panel-hover-sidebar {
+  0% {
+    transform: scaleX(1);
+  }
+
+  10% {
+    transform: scaleX(1.2);
+  }
+
+  40% {
+    transform: scaleX(1) scaleY(1.2);
+  }
+
+  100% {
+    transform: scaleX(1) scaleY(1);
+  }
+}
+
+/* 全局 */
+.panel-sidebar {
+  text-shadow: #000 0 0 2px, #000 0 0 4px;
+  transition: all 0.3s ease-out;
+  height: 32px;
+  border-radius: 12px;
+}
+.panel-sidebar:hover {
+  animation: panel-hover-sidebar 0.3s ease-out forwards;
+  backdrop-filter: url(#panel-sidebar);
+  background-color: #0002;
+}
+</style>

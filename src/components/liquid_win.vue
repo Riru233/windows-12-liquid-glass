@@ -3,7 +3,7 @@
     class="glass-component"
     ref="glassWindow"
     :style="{
-      width: `${props.width}px`,
+      width: `${props.width - 4}px`,
       height: `${props.height}px`,
       top: `${top}px`,
       left: `${left}px`,
@@ -15,6 +15,7 @@
       :style="{
         borderRadius: `${props.config_layer2.radius}px`,
         backdropFilter: props.displacementScale !== 0 ? `url(#${filterId})` : `blur(${props.blur * 5}px)`,
+        border: `solid 1px #ffffffaa`,
       }"
     ></div>
     <div
@@ -198,7 +199,7 @@ const SpecularLayer = computed(() => {
     radius: 10,
     angle: 45,
     edge: 2,
-    precise: 0.5,
+    precise: 0.1,
   });
 });
 const displacementMap = computed(() => {

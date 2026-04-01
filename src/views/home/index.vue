@@ -4,7 +4,7 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      background-image: url(&quot;/public/img32.jpg&quot;);
+      background-image: url(&quot;/public/img0.png&quot;);
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
@@ -79,10 +79,10 @@ import Taskbar from "/src/views/home/components/taskbar/index_mode1.vue";
 import liquid_glass from "@/components/liquid_glass.vue";
 
 const windowList = ref([
-  { id: "win_1", name: "demo" },
+  // { id: "win_1", name: "demo" },
   { id: "win_2", name: "about" },
   { id: "win_3", name: "explorer" },
-  { id: "win_4", name: "settings" },
+  // { id: "win_4", name: "settings" },
 ]);
 
 const animMode = ref("win-open");
