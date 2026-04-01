@@ -139,9 +139,9 @@
   </div>
 </template>
 <script setup>
-import ControlButton from "./start-components/control-button.vue";
-import TopButton from "./start-components/top-button.vue";
-import SlideCapsule from "./start-components/slide-capsule.vue";
+import ControlButton from "./control-components/control-button.vue";
+import TopButton from "./control-components/top-button.vue";
+import SlideCapsule from "./control-components/slide-capsule.vue";
 import { ref, reactive } from "vue";
 const stat = reactive({
   bright: 50,

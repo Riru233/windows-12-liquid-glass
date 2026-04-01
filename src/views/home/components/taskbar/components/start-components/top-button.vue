@@ -8,11 +8,11 @@
       :height="props.height"
       :radius="props.radius"
       :displacementScale="150"
-      :bgClass="props.selected ? 'colorful-open' : 'colorful'"
+      :layerClass="props.selected ? 'colorful-open-start' : 'colorful-start'"
       :drag="false"
       :blur="1"
       position="relative"
-      layerStyle="justify-content: center;align-items:center;display: flex;flex-direction:row;color: #333;gap:3px;filter:drop-shadow(0px 0px 2px #fff) drop-shadow(0px 0px 4px #fff) drop-shadow(0px 0px 6px #fff);"
+      :layerStyle="`justify-content: center;align-items:center;display: flex;flex-direction:row;color: #333;gap:3px;background: ${props.selected ? props.selectedColor : '#ffffff66'};box-shadow: 0 0 10px #333;`"
       :precise="1"
     >
       <slot></slot>
@@ -25,6 +25,13 @@ const props = defineProps({
     width: Number,
     height: Number,
     radius: Number,
+    selected: Boolean,
+    selectedColor: String,
 });
 </script>
-<style></style>
+<style>
+.colorful-open-start {
+  color: #fff!important;
+}
+
+</style>
