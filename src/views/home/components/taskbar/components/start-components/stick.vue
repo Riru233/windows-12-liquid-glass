@@ -1,7 +1,7 @@
 <template>
   <div class="stick-wrapper" :style="tileStyle">
-    <LiquidGlass :width="actualSize.w" :height="actualSize.h" :radius="10" :displacementScale="75"
-      :layerStyle="`background-color: ${props.bg}; color: ${props.color};`" :drag="false" :blur="1" position="relative"
+    <LiquidGlass :width="actualSize.w" :height="actualSize.h" :radius="25" :displacementScale="75"
+      :layerStyle="`background-color: ${props.bg}; color: ${props.color};`" :drag="false" :blur="3" position="relative"
       layerStyle="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100%;"
       :precise="1">
       <div class="content-box">
@@ -78,7 +78,7 @@ const tileStyle = computed(() => {
   font-weight: 500;
   color: #fff;
   width: 100%;
-  padding: 0 10px 5px 20px;
+  padding: 0 10px 10px 30px;
 }
 
 .icon {

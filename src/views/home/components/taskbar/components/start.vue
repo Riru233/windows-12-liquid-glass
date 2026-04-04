@@ -185,7 +185,7 @@ const stopDrag = () => {
 .bg {
   left: 0px;
   bottom: 0px;
-  width: 400px;
+  width: 800px;
   height: 600px;
   background: radial-gradient(circle at 0% calc(100% 200px),
       rgba(0, 0, 0, 0.171) 50%,

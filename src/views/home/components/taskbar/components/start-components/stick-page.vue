@@ -20,10 +20,17 @@
                         <img src="/icons/teams.png" alt="Teams" style="width:32px">
                     </stick>
                     <stick size="1x1" title="电脑管家" bg="#33333366" color="#fff">
-                        <img src="/icons/WindowsSecurityAppList.scale-125_contrast-white.png" alt="电脑管家" style="width:32px">
+                        <img src="/icons/WindowsSecurityAppList.scale-125_contrast-white.png" alt="电脑管家"
+                            style="width:32px">
                     </stick>
-                    <stick size="2x2" title="天气" bg="#33333366" color="#fff" @click="$emit('open-run')">
-                        <img src="/icons/run.ico" alt="" style="width:48px">
+                    <stick size="2x4" title="天气" bg="#6eacdb66" color="#fff" @click="$emit('open-run')">
+                        <div style="display: flex;flex-direction: row;gap:10px;">
+                            <img src="/icons/WeatherAppList.targetsize-64.png" alt="" style="width:48px">
+                            <div style="display: flex;flex-direction: column;justify-content: flex-start;">
+                                <div>北京</div>
+                                <div>多云 15~20℃</div>
+                            </div>
+                        </div>
                     </stick>
                 </div>
             </div>
@@ -60,7 +67,8 @@ import stick from './stick.vue';
 
     /* 自动填充算法：dense 确保大磁贴换行后，小磁贴能填补空隙 */
     grid-auto-flow: row dense;
-    width: 100%;max-width: 300px;
+    width: 100%;
+    max-width: 300px;
     min-height: 0;
 }
 

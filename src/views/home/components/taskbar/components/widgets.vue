@@ -30,18 +30,18 @@
       edge: 12,
       isInward: true,
     }" />
-    <div style="display: flex;flex-direction: row;">
-      <img src="/icons/sidebar_100.ico" alt="" :width="direction === 'row' ? '24px' : '28px'"
+    <div style="display: flex;flex-direction: row;gap:6px;">
+      <img src="/icons/WidgetBoardIcon.svg" alt="" :width="direction === 'row' ? '24px' : '28px'"
         :height="direction === 'row' ? '24px' : '28px'"
         :style="direction === 'row' ? 'margin:-8px 0' : 'margin: 0px 0'">
       <div style="display: flex;flex-direction: column;">
 
         <div :style="direction === 'row' ? { fontSize: '12px' } : { fontSize: '11px' }" style="font-weight: 600;">
-          “小工具”回归
+          “小组件”全新升级
         </div>
         <div :style="direction === 'row' ? 'margin-left: 10px;font-size: 12px;' : 'color: #fff;font-size: 11px;'"
           style="color: #ccc">
-          将喜欢的小工具固定在桌面
+          融入系统，简洁流畅
         </div>
       </div>
     </div>

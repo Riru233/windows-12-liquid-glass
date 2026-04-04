@@ -6,7 +6,7 @@
     <LiquidGlass
       :width="100"
       :height="48"
-      :radius="10"
+      :radius="24"
       :displacementScale="75"
       :layerClass="props.selected ? 'colorful-open' : 'colorful'"
       :drag="false"

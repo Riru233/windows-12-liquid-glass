@@ -14,7 +14,7 @@
     <LiquidGlass
       :width="parentWidth"
       :height="32"
-      :radius="10"
+      :radius="16"
       :displacementScale="75"
       :drag="false"
       :blur="1"
@@ -36,7 +36,7 @@
       v-if="props.extraBtn"
       :width="32"
       :height="32"
-      :radius="10"
+      :radius="16"
       :displacementScale="150"
       :layerClass="props.selected ? 'colorful-open' : 'colorful'"
       :drag="false"
