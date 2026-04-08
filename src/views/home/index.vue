@@ -82,7 +82,7 @@ const windowList = ref([
   // { id: "win_1", name: "demo" },
   { id: "win_2", name: "about" },
   { id: "win_3", name: "explorer" },
-  // { id: "win_4", name: "settings" },
+  { id: "win_4", name: "settings" },
 ]);
 
 const animMode = ref("win-open");

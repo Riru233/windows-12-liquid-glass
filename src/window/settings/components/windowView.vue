@@ -204,10 +204,10 @@
     <div class="content">
       <!-- 标题拟态玻璃 -->
       <liquid_glass style="margin:10px 20px;color:#000;background: #fff6;"
-        layerStyle="margin:10px;display:flex;flex-direction:row;gap:0.4em" width="250" height="40" radius="20"
+        layerStyle="margin:10px 20px;display:flex;flex-direction:row;gap:0.4em" width="150" height="40" radius="20"
         :displacementScale="250" :precise="1" :drag="false" position="relative">
-        <div style="color: rgb(92, 92, 92)">Personalisation ></div>
-        <div style="color: #000">Appearence</div>
+        <div style="color: rgb(92, 92, 92)">个性化 ></div>
+        <div style="color: #000">外观</div>
       </liquid_glass>
       <div style="height: 550px; overflow-y: scroll;padding-top:95px;margin-top:-95px;" class="overflow">
         <!-- 预览 -->
@@ -278,9 +278,9 @@
               flex: 1;
               justify-content: center;
             ">
-            <div style="color: #000; font-size: 14px">Select a mode</div>
+            <div style="color: #000; font-size: 14px">选择模式</div>
             <div style="color: #555; font-size: 12px">
-              Change colors of Windows and apps
+              更改 Windows 和应用中显示的颜色
             </div>
           </div>
           <div style="
@@ -296,7 +296,7 @@
               width: 100px;
               margin: 0 10px;
             ">
-            <div style="color: #000; font-size: 14px">Custom</div>
+            <div style="color: #000; font-size: 14px">自定义</div>
             <div style="flex-grow: 1"></div>
             <svg class="icon" width="12" height="12" style="margin: 0" viewBox="0 0 1024 1024" version="1.1"
               xmlns="http://www.w3.org/2000/svg" p-id="51718">
@@ -343,11 +343,10 @@
                 justify-content: center;
               ">
               <div style="color: #000; font-size: 14px">
-                Select appearence texture
+                选择材质外观
               </div>
               <div style="color: #555; font-size: 12px">
-                Change global texture of appearence such as transparent or
-                opaque
+                更改 Windows 和应用的材质效果
               </div>
             </div>
             <div style="
@@ -363,7 +362,7 @@
                 width: 100px;
                 margin: 0 10px;
               ">
-              <div style="color: #000; font-size: 14px">Fluent 3D</div>
+              <div style="color: #000; font-size: 14px">Aero 增强版</div>
               <div style="flex-grow: 1"></div>
               <svg class="icon" width="12" height="12" style="margin: 0" viewBox="0 0 1024 1024" version="1.1"
                 xmlns="http://www.w3.org/2000/svg" p-id="51718">
