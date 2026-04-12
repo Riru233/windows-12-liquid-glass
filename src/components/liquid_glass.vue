@@ -132,7 +132,7 @@ const SpecularLayer = computed(() => {
     radius: props.radius,
     angle: 45,
     edge: 2,
-    precise: 1,
+    precise: 0.5,
   });
 });
 

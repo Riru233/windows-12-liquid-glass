@@ -1,83 +1,115 @@
 <template>
-    <div style="display: flex;flex-direction: row;">
-        <div style="display: flex;flex-direction: column;">
-            <div class="container">
-                <div style="color: #fff;text-shadow: #000 0 0 2px,#000 0 0 4px;">推荐</div>
-                <div class="stick-container">
-                    <stick size="2x4" title="Microsoft Store" bg="#aaaaaf66" color="#fff">
-                        <img src="/icons/ms-store.png" alt="" style="width:48px">
-                    </stick>
-                    <stick size="2x2" title="Microsoft Edge" bg="#225ad966" color="#fff">
-                        <img src="/icons/msedge_101.ico" alt="" style="width:48px">
-                    </stick>
-                    <stick size="1x1" title="Sticky Notes" bg="#33333366" color="#fff">
-                        <img src="/icons/StickyNotesSmallTile.scale-200.png" alt="" style="width:48px">
-                    </stick>
-                    <stick size="1x1" title="Copilot" bg="#33333366" color="#fff">
-                        <img src="/icons/copilot.png" alt="Copilot" style="width:32px">
-                    </stick>
-                    <stick size="1x1" title="Teams" bg="#33333366" color="#fff">
-                        <img src="/icons/teams.png" alt="Teams" style="width:32px">
-                    </stick>
-                    <stick size="1x1" title="电脑管家" bg="#33333366" color="#fff">
-                        <img src="/icons/WindowsSecurityAppList.scale-125_contrast-white.png" alt="电脑管家"
-                            style="width:32px">
-                    </stick>
-                    <stick size="2x4" title="天气" bg="#6eacdb66" color="#fff" @click="$emit('open-run')">
-                        <div style="display: flex;flex-direction: row;gap:10px;">
-                            <img src="/icons/WeatherAppList.targetsize-64.png" alt="" style="width:48px">
-                            <div style="display: flex;flex-direction: column;justify-content: flex-start;">
-                                <div>北京</div>
-                                <div>多云 15~20℃</div>
-                            </div>
-                        </div>
-                    </stick>
-                </div>
-            </div>
-        </div>
-        <div style="display: flex;flex-direction: column;">
-            <div class="container">
-                <div style="color: #fff;text-shadow: #000 0 0 2px,#000 0 0 4px;">系统维护</div>
-                <div class="stick-container">
-                    <stick size="2x2" title="运行" bg="#33333366" color="#fff" @click="$emit('open-run')">
-                        <img src="/icons/run.ico" alt="" style="width:48px">
-                    </stick>
-                    <stick size="2x2" title="设置" bg="#33333366" color="#fff" @click="$emit('open-run')">
-                        <img src="/icons/settings/logo.scale-100.png" alt="" style="width:48px">
-                    </stick>
-                </div>
-            </div>
-        </div>
+  <LiquidGlass
+    :width="800"
+    :height="650"
+    :radius="20"
+    :displacementScale="78"
+    layerClass="colorful-start"
+    :drag="false"
+    :blur="5"
+    position="relative"
+    :layerStyle="`padding: 30px;gap:3px;background: #fffa;box-shadow: 0 0 10px #333;`"
+    :precise="0.1"
+    
+  >
+    <div v-for="section in appSections" :key="section.id" class="section">
+      <div class="section-title">{{ section.title }}</div>
+      <div :class="['apps-container', viewMode]">
+        <Stick 
+          v-for="app in section.apps" 
+          :key="app.name"
+          :title="app.name" 
+          bg="#fff0" 
+          :viewMode="viewMode"
+        >
+          <img :src="app.icon" class="icon-img" />
+        </Stick>
+      </div>
     </div>
+  </LiquidGlass>
 </template>
 
 <script setup>
-import stick from './stick.vue';
+import { ref } from "vue";
+import Stick from "./stick.vue";
+import LiquidGlass from "@/components/liquid_glass.vue";
+
+const viewMode = ref("grid");
+
+// 将应用数据抽离成数组，方便后期动态增加或修改
+const appSections = ref([
+  {
+    id: "pinned",
+    title: "已固定",
+    apps: [
+      { name: "Microsoft Store", icon: "/icons/ms-store.png" },
+      { name: "Edge", icon: "/icons/msedge_101.ico" },
+      { name: "Copilot", icon: "/icons/copilot.png" },
+      { name: "设置", icon: "/icons/settings/logo.scale-100.png" },
+      { name: "安全中心", icon: "/icons/WindowsSecurityAppList.scale-125_contrast-white.png" },
+    ]
+  },
+  {
+    id: "maintenance",
+    title: "最近打开的应用",
+    apps: [
+      { name: "设置", icon: "/icons/settings/logo.scale-100.png" },
+    ]
+  }
+]);
 </script>
 
 <style scoped>
-.stick-container {
-    display: grid;
-    /* 基础列宽 64px */
-    grid-template-columns: repeat(auto-fill, 64px);
-    /* 基础行高 64px */
-    grid-auto-rows: 64px;
-    /* 间距 10px */
-    gap: 10px;
-
-    /* 自动填充算法：dense 确保大磁贴换行后，小磁贴能填补空隙 */
-    grid-auto-flow: row dense;
-    width: 100%;
-    max-width: 300px;
-    min-height: 0;
+.page-wrapper {
+  padding: 20px;
+  color: white;
 }
 
-.container {
-    margin: 0 auto;
-    width: 100%;
-    padding: 0 0 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.toolbar {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.toolbar button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.toolbar button.active {
+  background: #0078d4;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #333;
+  text-shadow: 2px 2px 2px #0003;
+}
+
+/* 核心布局逻辑 */
+.apps-container {
+  display: flex;
+  flex-wrap: wrap; /* 允许换行 */
+  gap: 15px;
+}
+
+.apps-container.list {
+  flex-direction: column; /* 列表模式纵向排列 */
+  max-width: 400px; /* 限制列表宽度，防止拉得太长 */
+}
+
+.icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 </style>

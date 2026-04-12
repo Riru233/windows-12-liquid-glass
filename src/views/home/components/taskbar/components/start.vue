@@ -10,7 +10,7 @@
   <div class="control-container" :class="props.panel" @mouseup="stopDrag" @mouseleave="stopDrag">
     <!-- 第一层：询问Copilot -->
     <div style="width: calc(100% - 30px); margin: 15px 0 15px 15px; display: flex">
-      <TopButton :width="600" :height="36" :radius="18">
+      <TopButton :width="800" :height="36" :radius="18">
         <div style="width: 100%; display: flex; padding: 20px; gap: 10px">
           <div>
             <!-- copilot -->
@@ -88,9 +88,10 @@
       <TopButton :width="60" :height="36" :radius="18" style="border-radius: 16px;filter: none" :selected="true">开始
       </TopButton>
       <TopButton :width="100" :height="36" :radius="18" style="border-radius: 16px;filter: none;">所有应用</TopButton>
+      <TopButton :width="110" :height="36" :radius="18" style="border-radius: 16px;filter: none;">推荐的项目</TopButton>
     </div>
     <!-- 第三层：动态磁贴 -->
-    <StickPage />
+    <StickPage style="margin: 15px 0 15px 15px" />
     <!-- 第四层：底部操作 -->
     <div
       style="width: calc(100% - 30px); margin: 15px 0 15px 15px; display: flex;gap: 5px;justify-content: center;align-items: center;">
@@ -186,7 +187,7 @@ const stopDrag = () => {
   left: 0px;
   bottom: 0px;
   width: 800px;
-  height: 600px;
+  height: 800px;
   background: radial-gradient(circle at 0% calc(100% 200px),
       rgba(0, 0, 0, 0.171) 50%,
       transparent 65%) repeat;
@@ -199,9 +200,10 @@ const stopDrag = () => {
   justify-content: center;
   align-items: center;
   left: 20px;
-  bottom: 50px;
-  width: 600px;
-  height: 660px;
+  bottom: 80px;
+  width: 820px;
+  height: 835px;
+  overflow-y: hidden;
   z-index: 999;
 }
 

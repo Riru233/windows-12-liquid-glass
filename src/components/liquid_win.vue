@@ -7,23 +7,27 @@
       height: `${props.height}px`,
       top: `${top}px`,
       left: `${left}px`,
-      willChange: isDragging ? 'top, left' : 'auto'
+      willChange: isDragging ? 'top, left' : 'auto',
     }"
   >
     <div
       class="filter-layer"
       :style="{
         borderRadius: `${props.config_layer2.radius}px`,
-        backdropFilter: props.displacementScale !== 0 ? `url(#${filterId})` : `blur(${props.blur * 5}px)`,
-        border: `solid 1px #ffffffaa`,
+        backdropFilter:
+          props.displacementScale !== 0
+            ? `url(#${filterId})`
+            : (props.active? `blur(${props.blur * 3}px)`:`blur(${props.blur}px)`),
+        borderTop: `solid 1px #ffffffaa`,
+        borderRight: `solid 2px #ffffffaa`,
       }"
     ></div>
     <div
       class="active-layer"
       :style="
         props.active
-          ? `border-radius:${props.config_layer2.radius}px;background: #0069cc66;`
-          : `background: transparent;border-radius:${props.config_layer2.radius}px;`
+          ? `border-radius:${props.config_layer2.radius}px;background: #ffffff22;box-shadow: 12px 12px 20px #00000033;`
+          : `background: transparent;border-radius:${props.config_layer2.radius}px;box-shadow: 0 0 20px #00000033;`
       "
     ></div>
 
@@ -35,18 +39,7 @@
       }"
     >
       <div v-if="props.title" class="titlebar" @mousedown="startDrag">
-        <svg
-          class="icon glass-fog"
-          viewBox="0 0 1024 1024"
-          width="18px"
-          height="18px"
-          style="width: 18px; margin: 0 3px"
-        >
-          <path
-            d="M512 85.290667c235.690667 0 426.752 191.061333 426.752 426.752 0 235.648-191.061333 426.709333-426.752 426.709333-235.690667 0-426.752-191.061333-426.752-426.709333C85.248 276.352 276.309333 85.290667 512 85.290667z m0 64a362.752 362.752 0 1 0 0 725.461333A362.752 362.752 0 0 0 512 149.333333z m-0.170667 298.666666a32 32 0 0 1 31.744 27.648l0.298667 4.352 0.128 234.752a32 32 0 0 1-63.701333 4.352l-0.298667-4.309333-0.128-234.752a32 32 0 0 1 32-32zM512 298.794667a42.624 42.624 0 1 1 0 85.205333 42.624 42.624 0 0 1 0-85.205333z"
-            fill="#333"
-          ></path>
-        </svg>
+        <img :src="props.icon" alt="" style="width:16px;height:16px;color: #333" />
         <div style="color: #333" class="glass-fog">{{ props.title }}</div>
         <div style="flex-grow: 1"></div>
         <!-- 样式1：只有关闭 -->
@@ -113,7 +106,11 @@
       <slot :startDrag="startDrag"></slot>
     </div>
 
-    <svg color-interpolation-filters="sRGB" style="display: none" v-if="displacementScale != 0">
+    <svg
+      color-interpolation-filters="sRGB"
+      style="display: none"
+      v-if="displacementScale != 0"
+    >
       <defs>
         <filter :id="filterId">
           <feGaussianBlur
@@ -140,8 +137,12 @@
             result="displaced_source"
           />
 
-          <feColorMatrix in="displaced_source" type="saturate" :values="props.active ? 1.2 : 1.0" />
-          
+          <feColorMatrix
+            in="displaced_source"
+            type="saturate"
+            :values="props.active ? 1.2 : 1.0"
+          />
+
           <feImage
             :href="SpecularLayer"
             x="0"
@@ -150,10 +151,26 @@
             :height="props.height"
             result="specular_layer"
           ></feImage>
-          <feComposite in="displaced_source" in2="specular_layer" operator="in" result="specular_saturated"></feComposite>
-          <feComponentTransfer in="specular_layer" result="specular_faded"><feFuncA type="linear" slope="0.8"></feFuncA></feComponentTransfer>
-          <feBlend in="specular_saturated" in2="displaced_source" mode="normal" result="withSaturation"></feBlend>
-          <feBlend in="specular_faded" in2="withSaturation" mode="normal"></feBlend>
+          <feComposite
+            in="displaced_source"
+            in2="specular_layer"
+            operator="in"
+            result="specular_saturated"
+          ></feComposite>
+          <feComponentTransfer in="specular_layer" result="specular_faded">
+            <feFuncA type="linear" slope="0.8"></feFuncA>
+          </feComponentTransfer>
+          <feBlend
+            in="specular_saturated"
+            in2="displaced_source"
+            mode="normal"
+            result="withSaturation"
+          ></feBlend>
+          <feBlend
+            in="specular_faded"
+            in2="withSaturation"
+            mode="normal"
+          ></feBlend>
         </filter>
       </defs>
     </svg>
@@ -162,7 +179,10 @@
 
 <script setup>
 import { ref, computed } from "vue";
-import { generateDisplacementMap, generateEdgeMap } from "/src/utils/genvec_layer2.js";
+import {
+  generateDisplacementMap,
+  generateEdgeMap,
+} from "/src/utils/genvec_layer2.js";
 
 const props = defineProps({
   title: String,
@@ -170,8 +190,9 @@ const props = defineProps({
   height: Number,
   active: Boolean,
   winPattern: Number, // 0: 只有关闭按钮 1: 三大金刚按钮
-  displacementScale: { type: Number, default: 78 },
-  blur: { type: Number, default: 1 },
+  icon: { type: String, default: "" },
+  displacementScale: { type: Number, default: 0 },
+  blur: { type: Number, default: 3 },
   precise: { type: Number, default: 0.1 },
   config_layer2: {
     type: Object,
@@ -253,7 +274,7 @@ const stopDrag = () => {
   user-select: none;
   z-index: 10;
   display: flex;
-  transform: translateZ(0); 
+  transform: translateZ(0);
   backface-visibility: hidden;
 }
 
@@ -267,7 +288,6 @@ const stopDrag = () => {
   width: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: rgba(58, 58, 58, 0.333) 0px 0px 20px 1px;
   /* border: solid 1px #ffffffaa; */
   outline: solid #6663 1px;
 }
@@ -286,9 +306,10 @@ const stopDrag = () => {
 .titlebar {
   height: 32px !important;
   display: flex;
+  gap:5px;
   align-items: center;
   flex-direction: row;
-  margin: 0 5px;
+  margin: 0 10px;
   font-size: 12px;
   cursor: default;
   flex-shrink: 0; /* 保证不被内容压缩 */

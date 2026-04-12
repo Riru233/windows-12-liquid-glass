@@ -1,6 +1,6 @@
 <template>
   <liquidWin title="关于 Windows" :width="540" :height="520" @updatePos="updatePos" :active="props.active"
-    :winPattern="0" v-model:top="top" v-model:left="left" @close="close">
+    :winPattern="0" v-model:top="top" v-model:left="left" @close="close" icon="/public/icons/info.svg">
     <div style="
         display: flex;
         flex-direction: column;
@@ -620,7 +620,8 @@
             transform="translate(350.115 -85.539) scale(4.96547)" />
         </svg>
         <!-- Windows 12 -->
-        <svg v-else class="icon" viewBox="0 0 1024 1024" width="60px" height="60px">
+        <svg v-else class="icon" viewBox="0 0 1024 1024" width="60px" height="60px" style="
+            filter: drop-shadow(#24acf2aa 0 0 6px) drop-shadow(#24acf2aa 0 0 12px);">
           <defs>
             <linearGradient id="lg-about" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#fff" />
@@ -636,7 +637,7 @@
             flex-direction: column;
             justify-content: left;
             font-weight: 100;
-            filter: drop-shadow(#fff 0 0 2px) drop-shadow(#fff 0 0 4px);
+            filter: drop-shadow(#24acf2aa 0 0 6px) drop-shadow(#24acf2aa 0 0 12px);
           ">
           <div style="font-size: 48px">Windows 12</div>
           <!-- <div style="font-size: 16px">Developer Preview</div> -->
@@ -650,7 +651,7 @@
         </LiquidGlass>
         <div style="flex-grow: 1"></div>
         <LiquidGlass :width="80" :height="32" :radius="20" :displacementScale="75" :drag="false" :blur="0"
-          position="relative" style="background-color: #24acf230;margin: 10px;" :layer-style="`text-align:center;font-size: 14px;justify-content:center;align-items:center;display:flex;text-shadow: 0 0 2px #000;`" :precise="1">
+          position="relative" style="background-color: #24acf2aa;margin: 10px;" :layer-style="`text-align:center;font-size: 14px;justify-content:center;align-items:center;display:flex;`" :precise="1">
           确定
         </LiquidGlass>
       </div>

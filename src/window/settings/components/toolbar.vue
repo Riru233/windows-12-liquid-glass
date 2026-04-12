@@ -11,7 +11,7 @@
             fill="currentColor" p-id="3591"></path>
         </svg>
       </div>
-      <span style="color: #333" class=" glass-fog">Settings</span>
+      <span style="color: #333" class=" glass-fog">设置</span>
     </div>
   </div>
 </template>

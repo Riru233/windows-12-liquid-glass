@@ -1,6 +1,12 @@
 <template>
-  <liquidWin title="Windows Demo" :width="200" :height="200" @updatePos="updatePos"
+  <liquidWin title=" " :width="300" :height="200" @updatePos="updatePos"
     :active="props.active" :winPattern="0" v-model:top="top" v-model:left="left">
+    <div style="margin:20px;font-size: 60px;color: #333;">
+      Aa
+    </div>
+    <div style="margin:0 20px;font-size: 24px;color: #333;">
+      材质显示项
+    </div>
   </liquidWin>
 </template>
 

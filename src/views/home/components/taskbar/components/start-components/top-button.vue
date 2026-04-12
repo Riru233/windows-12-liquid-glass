@@ -10,7 +10,7 @@
       :displacementScale="150"
       :layerClass="props.selected ? 'colorful-open-start' : 'colorful-start'"
       :drag="false"
-      :blur="1"
+      :blur="5"
       position="relative"
       :layerStyle="`justify-content: center;align-items:center;display: flex;flex-direction:row;color: #333;gap:3px;background: ${props.selected ? props.selectedColor : '#ffffff66'};box-shadow: 0 0 10px #333;`"
       :precise="1"
