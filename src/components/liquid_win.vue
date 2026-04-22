@@ -17,7 +17,7 @@
         backdropFilter:
           props.displacementScale !== 0
             ? `url(#${filterId})`
-            : (props.active? `blur(${props.blur * 3}px)`:`blur(${props.blur}px)`),
+            : (props.active? `blur(${props.blur * 10}px)`:`blur(${props.blur}px)`),
         borderTop: `solid 1px #ffffffaa`,
         borderRight: `solid 2px #ffffffaa`,
       }"
@@ -278,18 +278,13 @@ const stopDrag = () => {
   backface-visibility: hidden;
 }
 
-.filter-layer {
-  /* 限制 backdrop-filter 的范围，减少 GPU 采样面积 */
-  contain: strict;
-}
 .glass-content-inner {
   position: relative;
-  z-index: 10;
+  z-index: 8;
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* border: solid 1px #ffffffaa; */
-  outline: solid #6663 1px;
+  border: solid 2px #ffffff55;
 }
 .filter-layer,
 .active-layer {
@@ -297,7 +292,7 @@ const stopDrag = () => {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: calc(100% - 2px);
   height: 100%;
   pointer-events: none;
 }

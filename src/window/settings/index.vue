@@ -125,12 +125,6 @@ const props = defineProps({
 @import "/src/assets/liquidglass.css";
 
 /* 确保内容区域铺满并带有背景色 */
-.glass-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
 .titlebar {
   z-index: 1111;
   height: 40px !important;

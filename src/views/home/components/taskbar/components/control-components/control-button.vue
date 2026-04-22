@@ -14,6 +14,12 @@
       position="relative"
       layerStyle="justify-content: center;align-items:center;"
       :precise="1"
+      :config_layer2="{
+        gamma: 1,
+        deadzone: 0,
+        edge: 12,
+        isInward: true,
+      }"
     >
       <svg
         class="icon"
@@ -91,7 +97,6 @@ const props = defineProps({
 }
 .glass-component:hover {
   box-shadow: #a8dbff91 0px 0px 10px 10px;
-  transform: scale(1.1);
 }
 </style>
 <style>

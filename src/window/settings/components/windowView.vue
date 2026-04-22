@@ -1,7 +1,7 @@
 <template>
   <div id="contentbar" ref="contentbar">
     <div
-      :style="`position:fixed;height:98px;width:948px;z-index:2;margin-top:-40px;`"
+      :style="`position:fixed;height:98px;width:942px;z-index:2;margin-top:-40px;`"
     >
       <div class="mask-b-from-70-to-100" style="border-radius: 10px"></div>
       <div class="mask-b-from-50-to-75" style="border-radius: 10px"></div>
@@ -145,7 +145,7 @@
         <div style="width: 16px; height: 16px">
           <img src="/public/settings/Apps.webp" alt="" />
         </div>
-        <div style="font-size: 15px">应用与软件</div>
+        <div style="font-size: 15px">应用程序</div>
       </div>
       <!-- 账户 -->
       <div
@@ -313,15 +313,7 @@
           </div>
         </div>
         <!-- 选择样式 -->
-        <div
-          style="
-            height: 60px;
-            border-radius: 20px;
-            background-color: #fffc;
-            margin: 10px 10px;
-          "
-          class="flex-lr"
-        >
+        <div style="height: 60px" class="flex-lr fluent-box">
           <div class="icons">
             <svg
               class="icon"
@@ -397,12 +389,7 @@
         </div>
         <!-- 拟态玻璃设置 -->
         <div
-          style="
-            border-radius: 20px;
-            background-color: #fffc;
-            margin: 10px 10px;
-          "
-          class="flex-ud"
+          class="flex-ud fluent-box"
         >
           <!-- 头 -->
           <div style="height: 60px" class="flex-lr">
@@ -721,11 +708,8 @@
         <div
           style="
             height: 60px;
-            border-radius: 20px;
-            background-color: #fffc;
-            margin: 10px 10px;
           "
-          class="flex-lr"
+          class="flex-lr fluent-box"
         >
           <div class="icons">
             <svg
@@ -813,11 +797,8 @@
         <div
           style="
             height: 60px;
-            border-radius: 20px;
-            background-color: #fffc;
-            margin: 10px 10px;
           "
-          class="flex-lr"
+          class="flex-lr fluent-box"
         >
           <div class="icons">
             <svg
@@ -887,11 +868,8 @@
         <div
           style="
             height: 60px;
-            border-radius: 20px;
-            background-color: #fffc;
-            margin: 10px 10px;
           "
-          class="flex-lr"
+          class="flex-lr fluent-box"
         >
           <div class="icons">
             <svg
@@ -1007,6 +985,18 @@ p {
   justify-content: center;
   align-items: center;
 }
+.fluent-box {
+  border-radius: 20px;
+  background-color: #fffc;
+  margin: 10px 10px;
+  box-shadow: inset 2px 2px 20px #b0d2ff85,5px 5px 10px #00000028,inset 3px 3px 6px #0004;
+  text-shadow: 4px 4px 5px #0004;
+  transition: all 0.3s ease-in-out;
+}
+/* .fluent-box:hover {
+  box-shadow: inset -2px 2px 20px #b0d2ff85,-5px 5px 10px #00000028,inset -3px 3px 6px #0004;
+  text-shadow: -2px 2px 4px #0004;
+} */
 
 .flex-ud {
   display: flex;
@@ -1028,8 +1018,9 @@ p {
   border-radius: 10px;
   background-color: #fffc;
   box-shadow:
-    inset 0 0 10px #aaaa,
-    0 0 10px #aaaa;
+    inset 3px 3px 10px #aaaa,
+    inset 0 0 2px #aaaa,
+    3px 3px 10px #aaaa;
   padding: 10px 10px;
   width: 100px;
   margin: 0 10px;
@@ -1037,8 +1028,8 @@ p {
 }
 .select-box:hover {
   box-shadow:
-    inset 0 0 10px #aaaa,
-    0 0 10px #aaaa,
-    15px 15px 10px #3331;
+    inset 6px -6px 10px #aaaa,
+    inset 0 0 6px #aaaa,
+    6px -6px 10px #aaaa;
 }
 </style>

@@ -3,12 +3,12 @@
     :width="800"
     :height="650"
     :radius="20"
-    :displacementScale="78"
+    :displacementScale="150"
     layerClass="colorful-start"
     :drag="false"
-    :blur="5"
+    :blur="3"
     position="relative"
-    :layerStyle="`padding: 30px;gap:3px;background: #fffa;box-shadow: 0 0 10px #333;`"
+    :layerStyle="`padding: 30px;gap:3px;background: #fff5;box-shadow: 0 0 10px #333;`"
     :precise="0.1"
     
   >

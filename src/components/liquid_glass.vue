@@ -193,7 +193,6 @@ const stopDrag = () => {
   border: none;
   outline: none;
   box-shadow: rgba(58, 58, 58, 0.333) 0px 0px 20px 1px;
-  outline: #5553 1px solid;
   z-index: 10;
   display: flex;
 }

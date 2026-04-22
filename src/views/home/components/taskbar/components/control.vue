@@ -240,7 +240,7 @@ const stopDrag = () => {
 
 
 
-@keyframes panel-open {
+/* @keyframes panel-open {
   0% {
     bottom: -200px;
     transform: scaleY(1) translateY(300px);
@@ -270,10 +270,28 @@ const stopDrag = () => {
     transform: scaleY(3) translateY(300px);
     bottom: -200px;
   }
+} */
+
+@keyframes panel-open {
+  0% {
+    transform: translateY(200%);
+  }
+  100% {
+
+  }
+}
+
+@keyframes panel-close {
+  0% {
+    
+  }
+  100% {
+    transform: translateY(200%);
+  }
 }
 
 .panel-open {
-  animation: panel-open 0.5s ease-out forwards;
+  animation: panel-open 0.3s cubic-bezier(0,-0.5,0,1) forwards;
 }
 
 .panel-init {

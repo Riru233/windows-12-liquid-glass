@@ -7,7 +7,7 @@
     <div class="mask-ur-from-50-to-75"></div>
     <div class="mask-ur-from-20-to-55"></div>
   </div>
-  <div class="control-container" :class="props.panel" @mouseup="stopDrag" @mouseleave="stopDrag">
+  <div class="control-container" :class="props.panel">
     <!-- 第一层：询问Copilot -->
     <div style="width: calc(100% - 30px); margin: 15px 0 15px 15px; display: flex">
       <TopButton :width="800" :height="36" :radius="18">
@@ -200,7 +200,7 @@ const stopDrag = () => {
   justify-content: center;
   align-items: center;
   left: 20px;
-  bottom: 80px;
+  bottom: 30px;
   width: 820px;
   height: 835px;
   overflow-y: hidden;
@@ -217,41 +217,24 @@ const stopDrag = () => {
 
 @keyframes panel-open {
   0% {
-    bottom: -200px;
-    transform: scaleY(1) translateY(600px);
+    transform: translateY(200%);
   }
-
-  40% {
-    transform: scaleX(0.9) scaleY(1.3) translateY(-120px);
-    bottom: 30px;
-  }
-
-  75% {
-    transform: scaleX(1.05) scaleY(1);
-    bottom: 30px;
-  }
-
   100% {
-    transform: scaleX(1) scaleY(1) translateY(0px);
-    bottom: 30px;
+
   }
 }
 
 @keyframes panel-close {
   0% {
-    transform: scaleX(1) scaleY(1) translateY(0px);
-    bottom: 30px;
+    
   }
-
   100% {
-    transform: scaleY(3) translateY(600px);
-    bottom: -200px;
-    pointer-events: none;
+    transform: translateY(200%);
   }
 }
 
 .panel-open {
-  animation: panel-open 0.5s ease-out forwards;
+  animation: panel-open 0.3s cubic-bezier(0,-0.5,0,1) forwards;
 }
 
 .panel-init {
@@ -263,7 +246,7 @@ const stopDrag = () => {
 }
 
 .panel-close {
-  animation: panel-close 0.3s ease-out forwards;
+  animation: panel-close 0.3s cubic-bezier(1,0,1,1) forwards;
   pointer-events: none;
 }
 </style>

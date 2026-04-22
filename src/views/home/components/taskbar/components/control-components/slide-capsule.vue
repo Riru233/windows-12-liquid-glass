@@ -130,7 +130,6 @@ onUnmounted(() => {
 }
 .glass-component:hover {
   box-shadow: #a8dbff91 0px 0px 10px 10px;
-  transform: scale(1.1);
   z-index:999
 }
 </style>
