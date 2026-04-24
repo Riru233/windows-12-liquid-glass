@@ -15,9 +15,9 @@
       layerStyle="justify-content: center;align-items:center;"
       :precise="1"
       :config_layer2="{
-        gamma: 1,
-        deadzone: 0,
-        edge: 12,
+        gamma: 3,
+        deadzone: 0.2,
+        edge: 2,
         isInward: true,
       }"
     >

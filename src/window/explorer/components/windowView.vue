@@ -3,7 +3,7 @@
     <div class="gradientBlurContainer">
       <div class="gradientBlur">
         <div
-          style="background: linear-gradient(to bottom, #def4 70%, #0000 100%);height:100%;width:100%;margin-top:-10px"
+          style="background: linear-gradient(to bottom, #def4 50%, #0000 100%);height:100%;width:100%;margin-top:-10px"
         ></div>
         <div
           class="mask-b-from-70-to-100"
@@ -330,7 +330,7 @@ p {
   right: 0;
   left: 0;
   height: 100px;
-  background: linear-gradient(to bottom, #ffffff42 0, #ffffff00 100%);
+  background: linear-gradient(to bottom, #ffffff42 0, #ffffff00 80%);
   margin-right: 16px;
 }
 

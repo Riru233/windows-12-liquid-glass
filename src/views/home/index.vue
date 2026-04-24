@@ -62,6 +62,8 @@
   </button> -->
 
   <Taskbar @mousedown.stop @restore="handleRestore" />
+
+  <island ref="island" content="测试Windows 12快捷窗，点击收起"/>
 </template>
 
 <script setup>
@@ -76,10 +78,11 @@ import {
   nextTick,
 } from "vue";
 import Taskbar from "/src/views/home/components/taskbar/index_mode1.vue";
+import Island from "/src/views/home/components/island/index.vue";
 import liquid_glass from "@/components/liquid_glass.vue";
 
 const windowList = ref([
-  // { id: "win_1", name: "demo" },
+  { id: "win_1", name: "demo" },
   { id: "win_2", name: "about" },
   { id: "win_3", name: "explorer" },
   { id: "win_4", name: "settings" },

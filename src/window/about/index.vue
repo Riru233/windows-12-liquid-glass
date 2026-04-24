@@ -620,7 +620,7 @@
             transform="translate(350.115 -85.539) scale(4.96547)" />
         </svg>
         <!-- Windows 12 -->
-        <svg v-else class="icon" viewBox="0 0 1024 1024" width="60px" height="60px" style="
+        <!-- <svg v-else class="icon" viewBox="0 0 1024 1024" width="60px" height="60px" style="
             filter: drop-shadow(#24acf2aa 0 0 6px) drop-shadow(#24acf2aa 0 0 12px);">
           <defs>
             <linearGradient id="lg-about" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -631,7 +631,7 @@
           <path
             d="M81.92 289.42336v207.79008h415.29344V81.92H81.92v207.50336z m444.86656 0v207.79008H942.08V81.92H526.78656v207.50336zM81.92 734.57664V942.08h415.29344V526.78656H81.92v207.79008z m444.86656 0V942.08H942.08V526.78656H526.78656v207.79008z"
             fill="url(#lg-about)"></path>
-        </svg>
+        </svg> -->
         <div style="
             display: flex;
             flex-direction: column;
@@ -639,8 +639,8 @@
             font-weight: 100;
             filter: drop-shadow(#24acf2aa 0 0 6px) drop-shadow(#24acf2aa 0 0 12px);
           ">
-          <div style="font-size: 48px">Windows 12</div>
-          <!-- <div style="font-size: 16px">Developer Preview</div> -->
+          <!-- <div style="font-size: 48px">Windows 12</div> -->
+          <div style="font-size: 24px">Windows Developer Preview</div>
         </div>
       </div>
       <WindowView />

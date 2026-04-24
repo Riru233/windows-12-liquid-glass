@@ -482,8 +482,8 @@
               <div style="color: #000; font-size: 14px">窗口材质</div>
               <div style="color: #555; font-size: 12px">应用于窗口的材质</div>
             </div>
-            <div class="select-box">
-              <div style="color: #000; font-size: 14px">亚克力板</div>
+            <div class="select-box" style="width: 130px">
+              <div style="color: #000; font-size: 14px">Acrylic Ultimate</div>
               <div style="flex-grow: 1"></div>
               <svg
                 class="icon"
@@ -524,8 +524,8 @@
                 应用于开始、控制中心等组件的材质
               </div>
             </div>
-            <div class="select-box">
-              <div style="color: #000; font-size: 14px">Aero Elite</div>
+            <div class="select-box" style="width:120px !important">
+              <div style="color: #000; font-size: 14px">Aero Ultimate</div>
               <div style="flex-grow: 1"></div>
               <svg
                 class="icon"
@@ -990,7 +990,7 @@ p {
   background-color: #fffc;
   margin: 10px 10px;
   box-shadow: inset 2px 2px 20px #b0d2ff85,5px 5px 10px #00000028,inset 3px 3px 6px #0004;
-  text-shadow: 4px 4px 5px #0004;
+  /* text-shadow: 4px 4px 5px #0004; */
   transition: all 0.3s ease-in-out;
 }
 /* .fluent-box:hover {

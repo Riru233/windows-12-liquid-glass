@@ -9,7 +9,7 @@
   </div>
   <div class="control-container" :class="props.panel">
     <!-- 第一层：询问Copilot -->
-    <div style="width: calc(100% - 30px); margin: 15px 0 15px 15px; display: flex">
+    <div style="width: calc(100% - 30px); margin: 15px 0 15px 15px; display: flex;">
       <TopButton :width="800" :height="36" :radius="18">
         <div style="width: 100%; display: flex; padding: 20px; gap: 10px">
           <div>
@@ -203,7 +203,7 @@ const stopDrag = () => {
   bottom: 30px;
   width: 820px;
   height: 835px;
-  overflow-y: hidden;
+  overflow-y: none;
   z-index: 999;
 }
 
@@ -234,7 +234,7 @@ const stopDrag = () => {
 }
 
 .panel-open {
-  animation: panel-open 0.3s cubic-bezier(0,-0.5,0,1) forwards;
+  animation: panel-open 0.3s cubic-bezier(0,0,0,1) forwards;
 }
 
 .panel-init {
@@ -246,7 +246,7 @@ const stopDrag = () => {
 }
 
 .panel-close {
-  animation: panel-close 0.3s cubic-bezier(1,0,1,1) forwards;
+  animation: panel-close 0.3s cubic-bezier(1,1,0,0) forwards;
   pointer-events: none;
 }
 </style>

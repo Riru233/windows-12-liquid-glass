@@ -10,16 +10,21 @@
     position="relative"
     :layerStyle="`padding: 30px;gap:3px;background: #fff5;box-shadow: 0 0 10px #333;`"
     :precise="0.1"
-    
+    :config_layer2="{
+      gamma: 1.8,
+      deadzone: 0.8,
+      edge: 1.8,
+      isInward: true,
+    }"
   >
     <div v-for="section in appSections" :key="section.id" class="section">
       <div class="section-title">{{ section.title }}</div>
       <div :class="['apps-container', viewMode]">
-        <Stick 
-          v-for="app in section.apps" 
+        <Stick
+          v-for="app in section.apps"
           :key="app.name"
-          :title="app.name" 
-          bg="#fff0" 
+          :title="app.name"
+          bg="#fff0"
           :viewMode="viewMode"
         >
           <img :src="app.icon" class="icon-img" />
@@ -46,16 +51,17 @@ const appSections = ref([
       { name: "Edge", icon: "/icons/msedge_101.ico" },
       { name: "Copilot", icon: "/icons/copilot.png" },
       { name: "设置", icon: "/icons/settings/logo.scale-100.png" },
-      { name: "安全中心", icon: "/icons/WindowsSecurityAppList.scale-125_contrast-white.png" },
-    ]
+      {
+        name: "安全中心",
+        icon: "/icons/WindowsSecurityAppList.scale-125_contrast-white.png",
+      },
+    ],
   },
   {
     id: "maintenance",
     title: "最近打开的应用",
-    apps: [
-      { name: "设置", icon: "/icons/settings/logo.scale-100.png" },
-    ]
-  }
+    apps: [{ name: "设置", icon: "/icons/settings/logo.scale-100.png" }],
+  },
 ]);
 </script>
 

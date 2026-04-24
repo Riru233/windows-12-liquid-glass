@@ -22,6 +22,29 @@
       }"
     ></div>
 
+    <svg 
+      class="vector-border" 
+      :viewBox="`0 0 ${width} ${height}`"
+      :style="{ zIndex: 9 }"
+    >
+      <defs>
+        <linearGradient :id="borderGradId" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#fff5"  />
+        </linearGradient>
+      </defs>
+      <rect
+        x="0.5"
+        y="0.5"
+        :width="width - 1"
+        :height="height - 1"
+        :rx="props.radius"
+        fill="none"
+        :stroke="`url(#${borderGradId})`"
+        stroke-width="2"
+        style="pointer-events: none;"
+      />
+    </svg>
+
     <div
       class="glass-content-inner"
       @mousedown="startDrag"
@@ -35,7 +58,7 @@
       <defs>
         <filter :id="filterId">
           <feGaussianBlur
-            in="magnified_source"
+            in="SourceGraphic"
             :stdDeviation="props.blur"
             result="blurred_source"
           />
@@ -55,19 +78,7 @@
             yChannelSelector="G"
             result="displaced_source"
           />
-          <feColorMatrix type="saturate" values="1.6" />
-          <feImage
-            :href="SpecularLayer"
-            x="0"
-            y="0"
-            :width="props.width"
-            :height="props.height"
-            result="specular_layer"
-          ></feImage>
-          <feComposite in="displaced_source" in2="specular_layer" operator="in" result="specular_saturated"></feComposite>
-          <feComponentTransfer in="specular_layer" result="specular_faded"><feFuncA type="linear" slope="0.8"></feFuncA></feComponentTransfer>
-          <feBlend in="specular_saturated" in2="displaced_source" mode="normal" result="withSaturation"></feBlend>
-          <feBlend in="specular_faded" in2="withSaturation" mode="normal"></feBlend>
+          <feColorMatrix in="displaced_source" type="saturate" values="1.4" />
         </filter>
       </defs>
     </svg>
@@ -76,10 +87,7 @@
 
 <script setup>
 import { ref, computed } from "vue";
-import {
-  generateDisplacementMap,
-  generateEdgeMap,
-} from "/src/utils/genvec_layer2.js";
+import { generateDisplacementMap } from "/src/utils/genvec_layer2.js";
 
 const props = defineProps({
   width: Number,
@@ -114,27 +122,21 @@ defineEmits(["close"]);
 
 const glassWindow = ref(null);
 const filterId = `win_filter_${Math.random().toString(36).substr(2, 5)}`;
+const borderGradId = `brd_grad_${Math.random().toString(36).substr(2, 5)}`;
 
+// 核心位移贴图保留，因为这是“液体玻璃”的灵魂
 const displacementMap = computed(() => {
-  props.config_layer2.radius = props.radius - 1;
+  const cfg = { ...props.config_layer2 };
+  cfg.radius = props.radius - 1;
   return generateDisplacementMap({
     width: props.width,
     height: props.height,
     precise: props.precise,
-    ...props.config_layer2,
+    ...cfg,
   });
 });
 
-const SpecularLayer = computed(() => {
-  return generateEdgeMap({
-    width: props.width,
-    height: props.height,
-    radius: props.radius,
-    angle: 45,
-    edge: 2,
-    precise: 0.5,
-  });
-});
+// [已优化] 移除 SpecularLayer 的计算属性，不再调用 generateEdgeMap
 
 let isDragging = false;
 let offsetX = 0;
@@ -145,16 +147,16 @@ const startDrag = (e) => {
   if (e.target.closest(".windowBtnClose") || e.target.closest("button")) return;
   isDragging = true;
   const el = glassWindow.value;
-  offsetX = e.clientX - el.getBoundingClientRect().left;
-  offsetY = e.clientY - el.getBoundingClientRect().top;
+  const rect = el.getBoundingClientRect();
+  offsetX = e.clientX - rect.left;
+  offsetY = e.clientY - rect.top;
   document.addEventListener("mousemove", handleDrag);
   document.addEventListener("mouseup", stopDrag);
   e.preventDefault();
 };
 
 const handleDrag = (e) => {
-  if (!props.drag) return;
-  if (!isDragging) return;
+  if (!props.drag || !isDragging) return;
   const el = glassWindow.value;
   let l = e.clientX - offsetX;
   let t = e.clientY - offsetY;
@@ -163,7 +165,6 @@ const handleDrag = (e) => {
 };
 
 const stopDrag = () => {
-  if (!props.drag) return;
   isDragging = false;
   document.removeEventListener("mousemove", handleDrag);
   document.removeEventListener("mouseup", stopDrag);
@@ -172,35 +173,27 @@ const stopDrag = () => {
 
 <style scoped>
 @import "/src/assets/liquidglass.css";
-@keyframes lg-bounce {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-.lg-bounce:hover {
-  animation: lg-bounce 0.5s ease-in-out forwards;
-}
 
 .glass-component {
   overflow: hidden;
   user-select: none;
   border: none;
-  outline: none;
-  box-shadow: rgba(58, 58, 58, 0.333) 0px 0px 20px 1px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 30px -5px;
   z-index: 10;
   display: flex;
 }
 
-.glass-content-inner {
-  z-index: 10;
+/* 矢量边框样式：绝对定位并覆盖在最上层或滤镜层 */
+.vector-border {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  pointer-events: none;
+  fill: none;
 }
+
 .filter-layer {
   position: absolute;
   top: 0;
@@ -210,11 +203,19 @@ const stopDrag = () => {
   pointer-events: none;
 }
 
-.icon {
-  z-index: 4;
-  display: flex;
-  width: auto;
-  align-items: center;
-  justify-content: center;
+.glass-content-inner {
+  z-index: 10;
+  width: 100%;
+  position: relative;
+}
+
+@keyframes lg-bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.lg-bounce:active {
+  animation: lg-bounce 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 </style>
