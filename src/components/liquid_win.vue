@@ -173,7 +173,7 @@ const props = defineProps({
   winPattern: Number, // 0: 只有关闭按钮 1: 三大金刚按钮
   icon: { type: String, default: "" },
   displacementScale: { type: Number, default: 78 },
-  blur: { type: Number, default: 3 },
+  blur: { type: Number, default: 5 },
   precise: { type: Number, default: 0.1 },
   config_layer2: {
     type: Object,
@@ -281,10 +281,12 @@ const stopDrag = () => {
   display: flex;
   flex-direction: column;
   border: solid 2px #ffffff55;
+  /* background: radial-gradient(circle, #ffffff00 60%, #ffffff66 ); */
 }
 
 .filter-layer,
 .active-layer {
+  background: linear-gradient(135deg, #ffffff00, #ffffff44, #ffffff00, #ffffff44, #ffffff00, #ffffff44);
   transition: all 0.2s ease-in-out;
   position: absolute;
   top: 0;
