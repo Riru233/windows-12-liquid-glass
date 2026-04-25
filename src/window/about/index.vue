@@ -1,5 +1,5 @@
 <template>
-  <liquidWin title="关于 Windows" :width="540" :height="520" @updatePos="updatePos" :active="props.active"
+  <liquidWin title="About Windows" :width="540" :height="520" @updatePos="updatePos" :active="props.active"
     :winPattern="0" v-model:top="top" v-model:left="left" @close="close" icon="/public/icons/info.svg">
     <div style="
         display: flex;
@@ -647,12 +647,12 @@
       <div style="display: flex; flex-direction: row;">
         <LiquidGlass :width="80" :height="32" :radius="20" :displacementScale="75" :drag="false" :blur="0"
           position="relative" style="background-color: #fff7;margin: 10px;" :layer-style="`color: #333;text-align:center;font-size: 14px;justify-content:center;align-items:center;display:flex;`" :precise="1">
-          更多信息
+          More Info
         </LiquidGlass>
         <div style="flex-grow: 1"></div>
         <LiquidGlass :width="80" :height="32" :radius="20" :displacementScale="75" :drag="false" :blur="0"
           position="relative" style="background-color: #24acf2aa;margin: 10px;" :layer-style="`text-align:center;font-size: 14px;justify-content:center;align-items:center;display:flex;`" :precise="1">
-          确定
+          OK
         </LiquidGlass>
       </div>
     </div>

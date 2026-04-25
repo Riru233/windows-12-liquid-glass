@@ -78,17 +78,17 @@
             </svg>
           </div>
           <div>
-            <i>在“开始”询问 Copilot</i>
+            <i>Ask Copilot</i>
           </div>
         </div>
       </TopButton>
     </div>
     <!-- 第二层：标签 -->
     <div style="width: calc(100% - 30px); margin: 15px 0 15px 15px; display: flex;gap: 5px;">
-      <TopButton :width="60" :height="36" :radius="18" style="border-radius: 16px;filter: none" :selected="true">开始
+      <TopButton :width="60" :height="36" :radius="18" style="border-radius: 16px;filter: none" :selected="true">Start
       </TopButton>
-      <TopButton :width="100" :height="36" :radius="18" style="border-radius: 16px;filter: none;">所有应用</TopButton>
-      <TopButton :width="110" :height="36" :radius="18" style="border-radius: 16px;filter: none;">推荐的项目</TopButton>
+      <TopButton :width="90" :height="36" :radius="18" style="border-radius: 16px;filter: none;">All Apps</TopButton>
+      <TopButton :width="120" :height="36" :radius="18" style="border-radius: 16px;filter: none;">Recommend</TopButton>
     </div>
     <!-- 第三层：动态磁贴 -->
     <StickPage style="margin: 15px 0 15px 15px" />
@@ -98,7 +98,7 @@
       <TopButton :width="36" :height="36" :radius="18" style="border-radius: 16px;filter: none;" :selected="false">
         #
       </TopButton>
-      <div style="color: #fff;text-shadow: #000 0 0 2px,#000 0 0 4px;">管理员</div>
+      <div style="color: #fff;text-shadow: #000 0 0 2px,#000 0 0 4px;">Administrator</div>
       <div style="flex-grow: 1;"></div>
       <TopButton :width="36" :height="36" :radius="18" style="border-radius: 15px;filter: none;" :selected="true" selected-color="#f006">
         <svg t="1775055767259" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"

@@ -54,14 +54,11 @@
       bottom: 50px;
       right: 0;
       text-align: right;
-      text-shadow:
-        #000 0 0 2px,
-        #000 0 0 4px;
     "
   >
-    <!-- <p>Do not take screen shots of this build.</p> -->
-    <!-- <p>Windows 12 Developer Preview</p>
-    <p>Build 29900.2620.fs_dev11_fit.260322-2312</p> -->
+    <p>Do not take screen shots of this build.</p>
+    <p>Windows Pro Developer Preview</p>
+    <p>Build 27900.2620.fs_dev11_fit.260322-2312</p>
   </div>
   <!-- 右下角控制中心 -->
   <control :panel="stat.panel" />

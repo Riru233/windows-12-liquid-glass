@@ -1,6 +1,8 @@
 /* 全局英文字体使用微软正黑体 */
 * {
-  font-family: "Segoe UI", "Microsoft YaHei", "微软雅黑", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+  font-family: "Segoe UI",sans-serif;
+  /* , "Microsoft YaHei", "微软雅黑", "Microsoft JhengHei", "微軟正黑體",  */
+  user-select: none;
 }
 
 p {

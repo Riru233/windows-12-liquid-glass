@@ -28,7 +28,7 @@
                   alt=""
                   style="width: 16px; height: 12px; margin: 0 10px"
                 />
-                <div style="flex: 1">桌面</div>
+                <div style="flex: 1">Desktop</div>
               </div>
             </LiquidGlass>
 

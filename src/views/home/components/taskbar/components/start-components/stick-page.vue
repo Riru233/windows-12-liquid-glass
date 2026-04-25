@@ -45,22 +45,22 @@ const viewMode = ref("grid");
 const appSections = ref([
   {
     id: "pinned",
-    title: "已固定",
+    title: "Fixed",
     apps: [
       { name: "Microsoft Store", icon: "/icons/ms-store.png" },
       { name: "Edge", icon: "/icons/msedge_101.ico" },
       { name: "Copilot", icon: "/icons/copilot.png" },
-      { name: "设置", icon: "/icons/settings/logo.scale-100.png" },
+      { name: "Settings", icon: "/icons/settings/logo.scale-100.png" },
       {
-        name: "安全中心",
+        name: "Windows Security",
         icon: "/icons/WindowsSecurityAppList.scale-125_contrast-white.png",
       },
     ],
   },
   {
     id: "maintenance",
-    title: "最近打开的应用",
-    apps: [{ name: "设置", icon: "/icons/settings/logo.scale-100.png" }],
+    title: "Recent apps",
+    apps: [{ name: "Settings", icon: "/icons/settings/logo.scale-100.png" }],
   },
 ]);
 </script>

@@ -5,7 +5,7 @@
       Aa
     </div>
     <div style="margin:0 20px;font-size: 24px;color: #333;">
-      材质显示项
+      Message Box
     </div>
   </liquidWin>
 </template>

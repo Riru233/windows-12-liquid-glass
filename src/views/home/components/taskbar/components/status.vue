@@ -170,7 +170,7 @@ const updateTime = () => {
 
   // 1. 获取小时并判断 AM/PM
   let hours = now.getHours();
-  const ampm = hours >= 12 ? "下午" : "上午";
+  const ampm = hours >= 12 ? "PM" : "AM";
 
   // 2. 转换为12小时制 (0点应显示为12)
   hours = hours % 12;
@@ -179,13 +179,14 @@ const updateTime = () => {
   // 3. 格式化分钟 (始终保持两位)
   const minutes = String(now.getMinutes()).padStart(2, "0");
 
-  currentTime.value = ` ${ampm}${String(hours).padStart(2, "0")}:${minutes}`;
+  currentTime.value = ` ${String(hours).padStart(2, "0")}:${minutes} ${ampm}`;
 
   // 格式化日期: 2026/2/9
   const year = now.getFullYear();
   const month = now.getMonth() + 1;
   const day = now.getDate();
-  currentDate.value = `${year}/${month}/${day}`;
+  // currentDate.value = `${year}/${month}/${day}`;
+  currentDate.value = `${month}/${day}/${year}`;
 
   // 格式化星期: Mon, Tue...
   const weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];

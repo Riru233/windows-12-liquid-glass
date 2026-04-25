@@ -1,6 +1,6 @@
 <template>
   <!-- 小部件图标 -->
-  <div style="padding:0; margin: 0 0 5px 0;width:180px;" class="panel-sidebar">
+  <div style="padding:0; margin: 0 0 5px 0;width:48px;" class="panel-sidebar">
     <!-- <svg
       t="1760579924821"
       class="icon"
@@ -23,27 +23,17 @@
         p-id="4673"
       ></path>
     </svg> -->
-    <LiquidFilter id="panel-sidebar" :width="180" :height="32" displacementScale="42" :precise="1" :config_layer2="{
+    <LiquidFilter id="panel-sidebar" :width="48" :height="32" displacementScale="42" :precise="1" :config_layer2="{
       radius: 12,
       gamma: 1,
       deadzone: 0.05,
       edge: 12,
       isInward: true,
     }" />
-    <div style="display: flex;flex-direction: row;gap:6px;">
+    <div style="display: flex;flex-direction: row;gap:6px;justify-content: center;align-items: center;">
       <img src="/icons/WidgetBoardIcon.svg" alt="" :width="direction === 'row' ? '24px' : '28px'"
         :height="direction === 'row' ? '24px' : '28px'"
         :style="direction === 'row' ? 'margin:-8px 0' : 'margin: 0px 0'">
-      <div style="display: flex;flex-direction: column;">
-
-        <div :style="direction === 'row' ? { fontSize: '12px' } : { fontSize: '11px' }" style="font-weight: 600;">
-          “小组件”全新升级
-        </div>
-        <div :style="direction === 'row' ? 'margin-left: 10px;font-size: 12px;' : 'color: #fff;font-size: 11px;'"
-          style="color: #ccc">
-          融入系统，简洁流畅
-        </div>
-      </div>
     </div>
   </div>
   <!-- 小部件内容 -->

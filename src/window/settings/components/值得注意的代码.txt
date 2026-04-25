@@ -1,265 +1,6 @@
-<template>
-  <div id="contentbar" ref="contentbar">
-    <div
-      :style="`position:fixed;height:98px;width:665px;z-index:2;margin-top:-40px;margin-left: 270px;`"
-    >
-      <div class="mask-b-from-70-to-100"></div>
-      <div class="mask-b-from-50-to-75"></div>
-      <div class="mask-b-from-20-to-55"></div>
-    </div>
-    <liquid_glass
-      style="margin: 10px 20px; color: #000; background: #fff6"
-      layerClass="sidebar"
-      layerStyle="margin:10px;"
-      width="230"
-      height="570"
-      radius="20"
-      :displacementScale="250"
-      :precise="0.1"
-      :drag="false"
-      position="relative"
-    >
-      <!-- 登录信息 -->
-      <div style="display: flex; flex-direction: row; gap: 10px">
-        <div
-          style="
-            background-color: #def;
-            height: 54px;
-            width: 54px;
-            border: #ccc 1px solid;
-            border-radius: 50%;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            font-size: 28px;
-            color: #5af;
-          "
-        >
-          #
-        </div>
-        <div
-          style="display: flex; flex-direction: column; justify-content: center"
-        >
-          <div style="font-size: 14px; font-weight: bold">Microsoft User</div>
-          <div style="font-size: 12px">example@microsoft.com</div>
-        </div>
-      </div>
-      <br />
-      <!-- 主页 -->
       <div
         style="
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-          padding: 10px 0 10px 10px;
-          align-items: center;
-        "
-      >
-        <div style="width: 16px; height: 16px">
-          <img src="/public/icons/shell32_51380.png" alt="" />
-        </div>
-        <div style="font-size: 15px">Home</div>
-      </div>
-      <!-- 系统 -->
-
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-          padding: 10px 0 10px 10px;
-          align-items: center;
-        "
-      >
-        <div style="width: 16px; height: 16px">
-          <img src="/public/settings/System.webp" alt="" />
-        </div>
-        <div style="font-size: 15px">System</div>
-      </div>
-      <!-- 蓝牙和其他设备 -->
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-          padding: 10px 0 10px 10px;
-          align-items: center;
-        "
-      >
-        <div style="width: 16px; height: 16px">
-          <img src="/public/settings/Bluetooth & devices.webp" alt="" />
-        </div>
-        <div style="font-size: 15px">Bluetooth & Devices</div>
-      </div>
-      <!-- 网络和因特网 -->
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-          padding: 10px 0 10px 10px;
-          align-items: center;
-        "
-      >
-        <div style="width: 16px; height: 16px">
-          <img src="/public/settings/Network & internet.webp" alt="" />
-        </div>
-        <div style="font-size: 15px">Network & Wi-Fi</div>
-      </div>
-      <!-- 个性化 -->
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          padding: 10px 0 10px 10px;
-          background-color: #fffa;
-          border-radius: 10px;
-          align-items: center;
-        "
-      >
-        <div
-          style="
-            background-color: #4af;
-            height: 20px;
-            width: 4px;
-            border-radius: 2px;
-            margin-left: -10px;
-            margin-right: 4px;
-          "
-        ></div>
-        <div style="width: 16px; height: 16px; margin-right: 10px">
-          <img src="/public/settings/Personalisation.webp" alt="" />
-        </div>
-        <div style="font-size: 15px">Personalisation</div>
-      </div>
-      <!-- 应用 -->
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-          padding: 10px 0 10px 10px;
-          align-items: center;
-        "
-      >
-        <div style="width: 16px; height: 16px">
-          <img src="/public/settings/Apps.webp" alt="" />
-        </div>
-        <div style="font-size: 15px">Applications</div>
-      </div>
-      <!-- 账户 -->
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-          padding: 10px 0 10px 10px;
-          align-items: center;
-        "
-      >
-        <div style="width: 16px; height: 16px">
-          <img src="/public/settings/Accounts.webp" alt="" />
-        </div>
-        <div style="font-size: 15px">Accounts</div>
-      </div>
-      <!-- 时间和语言 -->
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-          padding: 10px 0 10px 10px;
-          align-items: center;
-        "
-      >
-        <div style="width: 16px; height: 16px">
-          <img src="/public/settings/Time & language.webp" alt="" />
-        </div>
-        <div style="font-size: 15px">Time & Language</div>
-      </div>
-      <!-- 游戏 -->
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-          padding: 10px 0 10px 10px;
-          align-items: center;
-        "
-      >
-        <div style="width: 16px; height: 16px">
-          <img src="/public/settings/Gaming.webp" alt="" />
-        </div>
-        <div style="font-size: 15px">Gaming</div>
-      </div>
-      <!-- 辅助功能 -->
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-          padding: 10px 0 10px 10px;
-          align-items: center;
-        "
-      >
-        <div style="width: 16px; height: 16px">
-          <img src="/public/settings/Accessibility.png" alt="" />
-        </div>
-        <div style="font-size: 15px">Accessibility</div>
-      </div>
-      <!-- 安全和隐私 -->
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-          padding: 10px 0 10px 10px;
-          align-items: center;
-        "
-      >
-        <div style="width: 16px; height: 16px">
-          <img src="/public/settings/Privacy & security.webp" alt="" />
-        </div>
-        <div style="font-size: 15px">Privacy & Security</div>
-      </div>
-      <!-- Windows Update -->
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-          padding: 10px 0 10px 10px;
-          align-items: center;
-        "
-      >
-        <div style="width: 16px; height: 16px">
-          <img src="/public/settings/Windows Update.webp" alt="" />
-        </div>
-        <div style="font-size: 15px">Windows Update</div>
-      </div>
-    </liquid_glass>
-    <div class="content">
-      <div
-        style="
-          margin: 0px 20px;
-          display: flex;
-          flex-direction: row;
-          gap: 0.4em;
-          font-size: 18px;
-          z-index: 99;
-          text-shadow:
-            #fff 0px 0px 2px,
-            #fff 0px 0px 4px,
-            #fff 0px 0px 6px,
-            #fff 0px 0px 8px;
-        "
-      >
-        <div style="color: rgb(40, 40, 40)">Personalisation ></div>
-        <div style="color: #000">Appearance</div>
-      </div>
-      <div
-        style="
-          height: 585px;
+          height: 610px;
           overflow-y: scroll;
           padding-top: 95px;
           margin-top: -95px;
@@ -351,7 +92,7 @@
               Change the appearance of Windows and apps
             </div>
           </div>
-          <div class="select-box">
+          <div class="select-box" >
             <div style="color: #000; font-size: 14px">Custom</div>
             <div style="flex-grow: 1"></div>
             <svg
@@ -424,9 +165,7 @@
                 justify-content: center;
               "
             >
-              <div style="color: #000; font-size: 14px">
-                Select material appearance
-              </div>
+              <div style="color: #000; font-size: 14px">Select material appearance</div>
               <div style="color: #555; font-size: 12px">
                 Change the appearance of Windows and apps
               </div>
@@ -483,9 +222,7 @@
               "
             >
               <div style="color: #000; font-size: 14px">Window</div>
-              <div style="color: #555; font-size: 12px">
-                Window framework texture
-              </div>
+              <div style="color: #555; font-size: 12px">Window framework texture</div>
             </div>
             <div class="select-box" style="width: 120px">
               <div style="color: #000; font-size: 14px">Aero Ultimate</div>
@@ -524,14 +261,55 @@
                 justify-content: center;
               "
             >
-              <div style="color: #000; font-size: 14px">UI widgets</div>
+              <div style="color: #000; font-size: 14px">Menu</div>
               <div style="color: #555; font-size: 12px">
-                Change the appearance of widgets including context menu, button,
-                etc.
+                Change the appearance of context menu
               </div>
             </div>
-            <div class="select-box" style="width: 120px">
-              <div style="color: #000; font-size: 14px">Custom style</div>
+            <div class="select-box" style="width: 120px !important">
+              <div style="color: #000; font-size: 14px">Aero Ultimate</div>
+              <div style="flex-grow: 1"></div>
+              <svg
+                class="icon"
+                width="12"
+                height="12"
+                style="margin: 0"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="51718"
+              >
+                <path
+                  d="M180.053333 361.386667a32 32 0 0 1 45.226667 0L512 648.106667l286.72-286.72a32 32 0 1 1 45.226667 45.226666l-309.333334 309.333334a32 32 0 0 1-45.226666 0L180.053333 406.613333a32 32 0 0 1 0-45.226666z"
+                  p-id="51719"
+                  fill="#888"
+                ></path>
+              </svg>
+            </div>
+            <div>
+              <div style="width: 24px"></div>
+            </div>
+          </div>
+          <!-- Fluent玻璃可读性设置 -->
+          <div class="flex-lr" style="height: 60px; border-top: #ccc 1px solid">
+            <div class="icons">
+              <div style="width: 24px"></div>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                justify-content: center;
+              "
+            >
+              <div style="color: #000; font-size: 14px">文字白雾效果</div>
+              <div style="color: #555; font-size: 12px">
+                通透玻璃条件下增强可读性
+              </div>
+            </div>
+            <div class="select-box">
+              <div style="color: #000; font-size: 14px">开启</div>
               <div style="flex-grow: 1"></div>
               <svg
                 class="icon"
@@ -568,10 +346,10 @@
               "
             >
               <div style="color: #000; font-size: 14px">
-                Aero Ultimate settings
+                Aero Elite 颜色浓度
               </div>
               <div style="color: #555; font-size: 12px">
-                Choose your preferred transparency settings
+                调整颜色浓度和通透强度，进一步增强文本可读性
               </div>
             </div>
             <div>
@@ -606,7 +384,7 @@
                   border: #2389d7 2px solid;
                 "
               />
-              <div>More Transparent</div>
+              <div>更多透明</div>
             </div>
             <div
               style="
@@ -626,7 +404,7 @@
                   border: #ccc 2px solid;
                 "
               />
-              <div>More color</div>
+              <div>更多色调</div>
             </div>
           </div>
 
@@ -643,9 +421,9 @@
                 justify-content: center;
               "
             >
-              <div style="color: #000; font-size: 14px">Custom color thickness</div>
+              <div style="color: #000; font-size: 14px">自定义颜色浓度</div>
               <div style="color: #555; font-size: 12px">
-                0% (More transparent)
+                根据实际情况自定义调节颜色浓度
               </div>
             </div>
 
@@ -665,51 +443,6 @@
                   p-id="18300"
                 ></path>
               </svg>
-            </div>
-          </div>
-          <!-- Fluent玻璃可读性设置 -->
-          <div class="flex-lr" style="height: 60px; border-top: #ccc 1px solid">
-            <div class="icons">
-              <div style="width: 24px"></div>
-            </div>
-            <div
-              style="
-                display: flex;
-                flex-direction: column;
-                flex: 1;
-                justify-content: center;
-              "
-            >
-              <div style="color: #000; font-size: 14px">
-                Enhance readability
-              </div>
-              <div style="color: #555; font-size: 12px">
-                In glass window, the option both considers transparency and
-                readability
-              </div>
-            </div>
-            <div class="select-box">
-              <div style="color: #000; font-size: 14px">Smart</div>
-              <div style="flex-grow: 1"></div>
-              <svg
-                class="icon"
-                width="12"
-                height="12"
-                style="margin: 0"
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                p-id="51718"
-              >
-                <path
-                  d="M180.053333 361.386667a32 32 0 0 1 45.226667 0L512 648.106667l286.72-286.72a32 32 0 1 1 45.226667 45.226666l-309.333334 309.333334a32 32 0 0 1-45.226666 0L180.053333 406.613333a32 32 0 0 1 0-45.226666z"
-                  p-id="51719"
-                  fill="#888"
-                ></path>
-              </svg>
-            </div>
-            <div>
-              <div style="width: 24px"></div>
             </div>
           </div>
         </div>
@@ -744,10 +477,10 @@
               justify-content: center;
             "
           >
-            <div style="color: #000; font-size: 14px">Color</div>
+            <div style="color: #000; font-size: 14px">主题色</div>
           </div>
-          <div class="select-box" style="width: 160px;">
-            <div style="color: #000; font-size: 14px;">According to wallpaper</div>
+          <div class="select-box">
+            <div style="color: #000; font-size: 14px">跟随壁纸</div>
             <div style="flex-grow: 1"></div>
             <svg
               class="icon"
@@ -795,7 +528,7 @@
           "
           class="glass-fog"
         >
-          Related Settings
+          相关设置
         </div>
         <!-- 高对比度主题 -->
         <div style="height: 60px" class="flex-lr fluent-box">
@@ -828,8 +561,9 @@
               justify-content: center;
             "
           >
-            <div style="color: #000; font-size: 14px">High Contrast Theme</div>
-            <div style="color: #555; font-size: 12px">Colorful theme for people with low vision and light sensitivity.
+            <div style="color: #000; font-size: 14px">高对比度主题</div>
+            <div style="color: #555; font-size: 12px">
+              适用于弱视和强光敏感的彩色主题
             </div>
           </div>
           <div>
@@ -860,7 +594,7 @@
           "
           class="glass-fog"
         >
-          Related Support
+          相关支持
         </div>
         <!-- 选择样式 -->
         <div style="height: 60px" class="flex-lr fluent-box">
@@ -894,7 +628,7 @@
             "
             @click="showHelp"
           >
-            <div style="color: #000; font-size: 14px">Appearence Help</div>
+            <div style="color: #000; font-size: 14px">外观帮助</div>
           </div>
           <div>
             <svg
@@ -915,117 +649,3 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</template>
-<script setup>
-import liquid_glass from "@/components/liquid_glass.vue";
-import { ref } from "vue";
-const contentbar = ref(null);
-const showHelp = () => {
-  console.log(`
-  From Windows 12, the UI has changed a lot.
-
-  Windows 12 has introduced Fluent 3D Glass, which looks like liquid glass in MacOS.
-
-  For appearence texture, you can choose from 3 types:
-
-  - Blur: Less performance cost than Fluent Glass, classic.
-  - Flat: Battery-friendly, but it is transparent in taskbar.
-  - Fluent Glass: Like a realistic glass.
-  
-  `);
-};
-</script>
-<style scoped>
-@import "/src/assets/gradientblur.css";
-@import "tailwindcss";
-
-* {
-  box-sizing: unset;
-}
-
-p {
-  margin: 0;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  margin-top: -80px;
-  padding-top: 80px;
-}
-
-.sidebar {
-  width: 260px;
-  overflow-y: scroll;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 5px 15px;
-  color: #000;
-}
-
-.icons {
-  margin: 10px;
-  color: #555;
-}
-
-.flex-lr {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.fluent-box {
-  border-radius: 20px;
-  background-color: #fffc;
-  margin: 10px 10px;
-  box-shadow:
-    inset 2px 2px 20px #b0d2ff85,
-    5px 5px 10px #00000028,
-    inset 3px 3px 6px #0004;
-  /* text-shadow: 4px 4px 5px #0004; */
-  transition: all 0.3s ease-in-out;
-}
-/* .fluent-box:hover {
-  box-shadow: inset -2px 2px 20px #b0d2ff85,-5px 5px 10px #00000028,inset -3px 3px 6px #0004;
-  text-shadow: -2px 2px 4px #0004;
-} */
-
-.flex-ud {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#contentbar {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  max-height: 100%;
-}
-.select-box {
-  display: flex;
-  flex-direction: row;
-  height: 10px;
-  align-items: center;
-  border-radius: 10px;
-  background-color: #fffc;
-  box-shadow:
-    inset 3px 3px 10px #aaaa,
-    inset 0 0 2px #aaaa,
-    3px 3px 10px #aaaa;
-  padding: 10px 10px;
-  width: 100px;
-  margin: 0 10px;
-  transition: all 0.3s ease-in-out;
-}
-.select-box:hover {
-  box-shadow:
-    inset 6px -6px 10px #aaaa,
-    inset 0 0 6px #aaaa,
-    6px -6px 10px #aaaa;
-}
-</style>

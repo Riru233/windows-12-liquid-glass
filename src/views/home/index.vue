@@ -4,7 +4,7 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      background-image: url(&quot;/public/img0.png&quot;);
+      background-image: url(&quot;/public/imgbeta12.png&quot;);
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
@@ -63,7 +63,7 @@
 
   <Taskbar @mousedown.stop @restore="handleRestore" />
 
-  <island ref="island" content="测试Windows 12快捷窗，点击收起"/>
+  <island ref="island" content="Drag here to adjust layout"/>
 </template>
 
 <script setup>
@@ -240,7 +240,7 @@ const openWindow = (name) => {
 
 const appConfigs = {
   explorer: {
-    title: "文件资源管理器",
+    title: "Explorer",
     url: "/public/icons/explorer_ICO_MYCOMPUTER.ico",
   },
   settings: { title: "设置", url: "/public/icons/settings/logo.scale-100.png" },
