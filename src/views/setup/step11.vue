@@ -1,9 +1,9 @@
 <template>
   <SetupFrame>
     <div class="content">
-      <h1>Select location to install Windows 12</h1>
+      <h1>Select location to install Windows Developer Preview</h1>
       <div style="font-size: 13px">
-        Please select the location where you want to install Windows 12.
+        Please select the location where you want to install Windows Developer Preview.
       </div>
       <div style="display: flex;gap: 10px;align-items: center;flex-direction: row;color:#0072d9;font-size:13px;margin-top:20px;">
         <div style="height:32px;width:120px;flex:1">

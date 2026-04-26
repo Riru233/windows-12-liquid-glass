@@ -924,9 +924,9 @@ import { ref } from "vue";
 const contentbar = ref(null);
 const showHelp = () => {
   console.log(`
-  From Windows 12, the UI has changed a lot.
+  From Windows Developer Preview, the UI has changed a lot.
 
-  Windows 12 has introduced Fluent 3D Glass, which looks like liquid glass in MacOS.
+  Windows Developer Preview has introduced Fluent 3D Glass, which looks like liquid glass in MacOS.
 
   For appearence texture, you can choose from 3 types:
 

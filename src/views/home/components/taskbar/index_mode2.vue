@@ -51,7 +51,7 @@
   </div>
 
   <div class="watermark-fixed">
-    <p>Windows 12 Insider Preview</p>
+    <p>Windows Developer Preview Insider Preview</p>
     <p>Build 29900.2620.fs_dev11_fit.260322-2312</p>
     <p>If you meet any issues, press Windows+F and feedback it.</p>
   </div>

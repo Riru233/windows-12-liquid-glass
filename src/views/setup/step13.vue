@@ -1,7 +1,7 @@
 <template>
   <SetupFrame>
     <div class="content">
-      <h1>Installing Windows 12</h1>
+      <h1>Installing Windows Developer Preview</h1>
       <div style="font-size: 13px; line-height: 2em">
         Please keep your PC plugged in and don't shut down. This process may take up to 20 minutes.
       </div>

@@ -45,14 +45,14 @@ const viewMode = ref("grid");
 const appSections = ref([
   {
     id: "pinned",
-    title: "Fixed",
+    title: "Pinned",
     apps: [
       { name: "Microsoft Store", icon: "/icons/ms-store.png" },
       { name: "Edge", icon: "/icons/msedge_101.ico" },
       { name: "Copilot", icon: "/icons/copilot.png" },
       { name: "Settings", icon: "/icons/settings/logo.scale-100.png" },
       {
-        name: "Windows Security",
+        name: "Security Center",
         icon: "/icons/WindowsSecurityAppList.scale-125_contrast-white.png",
       },
     ],

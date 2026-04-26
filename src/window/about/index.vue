@@ -619,7 +619,7 @@
             d="M-5.71 25.266a.287.287 0 01.112-.193c.062-.037.326-.079.536.117.212.19.539.41.439.713a.531.531 0 00-.122-.14l-.474-.375c.001.001-.153-.182-.491-.122z"
             transform="translate(350.115 -85.539) scale(4.96547)" />
         </svg>
-        <!-- Windows 12 -->
+        <!-- Windows Developer Preview -->
         <!-- <svg v-else class="icon" viewBox="0 0 1024 1024" width="60px" height="60px" style="
             filter: drop-shadow(#24acf2aa 0 0 6px) drop-shadow(#24acf2aa 0 0 12px);">
           <defs>
@@ -639,7 +639,7 @@
             font-weight: 100;
             filter: drop-shadow(#24acf2aa 0 0 6px) drop-shadow(#24acf2aa 0 0 12px);
           ">
-          <!-- <div style="font-size: 48px">Windows 12</div> -->
+          <!-- <div style="font-size: 48px">Windows Developer Preview</div> -->
           <div style="font-size: 24px">Windows Developer Preview</div>
         </div>
       </div>

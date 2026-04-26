@@ -9,43 +9,52 @@
       <br />
       <div>Recommended images:</div>
       <div style="display: flex; flex-wrap: wrap; gap: 20px">
-        <div :class="stat.option === 1? 'c-block-checked' : 'c-block'" @click="setOption(1)">
-          <div class="c-block-title">Windows 12 Home</div>
+        <div
+          :class="stat.option === 1 ? 'c-block-checked' : 'c-block'"
+          @click="setOption(1)"
+        >
+          <div class="c-block-title">Windows Developer Preview</div>
+          <div class="c-block-desc">
+            For test usage.
+          </div>
+        </div>
+        <!-- <div :class="stat.option === 1? 'c-block-checked' : 'c-block'" @click="setOption(1)">
+          <div class="c-block-title">Windows Developer Preview Home</div>
           <div class="c-block-desc">
             For individuals and family users, and casual gamers, you cannot use remote access or cloud services.
           </div>
-        </div>
-        <div :class="stat.option === 2? 'c-block-checked' : 'c-block'" @click="setOption(2)">
-          <div class="c-block-title">Windows 12 Pro</div>
+        </div> -->
+        <!-- <div :class="stat.option === 2? 'c-block-checked' : 'c-block'" @click="setOption(2)">
+          <div class="c-block-title">Windows Developer Preview Pro</div>
           <div class="c-block-desc">
             For small businesses and enterprises, and advanced gamers
           </div>
         </div>
         <div :class="stat.option === 3? 'c-block-checked' : 'c-block'" @click="setOption(3)">
-          <div class="c-block-title">Windows 12 Education</div>
+          <div class="c-block-title">Windows Developer Preview Education</div>
           <div class="c-block-desc">
             For educational institutions, teachers and students
           </div>
         </div>
         <div :class="stat.option === 4? 'c-block-checked' : 'c-block'" @click="setOption(4)">
-          <div class="c-block-title">Windows 12 Enterprise</div>
+          <div class="c-block-title">Windows Developer Preview Enterprise</div>
           <div class="c-block-desc">
             For large organizations, and advanced security needs
           </div>
-        </div>
-
-        <button
-          style="
-            color: #0078d7;
-            background-color: #fff0;
-            border: none;
-            cursor: pointer;
-            text-align: left;
-          "
-        >
-          <u>A</u>dvanced options
-        </button>
+        </div> -->
       </div>
+
+      <button
+        style="
+          color: #0078d7;
+          background-color: #fff0;
+          border: none;
+          cursor: pointer;
+          text-align: left;
+        "
+      >
+        <u>A</u>dvanced options
+      </button>
       <br />
     </div>
     <div class="footer">
@@ -56,7 +65,13 @@
       <button class="fillbtn" @click="router.push('/setup/step5')">
         <u>B</u>ack
       </button>
-      <button class="fillbtnnext" @click="verify" :disabled="stat.option==0?true:false"><u>N</u>ext</button>
+      <button
+        class="fillbtnnext"
+        @click="verify"
+        :disabled="stat.option == 0 ? true : false"
+      >
+        <u>N</u>ext
+      </button>
     </div>
   </SetupFrame>
 </template>
@@ -68,12 +83,12 @@ import { reactive } from "vue";
 const router = useRouter();
 const verify = () => {
   if (stat.option === 0) return;
-  localStorage.setItem("install-option",stat.option)
+  localStorage.setItem("install-option", stat.option);
   router.push("/setup/step8");
 };
 const stat = reactive({
-  option: 0
-})
+  option: 0,
+});
 const setOption = (option) => {
   stat.option = option;
 };

@@ -1,7 +1,7 @@
 <template>
   <SetupFrame>
     <div class="content">
-      <h1>Install Windows 12</h1>
+      <h1>Install Windows Developer Preview</h1>
       <div style="font-size: 13px;">Setup will guide you through the installation process.</div>
     </div>
     <div class="footer">

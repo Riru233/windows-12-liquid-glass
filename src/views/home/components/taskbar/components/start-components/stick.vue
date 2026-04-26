@@ -50,7 +50,6 @@ const props = defineProps({
 .app-item.grid .app-title {
   font-size: 12px;
   text-align: center;
-  word-break: break-all;
 }
 
 /* 列表模式：左右排列 */

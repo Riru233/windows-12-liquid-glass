@@ -33,7 +33,7 @@
   <!-- 右下角水印 -->
   <div style="position: fixed;color: #fff;font-size: 12px;bottom: 50px;right:0;text-align: right;">
     <!-- <p>Do not take screen shots of this build.</p> -->
-    <p>Windows 12 Insider Preview</p>
+    <p>Windows Developer Preview Insider Preview</p>
     <p>Build 29900.2620.fs_dev11_fit.260322-2312</p>
   </div>
 </template>

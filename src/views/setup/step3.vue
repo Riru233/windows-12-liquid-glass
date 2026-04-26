@@ -3,8 +3,8 @@
     <div class="content">
       <h1>Select setup option</h1>
       <div style="font-size: 12px">
-        Install the latest version of Windows 12, or repair your PC. If you're
-        installing Windows 12, please note your files, apps, and settings will
+        Install the latest version of Windows Developer Preview, or repair your PC. If you're
+        installing Windows Developer Preview, please note your files, apps, and settings will
         be deleted.
       </div>
       <br />
@@ -14,7 +14,7 @@
           <label class="style-radio">
             <input type="radio" value="0" v-model="picked" />
             <span class="checkmark"></span>
-            <u>I</u>nstall Windows 12</label
+            <u>I</u>nstall Windows Developer Preview</label
           >
           <label class="style-radio">
             <input type="radio" value="1" v-model="picked" />

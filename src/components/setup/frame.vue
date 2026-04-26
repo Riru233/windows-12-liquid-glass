@@ -14,7 +14,7 @@
         text-shadow: 1px 1px 1px #000,1px 1px 2px #000,1px 1px 3px #000,1px 1px 4px #000;
       "
     >
-      Install Windows 12
+      Install Windows
     </div>
   </div>
   <div class="setup-container">
@@ -27,7 +27,7 @@
           alt=""
           style="width: 16px; height: 16px; padding: 0 5px"
         />
-        <div class="title">Windows 12 Setup</div>
+        <div class="title">Windows Developer Preview Setup</div>
         <div style="flex-grow: 1"></div>
         <div class="window-controls">
           <div

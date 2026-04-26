@@ -6,7 +6,7 @@
             <p>© Microsoft Corporation. All rights reserved.</p>
             <br />
             <p>
-                Windows 12 Developer Preview operating system and its user
+                Windows Pro Developer Preview operating system and its user
                 interface are protected by trademark and other pending or
                 existing intellectual property rights in the United States and
                 other countries.

@@ -23,8 +23,8 @@
       </div>
       <p class="note-text">
         Note: Certain apps and features may have additional requirements above
-        the Windows 12 minimum system requirements. Some features from previous
-        versions of Windows aren't available in Windows 12.
+        the Windows Developer Preview minimum system requirements. Some features from previous
+        versions of Windows aren't available in Windows Developer Preview.
       </p>
       <div class="spec-link">Check device specifications</div>
     </div>
@@ -52,7 +52,7 @@ import { onMounted, reactive } from "vue";
 const router = useRouter();
 
 const stat = reactive({
-  spec: "Windows 12"
+  spec: "Windows Developer Preview"
 });
 
 onMounted(()=> {
@@ -60,19 +60,19 @@ onMounted(()=> {
   console.log(installOption);
   switch (installOption) {
     case '1':
-      stat.spec = "Windows 12 Home";
+      stat.spec = "Windows Developer Preview Home";
       break;
     case '2':
-      stat.spec = "Windows 12 Pro";
+      stat.spec = "Windows Developer Preview Pro";
       break;
     case '3':
-      stat.sped = "Windows 12 Education";
+      stat.sped = "Windows Developer Preview Education";
       break;
     case '4':
-      stat.spec = "Windows 12 Enterprise";
+      stat.spec = "Windows Developer Preview Enterprise";
       break;
     default:
-      stat.spec = "Windows 12";
+      stat.spec = "Windows Developer Preview";
       break;
   }
 })

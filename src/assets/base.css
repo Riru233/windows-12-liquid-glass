@@ -129,3 +129,12 @@ p {
     transform: scale(0) perspective(1000px) rotate3d(0.5, 0, 0, 90deg);
   }
 }
+
+@keyframes menuexpand {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}

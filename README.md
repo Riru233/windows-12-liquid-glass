@@ -1,4 +1,4 @@
-# Windows 12概念版介绍
+# Windows Developer Preview概念版介绍
 
 ![alt text](readme/image.png)
 
