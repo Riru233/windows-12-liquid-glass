@@ -164,6 +164,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { generateDisplacementMap } from "/src/utils/genvec_layer2.js";
+import liquid_glass from "./liquid_glass.vue";
 
 const props = defineProps({
   title: String,
@@ -315,7 +316,6 @@ const stopDrag = () => {
   width: auto;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.2s;
 }
 
 .icon:hover {

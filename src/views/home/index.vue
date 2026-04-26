@@ -243,13 +243,13 @@ const appConfigs = {
     title: "Explorer",
     url: "/public/icons/explorer_ICO_MYCOMPUTER.ico",
   },
-  settings: { title: "设置", url: "/public/icons/settings/logo.scale-100.png" },
+  settings: { title: "Settings", url: "/public/icons/settings/logo.scale-100.png" },
   demo: {
-    title: "演示程序",
+    title: "Demo",
     icon: `<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><circle cx="512" cy="512" r="400" fill="#4CAF50"/></svg>`,
   },
   about: {
-    title: "关于系统",
+    title: "About Windows",
     icon: `<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512 85.290667c235.690667 0 426.752 191.061333 426.752 426.752 0 235.648-191.061333 426.709333-426.752 426.709333-235.690667 0-426.752-191.061333-426.752-426.709333C85.248 276.352 276.309333 85.290667 512 85.290667z m0 64a362.752 362.752 0 1 0 0 725.461333A362.752 362.752 0 0 0 512 149.333333z m-0.170667 298.666666a32 32 0 0 1 31.744 27.648l0.298667 4.352 0.128 234.752a32 32 0 0 1-63.701333 4.352l-0.298667-4.309333-0.128-234.752a32 32 0 0 1 32-32zM512 298.794667a42.624 42.624 0 1 1 0 85.205333 42.624 42.624 0 0 1 0-85.205333z" fill="#fff"></path></svg>`,
   },
 };

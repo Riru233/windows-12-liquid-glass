@@ -114,7 +114,6 @@
 <script setup>
 import StickPage from "./start-components/stick-page.vue";
 import TopButton from "./start-components/top-button.vue";
-import SlideCapsule from "./control-components/slide-capsule.vue";
 import { ref, reactive } from "vue";
 const stat = reactive({
   bright: 50,

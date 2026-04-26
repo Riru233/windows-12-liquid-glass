@@ -78,7 +78,7 @@
             yChannelSelector="G"
             result="displaced_source"
           />
-          <feColorMatrix in="displaced_source" type="saturate" values="1.4" />
+          <feColorMatrix in="displaced_source" type="saturate" values="1.1" />
         </filter>
       </defs>
     </svg>

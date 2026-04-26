@@ -1,10 +1,10 @@
 <template>
   <liquidWin title=" " :width="300" :height="200" @updatePos="updatePos"
     :active="props.active" :winPattern="0" v-model:top="top" v-model:left="left">
-    <div style="margin:20px;font-size: 60px;color: #333;">
+    <div style="margin:20px;font-size: 60px;color: #333;" class="glass-fog">
       Aa
     </div>
-    <div style="margin:0 20px;font-size: 24px;color: #333;">
+    <div style="margin:0 20px;font-size: 24px;color: #333;" class="glass-fog">
       Message Box
     </div>
   </liquidWin>

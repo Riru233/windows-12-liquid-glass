@@ -58,7 +58,7 @@
   >
     <p>Do not take screen shots of this build.</p>
     <p>Windows Pro Developer Preview</p>
-    <p>Build 27900.2620.fs_dev11_fit.260322-2312</p>
+    <p>Evaluation Only. Build 27900.2620.ge_dev12_fit.260629-1612</p>
   </div>
   <!-- 右下角控制中心 -->
   <control :panel="stat.panel" />

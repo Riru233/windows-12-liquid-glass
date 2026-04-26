@@ -8,7 +8,7 @@
     :drag="false"
     :blur="3"
     position="relative"
-    :layerStyle="`padding: 30px;gap:3px;background: #fff5;box-shadow: 0 0 10px #333;`"
+    :layerStyle="`padding: 30px;gap:3px;background: #fffa;box-shadow: 0 0 10px #333;`"
     :precise="0.1"
     :config_layer2="{
       gamma: 1.8,
