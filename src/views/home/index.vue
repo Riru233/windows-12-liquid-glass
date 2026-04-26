@@ -17,7 +17,7 @@
     "
     @mousedown.self="deactivateAll"
   />
-
+  <desktop />
   <TransitionGroup
     :name="animMode"
     @before-enter="calcDynamicPos"
@@ -80,6 +80,7 @@ import {
 import Taskbar from "/src/views/home/components/taskbar/index_mode1.vue";
 import Island from "/src/views/home/components/island/index.vue";
 import liquid_glass from "@/components/liquid_glass.vue";
+import desktop from "./components/desktop/index.vue"
 
 const windowList = ref([
   { id: "win_1", name: "demo" },
