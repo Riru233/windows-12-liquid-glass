@@ -140,7 +140,7 @@ const menuX = ref(0);
 const menuY = ref(0);
 const menuKey = ref(0);
 const menuRef = ref(null);
-const calculatedHeight = ref(210);
+const calculatedHeight = ref(240);
 
 const gridSize = computed(() => {
   if (currentIconSize.value === "large") return { x: 140, y: 160 };
@@ -156,23 +156,57 @@ const saveToLocal = () =>
 
 const alignToGrid = (icon) => {
   isAnimating.value = false;
-  icon.x = 5 + Math.round((icon.x - 5) / gridSize.value.x) * gridSize.value.x;
-  icon.y = 5 + Math.round((icon.y - 5) / gridSize.value.y) * gridSize.value.y;
-  nextTick(() => {
-    setTimeout(() => {
-      isAnimating.value = true;
-    }, 50);
-  });
+  
+  // 1. 计算原始目标网格坐标
+  let targetX = 5 + Math.round((icon.x - 5) / gridSize.value.x) * gridSize.value.x;
+  let targetY = 5 + Math.round((icon.y - 5) / gridSize.value.y) * gridSize.value.y;
+
+  // 2. 简单的防重叠逻辑：如果位置被占用，则向下搜索空位
+  const isOccupied = (x, y) => 
+    icons.value.some(i => i.id !== icon.id && i.x === x && i.y === y);
+
+  while (isOccupied(targetX, targetY)) {
+    targetY += gridSize.value.y; // 如果重叠，自动垂直向下移一格
+    // 如果超出屏幕高度，可以考虑移到下一列
+    if (targetY + gridSize.value.y > window.innerHeight - 100) {
+      targetY = 5;
+      targetX += gridSize.value.x;
+    }
+  }
+
+  icon.x = targetX;
+  icon.y = targetY;
+
+  // 恢复动画
+  nextTick(() => { setTimeout(() => { isAnimating.value = true; }, 50); });
 };
 
 const realignAll = () => {
-  if (isAutoArrange.value) {
-    isAnimating.value = true;
-    icons.value.forEach((icon, i) => {
-      icon.x = 5;
-      icon.y = 5 + i * gridSize.value.y;
+  isAnimating.value = true;
+  
+  if (isAutoArrange.value || currentSort.value) {
+    // 如果有排序规则，先进行数组排序
+    if (currentSort.value === 'name') {
+      icons.value.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    
+    // 重新排列所有图标，填充网格
+    let currentX = 5;
+    let currentY = 5;
+    
+    icons.value.forEach((icon) => {
+      icon.x = currentX;
+      icon.y = currentY;
+      
+      currentY += gridSize.value.y;
+      // 换列逻辑
+      if (currentY + gridSize.value.y > window.innerHeight - 100) {
+        currentY = 5;
+        currentX += gridSize.value.x;
+      }
     });
   } else if (isGridAlign.value) {
+    // 仅网格对齐时，逐个调用防重叠逻辑
     icons.value.forEach(alignToGrid);
   }
   saveToLocal();
@@ -295,7 +329,7 @@ const menuConfig = ref([
     label: "View",
     hasSubmenu: true,
     submenuWidth: 160,
-    submenuHeight: 180,
+    submenuHeight: 235,
     children: [
       { label: "Large", type: "radio", active: () => currentIconSize.value === "large", click: () => setIconSize("large") },
       { label: "Medium", type: "radio", active: () => currentIconSize.value === "medium", click: () => setIconSize("medium") },
@@ -303,13 +337,15 @@ const menuConfig = ref([
       { type: "separator" },
       { label: "Auto Arrange", type: "checkbox", active: () => isAutoArrange.value, click: toggleAutoArrange },
       { label: "Grid Align", type: "checkbox", active: () => isGridAlign.value, click: toggleGridAlign },
+      { type: "separator" },
+      { label: "Show desktop icons", click: refresh },
     ],
   },
   {
-    label: "Sort",
+    label: "Sort by",
     hasSubmenu: true,
     submenuWidth: 160,
-    submenuHeight: 140,
+    submenuHeight: 150,
     children: [
       { label: "Name", type: "radio", active: () => currentSort.value === "name", click: () => currentSort.value = "name" },
       { label: "Type", type: "radio", active: () => currentSort.value === "type", click: () => currentSort.value = "type" },
@@ -323,7 +359,7 @@ const menuConfig = ref([
     label: "New",
     hasSubmenu: true,
     submenuWidth: 140,
-    submenuHeight: 70,
+    submenuHeight: 80,
     children: [
       { label: "Folder", click: addIcon },
       { label: "Shortcut", click: () => {} },
@@ -331,7 +367,7 @@ const menuConfig = ref([
   },
   { type: "separator" },
   { label: "Display Settings", click: () => {} },
-  { label: "Personalization", click: () => {} },
+  { label: "Personalize", click: () => {} },
   { type: "separator" },
   { label: "Open in Terminal", click: () => {} },
   { label: "Show classic menu", click: () => {} },
@@ -449,7 +485,7 @@ onMounted(() => {
   padding: 5px 0;
   color: #333;
   font-family: sans-serif;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .context-menu-content ul {
@@ -520,6 +556,14 @@ onMounted(() => {
   .icon-visual {
     width: 64px;
     height: 64px;
+    margin-bottom: 4px;
+  }
+}
+.size-small {
+  width: 74px;
+  .icon-visual {
+    width: 32px;
+    height: 32px;
     margin-bottom: 4px;
   }
 }

@@ -2,7 +2,7 @@
     <div id="contentbar">
         <div style="margin: 10px 70px; color: #000; font-size: 12px;line-height: 1.8em;">
             <p>Microsoft Windows</p>
-            <p>Version 26H2 (Build: 27900.2620)</p>
+            <p>Version 26H2 (Build: 29915.2620)</p>
             <p>© Microsoft Corporation. All rights reserved.</p>
             <br />
             <p>
