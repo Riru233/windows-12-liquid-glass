@@ -29,7 +29,9 @@
     >
       <defs>
         <linearGradient :id="borderGradId" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#fff7"  />
+          <stop offset="20%" stop-color="#fff7"  />
+          <stop offset="50%" stop-color="#6667"  />
+          <stop offset="80%" stop-color="#fff7"  />
         </linearGradient>
       </defs>
       <rect

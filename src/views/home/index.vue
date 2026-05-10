@@ -1,4 +1,5 @@
 <template>
+  <!-- 桌面壁纸 -->
   <div
     style="
       margin: 0;
@@ -15,9 +16,11 @@
       left: 0;
       overflow: hidden;
     "
-    @mousedown.self="deactivateAll"
+    @mousedown.stop="activate(win.id)"
   />
-  <desktop />
+  <!-- 资源管理器桌面 -->
+  <desktop @mousedown="deactivateAll"/>
+  <!-- 窗口组 -->
   <TransitionGroup
     :name="animMode"
     @before-enter="calcDynamicPos"
@@ -61,9 +64,9 @@
     ＋
   </button> -->
 
-  <Taskbar @mousedown.stop @restore="handleRestore" />
+  <Taskbar @mousedown.stop @restore="handleRestore"  />
 
-  <island ref="island" content="Drag here to adjust layout"/>
+  <island ref="island" content="Drag here to adjust layout" @mousedown="deactivateAll"/>
 </template>
 
 <script setup>

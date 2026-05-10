@@ -1,26 +1,67 @@
 <template>
   <div id="contentbar" ref="contentbar">
     <div
-      :style="`position:fixed;height:98px;width:665px;z-index:2;margin-top:-40px;margin-left: 270px;`"
+      :style="`position:fixed;height:60px;width:calc(100% - 6px);z-index:2;margin-left:2px;`"
     >
-      <div class="mask-b-from-70-to-100"></div>
-      <div class="mask-b-from-50-to-75"></div>
-      <div class="mask-b-from-20-to-55"></div>
+      <div class="mask-b-from-70-to-100" style="border-radius: 10px"></div>
+      <div class="mask-b-from-50-to-75" style="border-radius: 10px"></div>
+      <div class="mask-b-from-20-to-55" style="border-radius: 10px"></div>
     </div>
     <liquid_glass
-      style="margin: 10px 20px; color: #000; background: #fff6"
+      style="margin: 10px; color: #000; background: #fff6"
       layerClass="sidebar"
       layerStyle="margin:10px;"
       width="230"
-      height="570"
+      height="628"
       radius="20"
       :displacementScale="250"
       :precise="0.1"
       :drag="false"
       position="relative"
     >
+      <!-- 操作按钮 -->
+      <div class="toolbar">
+        <div class="navbtns">
+          <!-- 上一步 -->
+
+          <div>
+            <svg
+              t="1760621368275"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="3590"
+              style="padding: 0 10px; width: 16px; height: 16px"
+            >
+              <path
+                d="M908.5 482H188.2l250.5-250.5c11.7-11.7 11.7-30.7 0-42.4s-30.7-11.7-42.4 0L94.6 490.8c-11.7 11.7-11.7 30.7 0 42.4L396.3 835c5.9 5.9 13.5 8.8 21.2 8.8 7.7 0 15.4-2.9 21.2-8.8 11.7-11.7 11.7-30.7 0-42.4L188.2 542h720.3c16.6 0 30-13.4 30-30s-13.4-30-30-30z"
+                fill="currentColor"
+                p-id="3591"
+              ></path>
+            </svg>
+          </div>
+          <div>
+            <svg
+              t="1760621368275"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="3590"
+              style="padding: 0 10px; width: 16px; height: 16px"
+            >
+              <path
+                d="M117.333333 768h533.333334a32 32 0 0 1 4.352 63.701333l-4.352 0.298667H117.333333a32 32 0 0 1-4.352-63.744L117.333333 768h533.333334-533.333334z m0-277.333333h789.333334a32 32 0 0 1 4.352 63.701333L906.666667 554.666667H117.333333a32 32 0 0 1-4.352-63.701334l4.352-0.298666h789.333334-789.333334z m0-277.205334h661.333334a32 32 0 0 1 4.352 63.701334l-4.352 0.298666H117.333333a32 32 0 0 1-4.352-63.701333l4.352-0.298667h661.333334-661.333334z"
+                fill="currentColor"
+                p-id="34018"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
       <!-- 登录信息 -->
-      <div style="display: flex; flex-direction: row; gap: 10px">
+      <div style="display: flex; flex-direction: row; gap: 10px;margin-bottom: 10px;">
         <div
           style="
             background-color: #def;
@@ -44,7 +85,6 @@
           <div style="font-size: 12px">example@microsoft.com</div>
         </div>
       </div>
-      <br />
       <!-- 主页 -->
       <div
         style="
@@ -241,10 +281,10 @@
     <div class="content">
       <div
         style="
-          margin: 0px 20px;
+          margin: 10px 20px 0 20px;
           display: flex;
           flex-direction: row;
-          gap: 0.4em;
+          gap: 0.8em;
           font-size: 18px;
           z-index: 99;
           text-shadow:
@@ -259,10 +299,10 @@
       </div>
       <div
         style="
-          height: 585px;
+          height: 610px;
           overflow-y: scroll;
-          padding-top: 95px;
-          margin-top: -95px;
+          padding-top: 40px;
+          margin-top: -32px;
         "
         class="overflow"
       >
@@ -643,7 +683,9 @@
                 justify-content: center;
               "
             >
-              <div style="color: #000; font-size: 14px">Custom color thickness</div>
+              <div style="color: #000; font-size: 14px">
+                Custom color thickness
+              </div>
               <div style="color: #555; font-size: 12px">
                 0% (More transparent)
               </div>
@@ -746,8 +788,10 @@
           >
             <div style="color: #000; font-size: 14px">Color</div>
           </div>
-          <div class="select-box" style="width: 160px;">
-            <div style="color: #000; font-size: 14px;">According to wallpaper</div>
+          <div class="select-box" style="width: 180px">
+            <div style="color: #000; font-size: 14px">
+              According to wallpaper
+            </div>
             <div style="flex-grow: 1"></div>
             <svg
               class="icon"
@@ -829,7 +873,8 @@
             "
           >
             <div style="color: #000; font-size: 14px">High Contrast Theme</div>
-            <div style="color: #555; font-size: 12px">Colorful theme for people with low vision and light sensitivity.
+            <div style="color: #555; font-size: 12px">
+              Colorful theme for people with low vision and light sensitivity.
             </div>
           </div>
           <div>
@@ -894,7 +939,7 @@
             "
             @click="showHelp"
           >
-            <div style="color: #000; font-size: 14px">Appearence Help</div>
+            <div style="color: #000; font-size: 14px">Appearance Help</div>
           </div>
           <div>
             <svg
@@ -928,7 +973,7 @@ const showHelp = () => {
 
   Windows Developer Preview has introduced Fluent 3D Glass, which looks like liquid glass in MacOS.
 
-  For appearence texture, you can choose from 3 types:
+  For appearance texture, you can choose from 3 types:
 
   - Blur: Less performance cost than Fluent Glass, classic.
   - Flat: Battery-friendly, but it is transparent in taskbar.
@@ -940,6 +985,63 @@ const showHelp = () => {
 <style scoped>
 @import "/src/assets/gradientblur.css";
 @import "tailwindcss";
+
+.navbtns {
+  display: flex;
+  flex-direction: row;
+  padding: 3px 0;
+}
+
+.toolbar {
+  height: 22px !important;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 5px;
+  font-size: 12px;
+  gap: 80px;
+  -webkit-app-region: drag;
+  /* 支持Electron环境下的拖动 */
+}
+
+.fab {
+  height: 42px !important;
+  width: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 5px;
+  font-size: 12px;
+  gap: 10px;
+  -webkit-app-region: drag;
+  /* 支持Electron环境下的拖动 */
+}
+
+.address {
+  background: rgba(230, 230, 230, 0.667);
+  border-top: #fffa 2px solid;
+  border-bottom: #fffa 1px solid;
+  border-radius: 14px;
+  height: 20px;
+  backdrop-filter: blur(10px);
+  padding: 3px 10px;
+  flex: 2;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  gap: 10px;
+}
+
+.search {
+  border-radius: 14px;
+  margin: 0 140px 0 120px;
+  font-size: 14px;
+  color: #333;
+  gap: 5px;
+}
 
 * {
   box-sizing: unset;
@@ -961,6 +1063,7 @@ p {
   width: 260px;
   overflow-y: scroll;
   height: 100%;
+  top: -50px;
   display: flex;
   flex-direction: column;
   margin: 5px 15px;
@@ -982,10 +1085,7 @@ p {
   border-radius: 20px;
   background-color: #fffc;
   margin: 10px 10px;
-  box-shadow:
-    inset 2px 2px 20px #b0d2ff85,
-    5px 5px 10px #00000028,
-    inset 3px 3px 6px #0004;
+  outline: #aaa 1px solid;
   /* text-shadow: 4px 4px 5px #0004; */
   transition: all 0.3s ease-in-out;
 }
@@ -1005,6 +1105,7 @@ p {
   flex-direction: row;
   height: 100%;
   max-height: 100%;
+  margin-top: -32px;
 }
 .select-box {
   display: flex;

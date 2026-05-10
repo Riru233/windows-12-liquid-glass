@@ -282,12 +282,6 @@
 import LiquidGlass from "/src/components/liquid_glass.vue";
 </script>
 <style scoped>
-.navbtns {
-  display: flex;
-  flex-direction: row;
-  gap: 2px;
-  padding: 3px 0;
-}
 
 .toolbar {
   height: 80px !important;

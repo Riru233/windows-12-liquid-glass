@@ -62,7 +62,7 @@
     :height="calculatedHeight"
     :radius="15"
     :displacementScale="150"
-    :layerStyle="{ background: 'rgba(255, 255, 255, 0.6)', borderRadius: '15px' }"
+    :layerStyle="{ background: 'rgba(255, 255, 255, 0.8)', borderRadius: '15px' }"
     :blur="5"
     position="relative"
     :precise="1"
@@ -102,7 +102,7 @@
                     <hr v-if="sub.type === 'separator'" class="menu-sep" />
                     <li v-else @click.stop="sub.click?.()">
                       <span class="check" v-if="sub.type">
-                        {{ sub.type === 'radio' ? (sub.active() ? '●' : '') : (sub.active() ? '✓' : '') }}
+                        {{ sub.type === 'radio' ? (sub.active() ? '·' : '') : (sub.active() ? '✓' : '') }}
                       </span>
                       {{ sub.label }}
                     </li>
@@ -143,7 +143,7 @@ const menuRef = ref(null);
 const calculatedHeight = ref(240);
 
 const gridSize = computed(() => {
-  if (currentIconSize.value === "large") return { x: 140, y: 160 };
+  if (currentIconSize.value === "large") return { x: 120, y: 160 };
   if (currentIconSize.value === "small") return { x: 70, y: 80 };
   return { x: 100, y: 110 };
 });
@@ -423,6 +423,7 @@ onMounted(() => {
   position: relative;
   overflow: hidden;
   user-select: none;
+  z-index:0;
 }
 .icon-item {
   position: absolute;
@@ -552,10 +553,10 @@ onMounted(() => {
   }
 }
 .size-large {
-  width: 140px;
+  width: 110px;
   .icon-visual {
-    width: 64px;
-    height: 64px;
+    width: 106px;
+    height: 106px;
     margin-bottom: 4px;
   }
 }

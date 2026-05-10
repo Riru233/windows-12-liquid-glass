@@ -67,7 +67,7 @@
   <notification
     title="Wechat"
     detailLine1="Windows Developer Team"
-    detailLine2="Thanks for your support to choose Windows Developer Preview."
+    detailLine2="Thanks for your support to choose Windows ..."
     :class="stat.notification"
   />
 </template>

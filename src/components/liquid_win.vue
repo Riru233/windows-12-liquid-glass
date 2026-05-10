@@ -24,13 +24,62 @@
         borderRight: `solid 2px #ffffffaa`,
       }"
     ></div>
+    <svg 
+      class="vector-border" 
+      :viewBox="`0 0 ${width} ${height}`"
+      :style="{ zIndex: 9 }"
+    >
+      <defs>
+        <linearGradient :id="borderGradId" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="20%" stop-color="#fff7"  />
+          <stop offset="50%" stop-color="#6667"  />
+          <stop offset="80%" stop-color="#fff7"  />
+        </linearGradient>
+      </defs>
+      <rect
+        x="0.5"
+        y="-0.5"
+        :width="width - 1"
+        :height="height + 1.5"
+        :rx="10"
+        fill="none"
+        :stroke="`url(#${borderGradId})`"
+        stroke-width="2"
+        style="pointer-events: none;"
+      />
+    </svg>
+    <svg 
+      class="vector-border" 
+      :viewBox="`0 0 ${width} ${height}`"
+      :style="{ zIndex: 9 }"
+    >
+      <defs>
+        <linearGradient :id="borderGradId1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="20%" stop-color="#ccc7"  />
+          <stop offset="50%" stop-color="#fff7"  />
+          <stop offset="80%" stop-color="#ccc7"  />
+        </linearGradient>
+      </defs>
+      <rect
+        x="1.5"
+        y="-1.5"
+        :width="width - 2"
+        :height="height + 1.5"
+        :rx="10"
+        fill="none"
+        :stroke="`url(#${borderGradId1})`"
+        stroke-width="2"
+        style="pointer-events: none;"
+      />
+    </svg>
+
 
     <div
       class="active-layer"
       :style="
         props.active
-          ? `border-radius:${props.config_layer2.radius}px;background: #ffffff22;box-shadow: 12px 12px 20px #00000033;`
-          : `background: transparent;border-radius:${props.config_layer2.radius}px;box-shadow: 0 0 20px #00000033;`
+          ? `border-radius:${props.config_layer2.radius}px;background: #ffffffaa;box-shadow: 12px 12px 20px #00000033;`
+          : `background: #eeeeeeaa;border-radius:${props.config_layer2.radius}px;box-shadow: 0 0 20px #00000033;`
       "
     ></div>
 
@@ -44,6 +93,7 @@
       <div v-if="props.title" class="titlebar" @mousedown="startDrag">
         <img
           :src="props.icon"
+          v-if="props.icon"
           alt=""
           style="width: 16px; height: 16px; color: #333"
         />
@@ -180,9 +230,9 @@ const props = defineProps({
     type: Object,
     default: () => ({
       radius: 10,
-      gamma: 1,
-      deadzone: 0.9,
-      edge: 10,
+      gamma: 0.6,
+      deadzone: 8,
+      edge: 0.01,
       isInward: true,
     }),
   },
@@ -196,11 +246,13 @@ defineEmits(["close", "minimize"]);
 const glassWindow = ref(null);
 // 动态 ID 确保多个组件实例不冲突
 const filterId = `win_filter_${Math.random().toString(36).substr(2, 5)}`;
+const borderGradId = `brd_grad_${Math.random().toString(36).substr(2, 5)}`;
+const borderGradId1 = `brd_grad_${Math.random().toString(36).substr(2, 5)}`;
 
 // 位移贴图图层计算
 const displacementMap = computed(() => {
-  props.config_layer2.deadzone = (props.width - 48) / props.width;
-  props.config_layer2.edge = props.width * 0.01;
+  props.config_layer2.deadzone = (props.width - 48) / props.width / 1.4;
+  props.config_layer2.edge = props.width * 0.01 / 1.4;
   return generateDisplacementMap({
     width: props.width,
     height: props.height,
@@ -281,7 +333,6 @@ const stopDrag = () => {
   width: 100%;
   display: flex;
   flex-direction: column;
-  border: solid 2px #ffffff55;
   /* background: radial-gradient(circle, #ffffff00 60%, #ffffff66 ); */
 }
 
@@ -295,6 +346,17 @@ const stopDrag = () => {
   width: calc(100% - 2px);
   height: 100%;
   pointer-events: none;
+}
+
+/* 矢量边框样式：绝对定位并覆盖在最上层或滤镜层 */
+.vector-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  fill: none;
 }
 
 /* 标题栏样式 */

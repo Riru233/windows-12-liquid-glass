@@ -4,7 +4,6 @@
     <div class="glass-content" style="display: flex; flex-direction: column; flex: 1;">
 
       <div class="titlebar" @mousedown="startDrag">
-        <toolbar />
         <div style="flex-grow: 1"></div>
 
         <div style="
@@ -109,8 +108,6 @@
 <script setup>
 import LiquidWin from "/src/components/liquid_win.vue";
 import WindowView from "./components/windowView.vue";
-import toolbar from "./components/toolbar.vue";
-
 
 const top = defineModel("top")
 const left = defineModel("left")
@@ -127,11 +124,12 @@ const props = defineProps({
 /* 确保内容区域铺满并带有背景色 */
 .titlebar {
   z-index: 1111;
-  height: 40px !important;
+  height: 32px !important;
   display: flex;
   align-items: center;
   flex-direction: row;
   margin: 0 5px;
+  margin-left: 260px;
   font-size: 12px;
   cursor: default;
 }
