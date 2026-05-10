@@ -42,7 +42,7 @@
         :rx="props.radius"
         fill="none"
         :stroke="`url(#${borderGradId})`"
-        stroke-width="2"
+        stroke-width="1"
         style="pointer-events: none;"
       />
     </svg>
@@ -194,6 +194,7 @@ const stopDrag = () => {
   height: 100%;
   pointer-events: none;
   fill: none;
+  filter: drop-shadow(0 0 2px #444a) drop-shadow(0 0 4px #666a)
 }
 
 .filter-layer {
@@ -209,6 +210,7 @@ const stopDrag = () => {
   z-index: 10;
   width: 100%;
   position: relative;
+  filter: drop-shadow(0 5px 2px #0000002a);
 }
 
 @keyframes lg-bounce {

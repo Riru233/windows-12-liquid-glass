@@ -16,8 +16,8 @@
       :precise="1"
       :config_layer2="{
         gamma: 3,
-        deadzone: 0.2,
-        edge: 2,
+        deadzone: 0.5,
+        edge: 1,
         isInward: true,
       }"
     >
@@ -58,6 +58,7 @@
             height: 20px;
             vertical-align: middle;
             overflow: hidden;
+            filter: drop-shadow(0 5px 2px #0000002a);
           "
           :style="props.selected ? `fill: #fff` : `fill: #333`"
         >
@@ -77,7 +78,7 @@
         font-size: 12px;
         margin-bottom: 5px;
       "
-    > 
+    >
       {{ props.title }}
     </div>
   </div>

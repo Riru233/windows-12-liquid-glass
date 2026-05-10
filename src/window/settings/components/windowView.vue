@@ -465,10 +465,10 @@
               "
             >
               <div style="color: #000; font-size: 14px">
-                Select material appearance
+                Fluent Design Ultimate
               </div>
               <div style="color: #555; font-size: 12px">
-                Change the appearance of Windows and apps
+                You can change strength of Fluent Design Ultimate effect.
               </div>
             </div>
             <div class="select-box">
@@ -522,13 +522,13 @@
                 justify-content: center;
               "
             >
-              <div style="color: #000; font-size: 14px">Window</div>
+              <div style="color: #000; font-size: 14px"></div>
               <div style="color: #555; font-size: 12px">
                 Window framework texture
               </div>
             </div>
             <div class="select-box" style="width: 120px">
-              <div style="color: #000; font-size: 14px">Aero Ultimate</div>
+              <div style="color: #000; font-size: 14px">Balanced</div>
               <div style="flex-grow: 1"></div>
               <svg
                 class="icon"
@@ -592,121 +592,6 @@
             </div>
             <div>
               <div style="width: 24px"></div>
-            </div>
-          </div>
-          <!-- 窗口最大化关闭透明效果 -->
-          <div class="flex-lr" style="height: 60px; border-top: #ccc 1px solid">
-            <div class="icons">
-              <div style="width: 24px"></div>
-            </div>
-            <div
-              style="
-                display: flex;
-                flex-direction: column;
-                flex: 1;
-                justify-content: center;
-              "
-            >
-              <div style="color: #000; font-size: 14px">
-                Aero Ultimate settings
-              </div>
-              <div style="color: #555; font-size: 12px">
-                Choose your preferred transparency settings
-              </div>
-            </div>
-            <div>
-              <div style="width: 24px"></div>
-            </div>
-          </div>
-
-          <div
-            style="
-              display: flex;
-              flex-direction: row;
-              color: #333;
-              margin: 10px 30px;
-              gap: 20px;
-            "
-          >
-            <div
-              style="
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-              "
-            >
-              <img
-                src="/settings/transparented.png"
-                alt=""
-                srcset=""
-                style="
-                  width: 250px;
-                  border-radius: 20px;
-                  border: #2389d7 2px solid;
-                "
-              />
-              <div>More Transparent</div>
-            </div>
-            <div
-              style="
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-              "
-            >
-              <img
-                src="/settings/colored.png"
-                alt=""
-                srcset=""
-                style="
-                  width: 250px;
-                  border-radius: 20px;
-                  border: #ccc 2px solid;
-                "
-              />
-              <div>More color</div>
-            </div>
-          </div>
-
-          <!-- Fluent玻璃可读性设置 -->
-          <div class="flex-lr" style="height: 60px">
-            <div class="icons">
-              <div style="width: 24px"></div>
-            </div>
-            <div
-              style="
-                display: flex;
-                flex-direction: column;
-                flex: 1;
-                justify-content: center;
-              "
-            >
-              <div style="color: #000; font-size: 14px">
-                Custom color thickness
-              </div>
-              <div style="color: #555; font-size: 12px">
-                0% (More transparent)
-              </div>
-            </div>
-
-            <div>
-              <svg
-                class="icon"
-                width="14"
-                height="14"
-                style="margin: 0 10px 0 0"
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                p-id="51718"
-              >
-                <path
-                  d="M361.386667 180.053333a32 32 0 0 0 0 45.226667L648.106667 512l-286.72 286.72a32 32 0 1 0 45.226666 45.226667l309.333334-309.333334a32 32 0 0 0 0-45.226666L406.613333 180.053333a32 32 0 0 0-45.226666 0z"
-                  p-id="18300"
-                ></path>
-              </svg>
             </div>
           </div>
           <!-- Fluent玻璃可读性设置 -->

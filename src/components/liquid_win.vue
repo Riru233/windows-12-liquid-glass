@@ -223,7 +223,7 @@ const props = defineProps({
   active: Boolean,
   winPattern: Number, // 0: 只有关闭按钮 1: 三大金刚按钮
   icon: { type: String, default: "" },
-  displacementScale: { type: Number, default: 78 },
+  displacementScale: { type: Number, default: 0 },
   blur: { type: Number, default: 5 },
   precise: { type: Number, default: 0.1 },
   config_layer2: {
