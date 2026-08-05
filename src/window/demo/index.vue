@@ -337,7 +337,6 @@ onUnmounted(() => {
   border: 1px solid #ffffffcc;
   box-shadow: 0 2px 8px #00000022;
 }
-
 .std-btn:hover {
   background: linear-gradient(to bottom, #ffffffcc, #ffffff88);
 }

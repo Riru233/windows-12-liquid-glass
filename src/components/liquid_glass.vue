@@ -220,6 +220,9 @@ const stopDrag = () => {
   100% { transform: scale(1); }
 }
 
+.tinted {
+  background: linear-gradient(to bottom, #000, #0000)
+}
 .lg-bounce:active {
   animation: lg-bounce 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }

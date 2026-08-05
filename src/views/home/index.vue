@@ -66,7 +66,7 @@
 
   <Taskbar @mousedown.stop @restore="handleRestore"  />
 
-  <island ref="island" content="Drag here to adjust layout" @mousedown="deactivateAll"/>
+  <island ref="island" content="Test island, click to close." @mousedown="deactivateAll"/>
 </template>
 
 <script setup>

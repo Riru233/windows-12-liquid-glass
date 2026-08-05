@@ -3,22 +3,29 @@
     class="island"
     :class="state.expand"
     :style="{
-      width: `${animWidth}px`,
-      height: `${animHeight}px`,
-      top: `${animTop}px`,
-      borderRadius: `${animRadius}px`,
+      width: animWidth + 'px',
+      height: animHeight + 'px',
+      top: animTop + 'px',
+      borderRadius: animRadius + 'px',
       color: animColor,
-      opacity: animOpacity
+      opacity: animOpacity,
     }"
     @click="expandOut"
   >
     <LiquidGlass
-      :width="animWidth"
-      :height="animHeight"
-      :radius="animRadius"
-      :blur="8"
-      :displacementScale="4"
-      bgClass="glass-tint"
+      :width="roundedWidth"
+      :height="roundedHeight"
+      :radius="roundedRadius"
+      :blur="2"
+      :displacementScale="48"
+      :config_layer2="{
+        radius: 10,
+        gamma: 12,
+        deadzone: 0.1,
+        edge: 1,
+        isInward: true,
+      }"
+      bgClass="tinted"
       position="absolute"
     />
     <div class="island-content">{{ props.content }}</div>
@@ -26,7 +33,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from "vue";
+import { ref, reactive, computed, onMounted } from "vue";
 import LiquidGlass from "/src/components/liquid_glass.vue";
 
 const props = defineProps({
@@ -47,6 +54,10 @@ const animRadius = ref(24);
 const animColor = ref("rgba(255,255,255,0)");
 const animOpacity = ref(0);
 
+const roundedWidth = computed(() => Math.max(1, Math.round(animWidth.value)));
+const roundedHeight = computed(() => Math.max(1, Math.round(animHeight.value)));
+const roundedRadius = computed(() => Math.round(animRadius.value));
+
 let animFrame = null;
 
 function easeInOut(t) {
@@ -54,17 +65,65 @@ function easeInOut(t) {
 }
 
 const expandInKeyframes = [
-  { t: 0, w: 0, h: 0, top: 20, r: 24, color: "rgba(255,255,255,0)", opacity: 0 },
-  { t: 0.3, w: 24, h: 24, top: 20, r: 24, color: "rgba(255,255,255,0)", opacity: 1 },
-  { t: 0.6, w: 24, h: 24, top: 35, r: 24, color: "rgba(255,255,255,0)", opacity: 1 },
+  {
+    t: 0,
+    w: 0,
+    h: 0,
+    top: 20,
+    r: 24,
+    color: "rgba(255,255,255,0)",
+    opacity: 0,
+  },
+  {
+    t: 0.3,
+    w: 24,
+    h: 24,
+    top: 20,
+    r: 24,
+    color: "rgba(255,255,255,0)",
+    opacity: 1,
+  },
+  {
+    t: 0.6,
+    w: 24,
+    h: 24,
+    top: 35,
+    r: 24,
+    color: "rgba(255,255,255,0)",
+    opacity: 1,
+  },
   { t: 1, w: 300, h: 48, top: 50, r: 24, color: "#fff", opacity: 1 },
 ];
 
 const expandOutKeyframes = [
   { t: 0, w: 300, h: 48, top: 50, r: 24, color: "#fff", opacity: 1 },
-  { t: 0.3, w: 24, h: 24, top: 35, r: 24, color: "rgba(255,255,255,0)", opacity: 1 },
-  { t: 0.6, w: 24, h: 24, top: 20, r: 24, color: "rgba(255,255,255,0)", opacity: 1 },
-  { t: 1, w: 0, h: 0, top: 20, r: 24, color: "rgba(255,255,255,0)", opacity: 0 },
+  {
+    t: 0.3,
+    w: 24,
+    h: 24,
+    top: 35,
+    r: 24,
+    color: "rgba(255,255,255,0)",
+    opacity: 1,
+  },
+  {
+    t: 0.6,
+    w: 24,
+    h: 24,
+    top: 20,
+    r: 24,
+    color: "rgba(255,255,255,0)",
+    opacity: 1,
+  },
+  {
+    t: 1,
+    w: 0,
+    h: 0,
+    top: 20,
+    r: 24,
+    color: "rgba(255,255,255,0)",
+    opacity: 0,
+  },
 ];
 
 function interpolate(keyframes, progress) {
