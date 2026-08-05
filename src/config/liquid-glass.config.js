@@ -17,7 +17,7 @@
  *                     视觉上更丝滑，但需要额外 rAF 循环
  */
 export default {
-  targetFPS: 60,
+  targetFPS: 144,
   enableAdaptiveSampling: true,
   fpsMeasureWindow: 1000,
   interpolateFeImage: true,

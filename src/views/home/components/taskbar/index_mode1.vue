@@ -58,7 +58,7 @@
   >
     <p>Do not take screen shots of this build.</p>
     <p>Windows 12 Pro</p>
-    <p>Evaluation Only. Build 29915.2620.ge_dev12_fit.260629-1612</p>
+    <p>Evaluation Only. Build 30915.2701.ge_dev12_fit.260629-1612</p>
   </div>
   <!-- 右下角控制中心 -->
   <control :panel="stat.panel" />

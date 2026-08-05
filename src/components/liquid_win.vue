@@ -40,10 +40,9 @@
         fill="none"
         :stroke="`url(#${borderGradId})`"
         stroke-width="2"
-        style="pointer-events: none;"
+        style="pointer-events: none"
       />
     </svg>
-
 
     <div
       class="active-layer"
@@ -73,7 +72,7 @@
         <div style="flex-grow: 1"></div>
 
         <div
-          style="display: flex; flex-direction: row;"
+          style="display: flex; flex-direction: row"
           @click="$emit('close')"
           v-if="props.winPattern === 0"
         >
@@ -101,10 +100,7 @@
           "
           v-if="props.winPattern === 1"
         >
-          <div
-            style="padding: 0 16px; "
-            @click="$emit('minimize')"
-          >
+          <div style="padding: 0 16px" @click="$emit('minimize')">
             <svg class="icon windowBtnStd" viewBox="0 0 1024 1024">
               <path
                 d="M160.213333 533.333333h703.658667a32 32 0 0 0 0-64H160.213333a32 32 0 0 0 0 64z"
@@ -112,15 +108,15 @@
               ></path>
             </svg>
           </div>
-          <div style="padding: 0 16px; " @click="toggleMaximize">
-            <svg v-if="maximized" class="icon windowBtnStd" viewBox="0 0 1024 1024">
+          <div style="padding: 0 16px" @click="toggleMaximize">
+            <svg
+              v-if="maximized"
+              class="icon windowBtnStd"
+              viewBox="0 0 1024 1024"
+            >
               <path
-                d="M320 170.666667h384a149.333333 149.333333 0 0 1 149.333333 149.333333v384a149.333333 149.333333 0 0 1-149.333333 149.333333H320a149.333333 149.333333 0 0 1-149.333333-149.333333V320a149.333333 149.333333 0 0 1 149.333333-149.333333z m0 74.666666a74.666667 74.666667 0 0 0-74.666667 74.666667v384a74.666667 74.666667 0 0 0 74.666667 74.666667h384a74.666667 74.666667 0 0 0 74.666666-74.666667V320a74.666667 74.666667 0 0 0-74.666666-74.666667z"
-                fill="currentColor"
-              ></path>
-              <path
-                d="M213.333333 384h74.666667v298.666667a74.666667 74.666667 0 0 0 74.666667 74.666666h298.666666v74.666667a74.666667 74.666667 0 0 1-74.666666 74.666667H288a74.666667 74.666667 0 0 1-74.666667-74.666667z"
-                fill="currentColor"
+                d="M320.768 213.333333H256.384a138.666667 138.666667 0 0 1 138.24-128h341.376A202.666667 202.666667 0 0 1 938.666667 288v341.333333a138.666667 138.666667 0 0 1-128 138.24v-64.341333a74.666667 74.666667 0 0 0 64-73.898667v-341.333333a138.666667 138.666667 0 0 0-138.666667-138.666667h-341.333333A74.666667 74.666667 0 0 0 320.768 213.333333zM224 256A138.666667 138.666667 0 0 0 85.333333 394.666667v405.333333A138.666667 138.666667 0 0 0 224 938.666667h405.333333A138.666667 138.666667 0 0 0 768 800v-405.333333A138.666667 138.666667 0 0 0 629.333333 256h-405.333333zM149.333333 394.666667c0-41.216 33.450667-74.666667 74.666667-74.666667h405.333333c41.258667 0 74.666667 33.450667 74.666667 74.666667v405.333333a74.666667 74.666667 0 0 1-74.666667 74.666667h-405.333333a74.666667 74.666667 0 0 1-74.666667-74.666667v-405.333333z"
+                p-id="34032"
               ></path>
             </svg>
             <svg v-else class="icon windowBtnStd" viewBox="0 0 1024 1024">
@@ -130,10 +126,7 @@
               ></path>
             </svg>
           </div>
-          <div
-            style="padding: 0 11px 0 16px; "
-            @click="$emit('close')"
-          >
+          <div style="padding: 0 8px 0 16px" @click="$emit('close')">
             <svg class="icon windowBtnClose" viewBox="0 0 1024 1024">
               <path
                 d="M187.605333 194.304l3.114667-3.584a32 32 0 0 1 41.642667-3.114667l3.584 3.114667L512 466.730667l276.053333-276.053334a32 32 0 1 1 45.226667 45.269334L557.269333 512l276.053334 276.053333a32 32 0 0 1 3.072 41.642667l-3.114667 3.584a32 32 0 0 1-41.642667 3.114667l-3.584-3.114667L512 557.269333l-276.053333 276.053334a32 32 0 0 1-45.226667-45.269334L466.730667 512l-276.053334-276.053333a32 32 0 0 1-3.072-41.642667l3.114667-3.584-3.114667 3.584z"
@@ -205,7 +198,10 @@
       <div
         v-if="previewState !== 'none'"
         class="max-preview"
-        :class="{ 'preview-in': previewState === 'in', 'preview-out': previewState === 'out' }"
+        :class="{
+          'preview-in': previewState === 'in',
+          'preview-out': previewState === 'out',
+        }"
         :style="previewStyle"
         @animationend="onPreviewAnimEnd"
       >
@@ -215,15 +211,13 @@
           :height="previewRect.height"
           :radius="14"
           :displacementScale="35"
-          :config_layer2="
-          {
+          :config_layer2="{
             radius: 10,
             gamma: 8,
             deadzone: 0.8,
             edge: 0.1,
             isInward: true,
-          }
-          "
+          }"
           :blur="0"
           :precise="0.5"
           :drag="false"
@@ -329,8 +323,8 @@ const previewStyle = computed(() => ({
   left: `${previewRect.value.left}px`,
   width: `${previewRect.value.width}px`,
   height: `${previewRect.value.height}px`,
-  zIndex: 1,
-  outline: '1px solid #555',
+  zIndex: 10,
+  outline: "1px solid #555",
   pointerEvents: "none",
   "--pv-from-top": `${previewFrom.value.top}px`,
   "--pv-from-left": `${previewFrom.value.left}px`,
@@ -345,7 +339,7 @@ const previewStyle = computed(() => ({
 // 位移贴图图层计算
 const displacementMap = computed(() => {
   props.config_layer2.deadzone = (filterW.value - 48) / filterW.value / 1.4;
-  props.config_layer2.edge = filterW.value * 0.01 / 1.4;
+  props.config_layer2.edge = (filterW.value * 0.01) / 1.4;
   return generateDisplacementMap({
     width: filterW.value,
     height: filterH.value,
@@ -445,8 +439,14 @@ const enterPreview = (e) => {
   const startW = Math.max(48, finalRect.width * 0.15);
   const startH = Math.max(28, finalRect.height * 0.15);
   previewFrom.value = {
-    top: Math.min(Math.max(originY - startH / 2, 0), window.innerHeight - startH),
-    left: Math.min(Math.max(originX - startW / 2, 0), window.innerWidth - startW),
+    top: Math.min(
+      Math.max(originY - startH / 2, 0),
+      window.innerHeight - startH,
+    ),
+    left: Math.min(
+      Math.max(originX - startW / 2, 0),
+      window.innerWidth - startW,
+    ),
     width: startW,
     height: startH,
   };
@@ -645,7 +645,7 @@ const onResizeEnd = () => {
   position: fixed;
   overflow: visible;
   user-select: none;
-  z-index: 10;
+  z-index: 98;
   display: flex;
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -675,7 +675,15 @@ const onResizeEnd = () => {
 
 .filter-layer,
 .active-layer {
-  background: linear-gradient(135deg, #ffffff00, #ffffff44, #ffffff00, #ffffff44, #ffffff00, #ffffff44);
+  background: linear-gradient(
+    135deg,
+    #ffffff00,
+    #ffffff44,
+    #ffffff00,
+    #ffffff44,
+    #ffffff00,
+    #ffffff44
+  );
   transition: all 0.2s ease-in-out;
   position: absolute;
   top: 0;
@@ -734,14 +742,62 @@ const onResizeEnd = () => {
   pointer-events: auto;
 }
 
-.resize-n { top: -4px; left: 10px; right: 10px; height: 8px; cursor: n-resize; }
-.resize-s { bottom: -4px; left: 10px; right: 10px; height: 8px; cursor: s-resize; }
-.resize-e { right: -4px; top: 10px; bottom: 10px; width: 8px; cursor: e-resize; }
-.resize-w { left: -4px; top: 10px; bottom: 10px; width: 8px; cursor: w-resize; }
-.resize-ne { top: -4px; right: -4px; width: 14px; height: 14px; cursor: ne-resize; }
-.resize-nw { top: -4px; left: -4px; width: 14px; height: 14px; cursor: nw-resize; }
-.resize-se { bottom: -4px; right: -4px; width: 14px; height: 14px; cursor: se-resize; }
-.resize-sw { bottom: -4px; left: -4px; width: 14px; height: 14px; cursor: sw-resize; }
+.resize-n {
+  top: -4px;
+  left: 10px;
+  right: 10px;
+  height: 8px;
+  cursor: n-resize;
+}
+.resize-s {
+  bottom: -4px;
+  left: 10px;
+  right: 10px;
+  height: 8px;
+  cursor: s-resize;
+}
+.resize-e {
+  right: -4px;
+  top: 10px;
+  bottom: 10px;
+  width: 8px;
+  cursor: e-resize;
+}
+.resize-w {
+  left: -4px;
+  top: 10px;
+  bottom: 10px;
+  width: 8px;
+  cursor: w-resize;
+}
+.resize-ne {
+  top: -4px;
+  right: -4px;
+  width: 14px;
+  height: 14px;
+  cursor: ne-resize;
+}
+.resize-nw {
+  top: -4px;
+  left: -4px;
+  width: 14px;
+  height: 14px;
+  cursor: nw-resize;
+}
+.resize-se {
+  bottom: -4px;
+  right: -4px;
+  width: 14px;
+  height: 14px;
+  cursor: se-resize;
+}
+.resize-sw {
+  bottom: -4px;
+  left: -4px;
+  width: 14px;
+  height: 14px;
+  cursor: sw-resize;
+}
 
 /* 最大化预激活预览 */
 .max-preview {
