@@ -27,7 +27,7 @@
           alt=""
           style="width: 16px; height: 16px; padding: 0 5px"
         />
-        <div class="title">Windows Developer Preview Setup</div>
+        <div class="title">Windows 12 Setup</div>
         <div style="flex-grow: 1"></div>
         <div class="window-controls">
           <div

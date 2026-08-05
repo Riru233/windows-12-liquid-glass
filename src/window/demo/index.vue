@@ -1,19 +1,27 @@
-﻿<template>
+<template>
   <liquidWin
     title="Liquid Glass Demo"
+    :width="560"
+    :height="520"
     :active="props.active"
-    :winPattern="0"
+    :winPattern="1"
+    resizable
     v-model:top="top"
     v-model:left="left"
     @close="close"
     @minimize="minimize"
+    @maximize="onMaximize"
+    @restore="onRestore"
   >
     <div class="demo-body">
       <div class="demo-desc">
-        下方按钮控制玻璃子容器的 放大/缩小 与 弧度增减 循环；拖拽子容器右下角抓手可直接调整大小。
+        Buttons below control the child glass loops (enlarge/shrink and corner
+        radius). Drag the bottom-right grip of the child to resize it. Drag the
+        window edges/corners to resize the window — the child stays constrained
+        by the parent's available space.
       </div>
 
-      <div class="stage">
+      <div class="stage" ref="stageRef">
         <liquidGlass
           :width="current.width"
           :height="current.height"
@@ -31,7 +39,7 @@
             <div class="glass-sub">Liquid Glass</div>
             <div
               class="resize-grip"
-              title="拖拽调整大小"
+              title="Drag to resize"
               @mousedown.stop="onResizeGripDown"
             ></div>
           </div>
@@ -51,14 +59,14 @@
           :class="{ on: sizeLoopOn }"
           @click="toggleSizeLoop"
         >
-          放大 / 缩小 循环
+          Enlarge / Shrink Loop
         </button>
         <button
           class="std-btn"
           :class="{ on: radiusLoopOn }"
           @click="toggleRadiusLoop"
         >
-          弧度 + / − 循环
+          Radius + / − Loop
         </button>
       </div>
     </div>
@@ -66,7 +74,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted } from "vue";
+import { ref, reactive, computed, onMounted, onUnmounted } from "vue";
 import LiquidWin from "/src/components/liquid_win.vue";
 import LiquidGlass from "/src/components/liquid_glass.vue";
 import { useGlassSampler } from "/src/composables/useGlassSampler.js";
@@ -78,17 +86,15 @@ const props = defineProps({
 });
 const emit = defineEmits(["close", "minimize"]);
 
-const SIZE_BASE = { width: 300, height: 220 };
-const SIZE_MAX = 1.7;
-const RADIUS_BASE = 24;
+const IDLE_RATIO = 0.72;
+const LOOP_MIN = 0.55;
+const LOOP_MAX = 0.95;
 const RADIUS_MIN = 8;
 const RADIUS_MAX = 64;
 const SIZE_PERIOD = 2600;
 const RADIUS_PERIOD = 2200;
-const MIN_W = 140;
-const MIN_H = 100;
-const MAX_W = 900;
-const MAX_H = 650;
+const MIN_CHILD_W = 140;
+const MIN_CHILD_H = 100;
 
 const configLayer2 = reactive({
   radius: 10,
@@ -100,59 +106,73 @@ const configLayer2 = reactive({
 
 const sizeLoopOn = ref(false);
 const radiusLoopOn = ref(false);
+const winMaximized = ref(false);
+const stageRef = ref(null);
+const stageSize = ref({ w: 0, h: 0 });
+let manualSize = null;
+let stageRO = null;
 
 const glass = useGlassSampler(
-  {
-    width: SIZE_BASE.width,
-    height: SIZE_BASE.height,
-    radius: RADIUS_BASE,
-  },
+  { width: 300, height: 220, radius: 24 },
   { tau: 90, driver: onDriverFrame },
 );
 const { current, stats, setTarget, start } = glass;
 
 function onDriverFrame(elapsed) {
-  if (sizeLoopOn.value) {
-    const t = elapsed / SIZE_PERIOD;
-    const scale = 1 + (SIZE_MAX - 1) * (0.5 - 0.5 * Math.cos(2 * Math.PI * t));
-    glass.setTarget({
-      width: SIZE_BASE.width * scale,
-      height: SIZE_BASE.height * scale,
-    });
+  const a = stageSize.value;
+  if (a.w > 0 && a.h > 0) {
+    if (sizeLoopOn.value) {
+      const t = elapsed / SIZE_PERIOD;
+      const scale =
+        LOOP_MIN +
+        (LOOP_MAX - LOOP_MIN) * (0.5 - 0.5 * Math.cos(2 * Math.PI * t));
+      setTarget({ width: a.w * scale, height: a.h * scale });
+    } else if (manualSize) {
+      setTarget({
+        width: Math.min(manualSize.w, a.w),
+        height: Math.min(manualSize.h, a.h),
+      });
+    } else {
+      setTarget({ width: a.w * IDLE_RATIO, height: a.h * IDLE_RATIO });
+    }
   }
   if (radiusLoopOn.value) {
     const t = elapsed / RADIUS_PERIOD;
+    const maxR = Math.min(RADIUS_MAX, (a.w || 300) * 0.35);
     const r =
       RADIUS_MIN +
-      (RADIUS_MAX - RADIUS_MIN) * (0.5 - 0.5 * Math.cos(2 * Math.PI * t));
-    glass.setTarget({ radius: r });
+      (maxR - RADIUS_MIN) * (0.5 - 0.5 * Math.cos(2 * Math.PI * t));
+    setTarget({ radius: r });
   }
 }
 
 const hudItems = computed(() => [
-  { label: "目标帧率", value: `${stats.targetFPS}Hz` },
-  { label: "实际帧率", value: stats.actualFPS ? `${stats.actualFPS}Hz` : "—" },
-  { label: "采样帧率", value: stats.sampledFPS ? `${stats.sampledFPS}Hz` : "—" },
+  { label: "Target FPS", value: `${stats.targetFPS}Hz` },
+  { label: "Actual FPS", value: stats.actualFPS ? `${stats.actualFPS}Hz` : "—" },
+  { label: "Sample FPS", value: stats.sampledFPS ? `${stats.sampledFPS}Hz` : "—" },
   {
-    label: "子容器尺寸",
+    label: "Parent Space",
+    value: `${Math.round(stageSize.value.w)} × ${Math.round(stageSize.value.h)}`,
+  },
+  {
+    label: "Child Size",
     value: `${Math.round(current.width)} × ${Math.round(current.height)}`,
   },
-  { label: "子容器圆角", value: `${Math.round(current.radius)}px` },
-  { label: "尺寸循环", value: sizeLoopOn.value ? "运行中" : "停止" },
-  { label: "弧度循环", value: radiusLoopOn.value ? "运行中" : "停止" },
+  { label: "Child Radius", value: `${Math.round(current.radius)}px` },
+  { label: "Window State", value: winMaximized.value ? "Maximized" : "Normal" },
+  { label: "Size Loop", value: sizeLoopOn.value ? "Running" : "Stopped" },
+  { label: "Radius Loop", value: radiusLoopOn.value ? "Running" : "Stopped" },
 ]);
 
 const toggleSizeLoop = () => {
   sizeLoopOn.value = !sizeLoopOn.value;
-  if (!sizeLoopOn.value) {
-    glass.setTarget({ width: SIZE_BASE.width, height: SIZE_BASE.height });
-  }
+  if (sizeLoopOn.value) manualSize = null;
 };
 
 const toggleRadiusLoop = () => {
   radiusLoopOn.value = !radiusLoopOn.value;
   if (!radiusLoopOn.value) {
-    glass.setTarget({ radius: RADIUS_BASE });
+    setTarget({ radius: 24 });
   }
 };
 
@@ -164,17 +184,22 @@ const onResizeGripDown = (e) => {
   const startH = current.height;
 
   const onMove = (ev) => {
-    const nextW = Math.min(
-      MAX_W,
-      Math.max(MIN_W, startW + (ev.clientX - startX)),
+    const a = stageSize.value;
+    const maxW = Math.max(MIN_CHILD_W, a.w);
+    const maxH = Math.max(MIN_CHILD_H, a.h);
+    const w = Math.min(
+      maxW,
+      Math.max(MIN_CHILD_W, startW + (ev.clientX - startX)),
     );
-    const nextH = Math.min(
-      MAX_H,
-      Math.max(MIN_H, startH + (ev.clientY - startY)),
+    const h = Math.min(
+      maxH,
+      Math.max(MIN_CHILD_H, startH + (ev.clientY - startY)),
     );
-    glass.setTarget({ width: nextW, height: nextH });
+    manualSize = { w, h };
+    setTarget({ width: w, height: h });
   };
   const onUp = () => {
+    manualSize = { w: current.width, h: current.height };
     document.removeEventListener("mousemove", onMove);
     document.removeEventListener("mouseup", onUp);
   };
@@ -182,11 +207,34 @@ const onResizeGripDown = (e) => {
   document.addEventListener("mouseup", onUp);
 };
 
+const onMaximize = () => {
+  winMaximized.value = true;
+};
+
+const onRestore = () => {
+  winMaximized.value = false;
+};
+
 const close = () => emit("close");
 const minimize = () => emit("minimize");
 
 onMounted(() => {
   start();
+  const el = stageRef.value;
+  if (el && typeof ResizeObserver !== "undefined") {
+    stageRO = new ResizeObserver((entries) => {
+      const r = entries[0]?.contentRect;
+      if (r) stageSize.value = { w: r.width, h: r.height };
+    });
+    stageRO.observe(el);
+  }
+});
+
+onUnmounted(() => {
+  if (stageRO) {
+    stageRO.disconnect();
+    stageRO = null;
+  }
 });
 </script>
 
@@ -215,10 +263,11 @@ onMounted(() => {
 }
 
 .stage {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 240px;
+  min-height: 200px;
 }
 
 .glass-inner {

@@ -128,7 +128,7 @@
           fill="url(#sweep-gradient)"
         ></path>
       </svg>
-      Windows Developer Preview
+      Windows 12
     </div>
   </div>
 </template>

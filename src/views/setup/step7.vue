@@ -13,31 +13,31 @@
           :class="stat.option === 1 ? 'c-block-checked' : 'c-block'"
           @click="setOption(1)"
         >
-          <div class="c-block-title">Windows Developer Preview</div>
+          <div class="c-block-title">Windows 12</div>
           <div class="c-block-desc">
             For test usage.
           </div>
         </div>
         <!-- <div :class="stat.option === 1? 'c-block-checked' : 'c-block'" @click="setOption(1)">
-          <div class="c-block-title">Windows Developer Preview Home</div>
+          <div class="c-block-title">Windows 12 Home</div>
           <div class="c-block-desc">
             For individuals and family users, and casual gamers, you cannot use remote access or cloud services.
           </div>
         </div> -->
         <!-- <div :class="stat.option === 2? 'c-block-checked' : 'c-block'" @click="setOption(2)">
-          <div class="c-block-title">Windows Developer Preview Pro</div>
+          <div class="c-block-title">Windows 12 Pro</div>
           <div class="c-block-desc">
             For small businesses and enterprises, and advanced gamers
           </div>
         </div>
         <div :class="stat.option === 3? 'c-block-checked' : 'c-block'" @click="setOption(3)">
-          <div class="c-block-title">Windows Developer Preview Education</div>
+          <div class="c-block-title">Windows 12 Education</div>
           <div class="c-block-desc">
             For educational institutions, teachers and students
           </div>
         </div>
         <div :class="stat.option === 4? 'c-block-checked' : 'c-block'" @click="setOption(4)">
-          <div class="c-block-title">Windows Developer Preview Enterprise</div>
+          <div class="c-block-title">Windows 12 Enterprise</div>
           <div class="c-block-desc">
             For large organizations, and advanced security needs
           </div>

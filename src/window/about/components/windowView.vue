@@ -2,15 +2,17 @@
     <div id="contentbar">
         <div style="margin: 10px 70px; color: #000; font-size: 12px;line-height: 1.8em;">
             <p>Microsoft Windows</p>
-            <p>Version 26H2 (Build: 29915.2620)</p>
+            <p>Version 27H2 (Build: 30915.2701, NT CorePC: 1.0.1.1342)</p>
+            <p>Framework: x86 with WoW64</p>
             <p>© Microsoft Corporation. All rights reserved.</p>
             <br />
             <p>
-                Windows Pro Developer Preview operating system and its user
+                Windows 12 Pro operating system and its user
                 interface are protected by trademark and other pending or
                 existing intellectual property rights in the United States and
                 other countries.
             </p>
+            <p>This product partly developed by ChatGPT Codex</p>
             <br /><br /><br />
             <p>
                 This product is licensed under the
