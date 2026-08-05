@@ -333,7 +333,6 @@ onUnmounted(() => {
   border-radius: 18px;
   padding: 0 16px;
   color: #333;
-  cursor: pointer;
   background: linear-gradient(to bottom, #ffffffaa, #ffffff55);
   border: 1px solid #ffffffcc;
   box-shadow: 0 2px 8px #00000022;

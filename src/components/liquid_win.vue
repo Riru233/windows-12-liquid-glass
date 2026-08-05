@@ -49,8 +49,8 @@
       class="active-layer"
       :style="
         props.active
-          ? `border-radius:${effectiveRadius}px;background: #ffffffaa;box-shadow: 12px 12px 20px #00000033;`
-          : `background: #eeeeeeaa;border-radius:${effectiveRadius}px;box-shadow: 0 0 20px #00000033;`
+          ? `border-radius:${effectiveRadius}px;background: linear-gradient(to bottom,#fffa,#fff0);box-shadow: 12px 12px 20px #00000033;`
+          : `background: linear-gradient(to bottom,#fff6,#fff0);border-radius:${effectiveRadius}px;box-shadow: 0 0 20px #00000033;`
       "
     ></div>
 
