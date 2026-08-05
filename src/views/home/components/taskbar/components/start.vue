@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="bg" :style="props.panel == 'panel-open'
     ? 'transform: scale(1)'
     : `right:0;bottom:0;width:0;height:0;`
@@ -141,7 +141,7 @@ const stopDrag = () => {
   bottom: 30px;
   width: 820px;
   height: 835px;
-  overflow-y: none;
+  overflow: hidden;
   z-index: 999;
 }
 
@@ -156,9 +156,10 @@ const stopDrag = () => {
 @keyframes panel-open {
   0% {
     transform: translateY(200%);
+    visibility: visible;
   }
   100% {
-
+    visibility: visible;
   }
 }
 
@@ -181,6 +182,7 @@ const stopDrag = () => {
   display: flex;
   transform: scaleY(3) translateY(300px);
   pointer-events: none;
+  visibility: hidden;
 }
 
 .panel-close {

@@ -10,6 +10,7 @@
       top: `${props.initialTop}px`,
       left: `${props.initialLeft}px`,
       position: `${props.position}`,
+      outline: `1px solid #999`,
     }"
   >
     <div

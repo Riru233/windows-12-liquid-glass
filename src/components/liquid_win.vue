@@ -44,31 +44,6 @@
       />
     </svg>
 
-    <svg
-      v-if="!maximized"
-      class="vector-border"
-      :viewBox="`0 0 ${winW} ${winH}`"
-      :style="{ zIndex: 9 }"
-    >
-      <defs>
-        <linearGradient :id="borderGradId1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="20%" stop-color="#ccc7" />
-          <stop offset="50%" stop-color="#fff7" />
-          <stop offset="80%" stop-color="#ccc7" />
-        </linearGradient>
-      </defs>
-      <rect
-        x="1.5"
-        y="-1.5"
-        :width="winW - 2"
-        :height="winH + 1.5"
-        :rx="10"
-        fill="none"
-        :stroke="`url(#${borderGradId1})`"
-        stroke-width="2"
-        style="pointer-events: none;"
-      />
-    </svg>
 
     <div
       class="active-layer"
@@ -83,6 +58,7 @@
       class="glass-content-inner"
       :style="{
         borderRadius: `${effectiveRadius}px`,
+        outline: `1px solid #999`,
         overflow: `hidden`,
       }"
     >
@@ -97,7 +73,7 @@
         <div style="flex-grow: 1"></div>
 
         <div
-          style="display: flex; flex-direction: row; cursor: pointer"
+          style="display: flex; flex-direction: row;"
           @click="$emit('close')"
           v-if="props.winPattern === 0"
         >
@@ -126,7 +102,7 @@
           v-if="props.winPattern === 1"
         >
           <div
-            style="padding: 0 16px; cursor: pointer"
+            style="padding: 0 16px; "
             @click="$emit('minimize')"
           >
             <svg class="icon windowBtnStd" viewBox="0 0 1024 1024">
@@ -136,7 +112,7 @@
               ></path>
             </svg>
           </div>
-          <div style="padding: 0 16px; cursor: pointer" @click="toggleMaximize">
+          <div style="padding: 0 16px; " @click="toggleMaximize">
             <svg v-if="maximized" class="icon windowBtnStd" viewBox="0 0 1024 1024">
               <path
                 d="M320 170.666667h384a149.333333 149.333333 0 0 1 149.333333 149.333333v384a149.333333 149.333333 0 0 1-149.333333 149.333333H320a149.333333 149.333333 0 0 1-149.333333-149.333333V320a149.333333 149.333333 0 0 1 149.333333-149.333333z m0 74.666666a74.666667 74.666667 0 0 0-74.666667 74.666667v384a74.666667 74.666667 0 0 0 74.666667 74.666667h384a74.666667 74.666667 0 0 0 74.666666-74.666667V320a74.666667 74.666667 0 0 0-74.666666-74.666667z"
@@ -155,7 +131,7 @@
             </svg>
           </div>
           <div
-            style="padding: 0 11px 0 16px; cursor: pointer"
+            style="padding: 0 11px 0 16px; "
             @click="$emit('close')"
           >
             <svg class="icon windowBtnClose" viewBox="0 0 1024 1024">
