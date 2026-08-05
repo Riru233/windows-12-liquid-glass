@@ -1,0 +1,192 @@
+<template>
+  <!-- 任务栏——沉浸样式 -->
+  <div class="taskbar">
+    <div
+      style="
+        width: 100%;
+        height: 48px;
+        position: fixed;
+        background: linear-gradient(to top, #95a3a4aa, #fff0);
+      "
+    >
+      <!-- <div class="mask-u-from-70-to-100"></div>
+      <div class="mask-u-from-50-to-75"></div>
+      <div class="mask-u-from-20-to-55"></div> -->
+    </div>
+    <div class="glass-content">
+      <!-- 左侧 -->
+      <div
+        class="unit"
+        style="
+          gap: 6px;
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+        "
+      >
+        <Dock @toggle-start="toggleStart" />
+      </div>
+      <div style="flex: 1.23"></div>
+      <!-- 分隔 -->
+      <div style="flex: 1"></div>
+      <!-- 右侧2 -->
+      <div class="unit">
+        <Widgets direction="column" />
+      </div>
+      <!-- 分隔 -->
+      <!-- 右侧 -->
+      <div class="unit" style="height: 42px; margin: 0">
+        <Status direction="column" @toggle-panel="togglePanel" />
+      </div>
+    </div>
+  </div>
+  <!-- Windows保密水印 -->
+  <!-- <div style="position: fixed;color: #fff;font-size: 12px;bottom: 100px;right:0;width: 30em;z-index: 0;">
+        <b style="text-align: center;width:100%;">Windows Confidential</b>
+        <p>Unauthorized use or disclosure in any manner may result in disciplinary action up to and including termination of employment (in the case of employees), termination of an assignment or contract (int the case of contigent staff), and potential civil and criminal liability.</p>
+       </div> -->
+  <!-- 右下角水印 -->
+  <div
+    style="
+      position: fixed;
+      color: #fff;
+      font-size: 12px;
+      bottom: 50px;
+      right: 0;
+      text-align: right;
+    "
+  >
+    <p>Do not take screen shots of this build.</p>
+    <p>Windows Pro Developer Preview</p>
+    <p>Evaluation Only. Build 29915.2620.ge_dev12_fit.260629-1612</p>
+  </div>
+  <!-- 右下角控制中心 -->
+  <control :panel="stat.panel" />
+  <Start :panel="stat.start" />
+  <!-- 右下角通知横幅 -->
+  <notification
+    title="Wechat"
+    detailLine1="Windows Developer Team"
+    detailLine2="Thanks for your support to choose Windows ..."
+    :class="stat.notification"
+  />
+</template>
+<script setup>
+import Widgets from "./components/widgets.vue";
+import Dock from "./components/dock.vue";
+import Status from "./components/status.vue";
+import Start from "./components/start.vue";
+import control from "./components/control.vue";
+import notification from "./components/notification.vue";
+import { reactive, onMounted } from "vue";
+const stat = reactive({
+  panel: "panel-init",
+  start: "panel-init",
+  notification: "notification-init",
+});
+
+const togglePanel = () => {
+  if (stat.panel === "panel-init" || stat.panel === "panel-close") {
+    stat.panel = "panel-open";
+  } else {
+    stat.panel = "panel-close";
+  }
+};
+
+const toggleStart = () => {
+  if (stat.start === "panel-init" || stat.start === "panel-close") {
+    stat.start = "panel-open";
+  } else {
+    stat.start = "panel-close";
+  }
+};
+
+onMounted(() => {
+  // 模拟通知开启
+  setTimeout(() => {
+    stat.notification = "notification-open";
+  }, 1000);
+  // 模拟通知关闭
+  setTimeout(() => {
+    stat.notification = "notification-close";
+  }, 6000);
+});
+</script>
+<style scoped>
+@import "/src/assets/liquidglass.css";
+@import "/src/assets/gradientblur.css";
+
+.taskbar {
+  height: 48px;
+  --border-radius: 0px;
+  color: #fff;
+  position: fixed;
+  bottom: -2px;
+  width: 100%;
+  padding: 0 0;
+  z-index: 999;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+}
+
+.glass-content {
+  /* background: linear-gradient(to top, #00000081 0%, #0000 100%); */
+  box-shadow: none;
+}
+
+.unit {
+  display: flex;
+  flex-direction: row;
+  z-index: 2;
+  height: 40px;
+  margin: 3px 0;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  user-select: none;
+}
+
+p {
+  margin: 0;
+}
+
+@keyframes nopen {
+  0% {
+    transform: translateX(180%);
+  }
+
+  50% {
+    transform: translateX(-10%) scaleY(1.2) scaleX(0.8);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes nclose {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(180%);
+  }
+}
+
+.notification-open {
+  animation: nopen 0.5s ease forwards;
+}
+
+.notification-init {
+  transform: translateX(180%);
+  pointer-events: none;
+}
+
+.notification-close {
+  animation: nclose 0.3s ease forwards;
+  pointer-events: none;
+}
+</style>
