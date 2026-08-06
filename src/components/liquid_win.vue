@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div
     class="glass-component"
     :class="{ maximized: maximized, 'no-transition': isDragging || resizing }"
@@ -61,7 +61,7 @@
         overflow: `hidden`,
       }"
     >
-      <div v-if="props.title" class="titlebar" @mousedown="startDrag">
+      <div v-if="props.title" class="titlebar" @mousedown="startDrag" @dblclick="onTitleBarDblClick">
         <img
           :src="props.icon"
           v-if="props.icon"
@@ -417,6 +417,17 @@ const applyRestore = () => {
 const toggleMaximize = () => {
   if (maximized.value) applyRestore();
   else applyMaximize();
+};
+
+const onTitleBarDblClick = (e) => {
+  if (!props.resizable) return;
+  if (
+    e.target.closest('.windowBtnClose') ||
+    e.target.closest('.windowBtnStd') ||
+    e.target.closest('button')
+  )
+    return;
+  toggleMaximize();
 };
 
 // 最大化预激活预览
