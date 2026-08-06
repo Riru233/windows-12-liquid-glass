@@ -98,7 +98,7 @@ const MIN_CHILD_H = 100;
 
 const configLayer2 = reactive({
   radius: 10,
-  gamma: 1.2,
+  gamma: 4,
   deadzone: 0.4,
   edge: 6,
   isInward: true,
