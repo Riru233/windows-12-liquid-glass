@@ -7,24 +7,9 @@
       <div class="mask-b-from-50-to-75" style="border-radius: 10px"></div>
       <div class="mask-b-from-20-to-55" style="border-radius: 10px"></div>
     </div>
-    <liquid_glass
-      style="margin: 10px; color: #000; background: #fff6"
-      layerClass="sidebar"
-      layerStyle="margin:10px;"
-      width="230"
-      height="628"
-      radius="20"
-      :displacementScale="78"
-      :precise="0.1"
-      :config_layer2="{
-        radius: 6,
-        gamma: 8,
-        deadzone: 0.6,
-        edge: 10,
-        isInward: true,
-      }"
-      :drag="false"
-      position="relative"
+    <div
+      style="color: #000;margin:10px;width:230px;height:628px;z-index: 400;"
+      class="sidebar"
     >
       <!-- 操作按钮 -->
       <div class="toolbar">
@@ -291,7 +276,7 @@
         </div>
         <div style="font-size: 15px">Windows Update</div>
       </div>
-    </liquid_glass>
+    </div>
     <div class="content">
       <div
         style="
@@ -370,7 +355,7 @@
           </div>
         </div>
         <!-- 选择样式 -->
-        <div style="height: 60px" class="flex-lr fluent-box">
+        <div style="height: 60px" class="flex-lr fluent-box" id="to-be-liquid">
           <div class="icons">
             <svg
               class="icon"
@@ -445,7 +430,7 @@
           </div>
         </div>
         <!-- 拟态玻璃设置 -->
-        <div class="flex-ud fluent-box">
+        <div class="flex-ud fluent-box" id="to-be-liquid">
           <!-- 头 -->
           <div style="height: 60px" class="flex-lr">
             <div class="icons">
@@ -655,7 +640,7 @@
           </div>
         </div>
         <!-- 色调 -->
-        <div style="height: 60px" class="flex-lr fluent-box">
+        <div style="height: 60px" class="flex-lr fluent-box" id="to-be-liquid">
           <div class="icons">
             <svg
               class="icon"
@@ -741,7 +726,7 @@
           Related Settings
         </div>
         <!-- 高对比度主题 -->
-        <div style="height: 60px" class="flex-lr fluent-box">
+        <div style="height: 60px" class="flex-lr fluent-box" id="to-be-liquid">
           <div class="icons">
             <svg
               class="icon"
@@ -807,7 +792,7 @@
           Related Support
         </div>
         <!-- 选择样式 -->
-        <div style="height: 60px" class="flex-lr fluent-box">
+        <div style="height: 60px" class="flex-lr fluent-box" id="to-be-liquid">
           <div class="icons">
             <svg
               class="icon"
