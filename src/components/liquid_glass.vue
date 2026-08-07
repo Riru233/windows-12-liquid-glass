@@ -211,7 +211,7 @@ const stopDrag = () => {
   z-index: 10;
   width: 100%;
   position: relative;
-  filter: drop-shadow(0 5px 2px #0000002a);
+  /* filter: drop-shadow(0 5px 2px #0000002a); */
 }
 
 @keyframes lg-bounce {

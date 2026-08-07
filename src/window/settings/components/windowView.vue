@@ -14,8 +14,15 @@
       width="230"
       height="628"
       radius="20"
-      :displacementScale="250"
+      :displacementScale="78"
       :precise="0.1"
+      :config_layer2="{
+        radius: 6,
+        gamma: 8,
+        deadzone: 0.6,
+        edge: 10,
+        isInward: true,
+      }"
       :drag="false"
       position="relative"
     >
@@ -61,7 +68,14 @@
         </div>
       </div>
       <!-- 登录信息 -->
-      <div style="display: flex; flex-direction: row; gap: 10px;margin-bottom: 10px;">
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
+          margin-bottom: 10px;
+        "
+      >
         <div
           style="
             background-color: #def;
@@ -522,7 +536,7 @@
                 justify-content: center;
               "
             >
-              <div style="color: #000; font-size: 14px"></div>
+              <div style="color: #000; font-size: 14px">Global window frame</div>
               <div style="color: #555; font-size: 12px">
                 Window framework texture
               </div>

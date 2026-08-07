@@ -1,6 +1,7 @@
 <template>
   <div
     class="desktop"
+    @mousedown="startSelection"
     @mousemove="onDrag"
     @mouseup="stopDrag"
     @mouseleave="stopDrag"
@@ -15,6 +16,8 @@
         iconSizeClass,
         { 'is-original-dragging': draggingIcon?.id === icon.id },
         { 'no-transition': !isAnimating },
+        { 'is-selected': selectedIds.has(icon.id) },
+        { 'is-multi-dragging': isMultiDragging && selectedIds.has(icon.id) },
       ]"
       :style="{ left: icon.x + 'px', top: icon.y + 'px' }"
       @mousedown.stop="startDrag($event, icon)"
@@ -50,6 +53,12 @@
       <span class="icon-label">{{ dragGhost.name }}</span>
     </div>
 
+    <div
+      v-if="isSelecting"
+      class="selection-rect"
+      :style="selectionStyle"
+    ></div>
+
 <div
   v-if="menuVisible"
   class="menu-wrapper"
@@ -62,7 +71,7 @@
     :height="calculatedHeight"
     :radius="15"
     :displacementScale="150"
-    :layerStyle="{ background: 'rgba(255, 255, 255, 0.8)', borderRadius: '15px' }"
+    :layerStyle="{ background: 'rgba(255, 255, 255, 0.5)', borderRadius: '15px' }"
     :blur="5"
     position="relative"
     :precise="1"
@@ -92,7 +101,7 @@
                 :height="item.submenuHeight"
                 :radius="15"
                 :displacementScale="150"
-                :layerStyle="{ background: 'rgba(255, 255, 255, 0.6)', borderRadius: '15px' }"
+                :layerStyle="{ background: 'rgba(255, 255, 255, 0.5)', borderRadius: '15px' }"
                 :blur="5"
                 position="relative"
                 class="glass-root sub-menu-glass"
@@ -135,6 +144,18 @@ const isGridAlign = ref(true);
 const isAutoArrange = ref(false);
 const isAnimating = ref(true);
 
+// Selection rectangle state
+const selectedIds = ref(new Set());
+const isSelecting = ref(false);
+const selectStart = ref({ x: 0, y: 0 });
+const selectEnd = ref({ x: 0, y: 0 });
+const preSelectIds = ref(new Set());
+
+// Multi-icon drag state
+const isMultiDragging = ref(false);
+const dragStartPositions = ref([]);
+const dragStartMouse = ref({ x: 0, y: 0 });
+
 const menuVisible = ref(false);
 const menuX = ref(0);
 const menuY = ref(0);
@@ -151,6 +172,27 @@ const gridSize = computed(() => {
 
 const iconSizeClass = computed(() => `size-${currentIconSize.value}`);
 
+const iconDimensions = computed(() => {
+  if (currentIconSize.value === 'large') return { width: 110, height: 136 };
+  if (currentIconSize.value === 'small') return { width: 74, height: 62 };
+  return { width: 74, height: 78 };
+});
+
+const selectionRect = computed(() => {
+  const x = Math.min(selectStart.value.x, selectEnd.value.x);
+  const y = Math.min(selectStart.value.y, selectEnd.value.y);
+  const width = Math.abs(selectEnd.value.x - selectStart.value.x);
+  const height = Math.abs(selectEnd.value.y - selectStart.value.y);
+  return { x, y, width, height };
+});
+
+const selectionStyle = computed(() => ({
+  left: selectionRect.value.x + 'px',
+  top: selectionRect.value.y + 'px',
+  width: selectionRect.value.width + 'px',
+  height: selectionRect.value.height + 'px',
+}));
+
 const saveToLocal = () =>
   localStorage.setItem("desktop_data", JSON.stringify(icons.value));
 
@@ -166,13 +208,24 @@ const alignToGrid = (icon) => {
     icons.value.some(i => i.id !== icon.id && i.x === x && i.y === y);
 
   while (isOccupied(targetX, targetY)) {
-    targetY += gridSize.value.y; // 如果重叠，自动垂直向下移一格
-    // 如果超出屏幕高度，可以考虑移到下一列
+    targetY += gridSize.value.y;
     if (targetY + gridSize.value.y > window.innerHeight - 100) {
       targetY = 5;
       targetX += gridSize.value.x;
     }
+    if (targetX + gridSize.value.x > window.innerWidth) {
+      targetX = 5;
+      targetY = 5;
+    }
   }
+
+  // Clamp to screen bounds after alignment
+  const maxW = iconDimensions.value.width;
+  const maxH = iconDimensions.value.height;
+  if (targetX + maxW > window.innerWidth) targetX = window.innerWidth - maxW;
+  if (targetY + maxH > window.innerHeight - 100) targetY = window.innerHeight - 100 - maxH;
+  if (targetX < 5) targetX = 5;
+  if (targetY < 5) targetY = 5;
 
   icon.x = targetX;
   icon.y = targetY;
@@ -214,8 +267,72 @@ const realignAll = () => {
 
 watch(currentIconSize, realignAll);
 
+const rectsOverlap = (a, b) => {
+  return a.x < b.right && a.x + a.width > b.x && a.y < b.bottom && a.y + a.height > b.y;
+};
+
+const updateSelection = () => {
+  const rect = selectionRect.value;
+  const newSelected = new Set(preSelectIds.value);
+
+  icons.value.forEach(icon => {
+    const iconRect = {
+      x: icon.x,
+      y: icon.y,
+      right: icon.x + iconDimensions.value.width,
+      bottom: icon.y + iconDimensions.value.height,
+    };
+
+    if (rectsOverlap(rect, iconRect)) {
+      newSelected.add(icon.id);
+    }
+  });
+
+  selectedIds.value = newSelected;
+};
+
+const startSelection = (e) => {
+  if (e.button !== 0) return;
+  preSelectIds.value = e.ctrlKey ? new Set(selectedIds.value) : new Set();
+  selectedIds.value = new Set(preSelectIds.value);
+  isSelecting.value = true;
+  selectStart.value = { x: e.clientX, y: e.clientY };
+  selectEnd.value = { x: e.clientX, y: e.clientY };
+};
+
+const toggleIconSelection = (iconId) => {
+  const newSet = new Set(selectedIds.value);
+  if (newSet.has(iconId)) {
+    newSet.delete(iconId);
+  } else {
+    newSet.add(iconId);
+  }
+  selectedIds.value = newSet;
+};
+
 const startDrag = (e, icon) => {
   if (isAutoArrange.value) return;
+
+  if (e.ctrlKey) {
+    toggleIconSelection(icon.id);
+    return;
+  }
+
+  // Multi-icon drag: if dragged icon is part of a multi-selection, move them all
+  if (selectedIds.value.has(icon.id) && selectedIds.value.size > 1) {
+    isMultiDragging.value = true;
+    dragStartPositions.value = Array.from(selectedIds.value).map(id => {
+      const ic = icons.value.find(i => i.id === id);
+      return { id, x: ic.x, y: ic.y };
+    });
+    dragStartMouse.value = { x: e.clientX, y: e.clientY };
+    draggingIcon.value = icon;
+    closeMenu();
+    return;
+  }
+
+  // Single icon drag
+  selectedIds.value = new Set([icon.id]);
   draggingIcon.value = icon;
 
   // 初始化坐标偏移
@@ -234,6 +351,23 @@ const startDrag = (e, icon) => {
 };
 
 const onDrag = (e) => {
+  if (isSelecting.value) {
+    selectEnd.value = { x: e.clientX, y: e.clientY };
+    updateSelection();
+    return;
+  }
+  if (isMultiDragging.value) {
+    const deltaX = e.clientX - dragStartMouse.value.x;
+    const deltaY = e.clientY - dragStartMouse.value.y;
+    dragStartPositions.value.forEach(startPos => {
+      const icon = icons.value.find(i => i.id === startPos.id);
+      if (icon) {
+        icon.x = startPos.x + deltaX;
+        icon.y = startPos.y + deltaY;
+      }
+    });
+    return;
+  }
   if (dragGhost.value) {
     // 只更新镜像的坐标，原图标 icons 里的数据保持不变
     dragGhost.value.x = e.clientX - offset.value.x;
@@ -241,7 +375,39 @@ const onDrag = (e) => {
   }
 };
 
-const stopDrag = () => {
+const clampAndAlign = (icon) => {
+  const bottom = window.innerHeight - 100;
+  const right = window.innerWidth;
+  const w = iconDimensions.value.width;
+  const h = iconDimensions.value.height;
+
+  if (icon.x < 5) icon.x = 5;
+  if (icon.y < 5) icon.y = 5;
+  if (icon.x + w > right) icon.x = right - w;
+  if (icon.y + h > bottom) icon.y = bottom - h;
+
+  if (isGridAlign.value) {
+    alignToGrid(icon);
+  }
+};
+
+const stopDrag = (e) => {
+  if (isSelecting.value) {
+    isSelecting.value = false;
+    return;
+  }
+  if (isMultiDragging.value) {
+    const movedIds = dragStartPositions.value.map(p => p.id);
+    dragStartPositions.value = [];
+    movedIds.forEach(id => {
+      const icon = icons.value.find(i => i.id === id);
+      if (icon) clampAndAlign(icon);
+    });
+    saveToLocal();
+    isMultiDragging.value = false;
+    draggingIcon.value = null;
+    return;
+  }
   if (draggingIcon.value && dragGhost.value) {
     // 停止拖动时，将镜像位置同步给原图标
     draggingIcon.value.x = dragGhost.value.x;
@@ -457,6 +623,24 @@ onMounted(() => {
 .icon-item:hover {
   background: linear-gradient(to right bottom,#fffa,#fff3);
   outline: #fff6 1px solid;
+}
+
+.icon-item.is-selected {
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.55), rgba(144, 207, 255, 0.25));
+  outline: rgba(219, 239, 255, 0.7) 1px solid;
+}
+
+.selection-rect {
+  position: fixed;
+  border: 1px solid rgba(0, 120, 212, 0.8);
+  background: rgba(0, 120, 212, 0.15);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.icon-item.is-multi-dragging {
+  opacity: 0.45;
+  transition: none !important;
 }
 
 .icon-label {
