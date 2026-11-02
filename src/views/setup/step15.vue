@@ -23,7 +23,7 @@
         <circle cx="8px" cy="8px" r="7px"></circle>
       </svg>
       <p>{{ stat.title }} - {{ stat.process }}%</p>
-      <p>Please keep your PC opened</p>
+      <p>Please keep your PC on</p>
     </div>
     <div style="flex: 1"></div>
 
@@ -75,7 +75,7 @@
           fill="url(#sweep-gradient)"
         ></path>
       </svg>
-      Windows 12 Setup
+      Windows
     </div>
   </div>
 </template>

@@ -12,7 +12,6 @@
                 existing intellectual property rights in the United States and
                 other countries.
             </p>
-            <p>This product partly developed by ChatGPT Codex</p>
             <br /><br /><br />
             <p>
                 This product is licensed under the
